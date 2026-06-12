@@ -1,0 +1,78 @@
+aid: argilla
+name: Argilla
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/argilla/refs/heads/main/apis.yml
+created: 2026-06-12
+modified: 2026-06-12
+specificationVersion: "0.19"
+description: >
+  Argilla is an open-source data annotation and curation platform designed for
+  AI engineers and domain experts building high-quality datasets for LLMs and
+  NLP models. The platform provides a FastAPI-based REST API for managing
+  workspaces, datasets, records, responses, suggestions, and vectors, enabling
+  RLHF and preference tuning pipelines. Developers interact with Argilla through
+  a Python SDK (pip install argilla) or directly via REST using API key
+  authentication. Argilla supports deployment on Hugging Face Spaces, Docker,
+  and self-hosted environments, and is licensed under Apache-2.0. The platform
+  recently joined Hugging Face, deepening its integration with the broader open
+  ML ecosystem.
+tags:
+  - data annotation
+  - LLM
+  - NLP
+  - RLHF
+  - machine learning
+  - datasets
+  - open source
+  - human feedback
+  - fine-tuning
+  - Hugging Face
+apis:
+  - name: Argilla REST API
+    description: >
+      FastAPI-based REST API for managing Argilla server resources including
+      users, workspaces, datasets, records, responses, suggestions, vectors,
+      and webhooks. Authentication uses API key credentials retrieved from user
+      settings.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.argilla.io/latest/
+    baseURL: https://argilla.io
+    tags:
+      - datasets
+      - records
+      - annotations
+      - RLHF
+      - webhooks
+    properties:
+      - type: Documentation
+        url: https://docs.argilla.io/latest/
+      - type: OpenAPI
+        url: https://argilla.io/api/docs
+    contact:
+      - FN: Argilla Support
+        email: contact@argilla.io
+common:
+  - type: Website
+    url: https://argilla.io/
+  - type: Documentation
+    url: https://docs.argilla.io/latest/
+  - type: GitHubOrganization
+    url: https://github.com/argilla-io
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/argilla-io/
+  - type: X
+    url: https://twitter.com/argilla_io
+  - type: Blog
+    url: https://argilla.io/blog
+  - type: Pricing
+    url: https://argilla.io/pricing
+  - type: Plans
+    url: plans/argilla-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/argilla-rate-limits.yml
+  - type: FinOps
+    url: finops/argilla-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

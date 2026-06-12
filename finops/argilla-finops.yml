@@ -1,0 +1,78 @@
+name: Argilla FinOps Framework
+description: >
+  FinOps considerations for teams using Argilla as a data annotation and
+  dataset curation platform. Since Argilla is open-source and self-hosted,
+  direct costs arise from infrastructure rather than software licensing.
+  Deployments on Hugging Face Spaces incur compute costs billed by Hugging Face.
+specificationVersion: "1.0"
+provider: Argilla
+focus:
+  schema: FOCUS 1.0
+  currency: USD
+costCategories:
+  - category: Infrastructure
+    description: >
+      Compute, storage, and networking costs for self-hosted Argilla deployments.
+      Argilla requires a FastAPI server, a relational database (SQLite or
+      PostgreSQL), and optionally ElasticSearch or OpenSearch for vector search.
+    costDrivers:
+      - name: Compute (Server)
+        description: CPU/RAM for the Argilla FastAPI server process
+        unit: instance-hours
+        notes: Scales with concurrent users and dataset size
+      - name: Database Storage
+        description: PostgreSQL or SQLite storage for records, responses, and metadata
+        unit: GB-month
+        notes: Grows linearly with number of annotated records
+      - name: Search Index
+        description: ElasticSearch or OpenSearch cluster for vector search and filtering
+        unit: GB-month
+        notes: Optional; required for semantic search and large dataset filtering
+      - name: Networking
+        description: Egress bandwidth for API calls and Hugging Face Hub exports
+        unit: GB
+  - category: Hugging Face Spaces Deployment
+    description: >
+      When deploying Argilla via Hugging Face Spaces, compute costs are billed
+      by Hugging Face at their standard hardware tier rates. No Argilla
+      licensing fee applies.
+    costDrivers:
+      - name: Spaces CPU Hardware
+        description: Free or paid CPU instances on Hugging Face Spaces
+        unit: hours
+        notes: Free tier available with limited vCPU and RAM
+      - name: Spaces GPU Hardware
+        description: GPU instances for accelerated annotation suggestion models
+        unit: hours
+        notes: Optional; billed per Hugging Face GPU pricing
+  - category: Data Export and Integration
+    description: >
+      Costs associated with exporting datasets to Hugging Face Hub or other
+      destinations and running suggestion/pre-annotation models.
+    costDrivers:
+      - name: Hugging Face Hub Storage
+        description: Dataset storage on Hugging Face Hub after export via dataset.to_hub()
+        unit: GB-month
+        notes: Free tier available on Hugging Face Hub
+      - name: Model Inference for Suggestions
+        description: >
+          Compute cost for running LLMs or NLP models to generate annotation
+          suggestions (Distilabel integration or external inference endpoints)
+        unit: tokens or inference-calls
+optimization:
+  - recommendation: >
+      Use SQLite for small teams and single-node deployments to eliminate
+      PostgreSQL infrastructure overhead.
+  - recommendation: >
+      Defer ElasticSearch/OpenSearch until dataset size exceeds tens of
+      thousands of records; smaller datasets perform adequately with SQLite FTS.
+  - recommendation: >
+      Use Hugging Face Spaces free-tier hardware for evaluation and low-volume
+      annotation projects to reduce compute spend.
+  - recommendation: >
+      Leverage the Distilabel library for offline batch pre-annotation rather
+      than real-time inference to reduce per-record model inference costs.
+notes: >
+  Argilla is joining Hugging Face; future managed pricing models may consolidate
+  infrastructure costs into a unified Hugging Face billing account.
+  Monitor https://argilla.io/blog for announcements.

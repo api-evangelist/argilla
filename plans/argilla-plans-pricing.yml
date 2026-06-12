@@ -1,0 +1,45 @@
+name: Argilla Plans and Pricing
+description: >
+  Argilla is an open-source platform available for free self-hosting under the
+  Apache-2.0 license. Users may deploy via Docker, Hugging Face Spaces, or any
+  cloud infrastructure at no licensing cost. Argilla joined Hugging Face and
+  integrates with Hugging Face Spaces for managed deployments. No publicly
+  disclosed commercial SaaS pricing tiers were available at time of cataloging.
+specificationVersion: "0.1"
+plans:
+  - name: Open Source (Self-Hosted)
+    description: >
+      Full-featured Argilla server deployed on your own infrastructure via
+      Docker or any compatible host. Includes all annotation, dataset
+      management, REST API, Python SDK, and webhook features at no cost.
+    price: 0
+    currency: USD
+    billing: none
+    features:
+      - Full REST API access
+      - Python SDK (pip install argilla)
+      - Unlimited users and workspaces
+      - Datasets, records, responses, suggestions, and vectors
+      - Webhook support
+      - OAuth2 authentication
+      - Docker deployment
+      - Apache-2.0 license
+  - name: Hugging Face Spaces (Managed)
+    description: >
+      One-click deployment of Argilla on Hugging Face Spaces using the official
+      template. Costs are determined by Hugging Face Spaces compute pricing
+      (CPU or GPU hardware tiers). No additional Argilla licensing fee applies.
+    price: 0
+    currency: USD
+    billing: usage-based
+    notes: >
+      Hugging Face Spaces hardware costs apply separately. Free tier Spaces
+      hardware is available with limited compute resources.
+    features:
+      - Argilla server hosted on Hugging Face infrastructure
+      - Automatic OAuth via Hugging Face accounts
+      - All REST API and SDK features
+      - rg.Argilla.deploy_on_spaces() for programmatic deployment
+notes: >
+  Argilla announced it is joining Hugging Face. Future commercial or managed
+  service pricing may be introduced. Check https://argilla.io/ for updates.

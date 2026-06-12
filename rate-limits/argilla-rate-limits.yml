@@ -1,0 +1,37 @@
+name: Argilla Rate Limits
+description: >
+  Argilla is a self-hosted open-source platform; rate limits are not enforced
+  by a central SaaS infrastructure and instead depend on the resources of the
+  deployment environment. The Argilla server does impose a webhook response
+  timeout and retry policy documented below. No documented API rate limits
+  exist for the hosted demo or Hugging Face Spaces deployments.
+specificationVersion: "0.1"
+rateLimits:
+  - name: Webhook Response Timeout
+    description: >
+      When Argilla sends a webhook event to a registered endpoint, the
+      receiving server must respond within 20 seconds. If a non-2xx status
+      code is returned or the timeout is exceeded, Argilla will retry the
+      delivery.
+    limit: 20
+    unit: seconds
+    scope: webhook
+  - name: Webhook Retry Attempts
+    description: >
+      If a webhook delivery fails (timeout or non-success status), Argilla
+      retries the delivery up to 3 times before abandoning the event.
+    limit: 3
+    unit: retries
+    scope: webhook
+  - name: Self-Hosted API Limits
+    description: >
+      No rate limits are enforced by Argilla software itself on REST API
+      calls. Operators may impose rate limits via reverse proxy (e.g., nginx,
+      Traefik) or infrastructure-level controls at their discretion.
+    limit: none
+    unit: N/A
+    scope: API
+notes: >
+  Rate limiting policies for any future managed cloud offering (e.g., through
+  Hugging Face) are not yet publicly documented. Check https://docs.argilla.io/
+  for updates.
