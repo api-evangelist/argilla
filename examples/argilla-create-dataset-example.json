@@ -1,0 +1,30 @@
+{
+  "summary": "Create a new Argilla dataset for text annotation",
+  "description": "Example request body for POST /api/v1/workspaces/{workspace_id}/datasets to create a new dataset",
+  "request": {
+    "method": "POST",
+    "url": "/api/v1/workspaces/{workspace_id}/datasets",
+    "headers": {
+      "X-Argilla-Api-Key": "your-api-key",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "name": "sentiment-annotation-dataset",
+      "guidelines": "Annotate each text with the appropriate sentiment label: positive, negative, or neutral.",
+      "allow_extra_metadata": false
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "name": "sentiment-annotation-dataset",
+      "guidelines": "Annotate each text with the appropriate sentiment label: positive, negative, or neutral.",
+      "allow_extra_metadata": false,
+      "status": "draft",
+      "workspace_id": "3fa85f64-5717-4562-b3fc-2c963f66afa7",
+      "inserted_at": "2026-06-12T00:00:00Z",
+      "updated_at": "2026-06-12T00:00:00Z"
+    }
+  }
+}

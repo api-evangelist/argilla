@@ -1,0 +1,89 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://argilla.io/schemas/question.json",
+  "title": "Question",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Id"
+    },
+    "name": {
+      "type": "string",
+      "title": "Name"
+    },
+    "title": {
+      "type": "string",
+      "title": "Title"
+    },
+    "description": {
+      "title": "Description",
+      "type": "string",
+      "nullable": true
+    },
+    "required": {
+      "type": "boolean",
+      "title": "Required"
+    },
+    "settings": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/TextQuestionSettings"
+        },
+        {
+          "$ref": "#/components/schemas/RatingQuestionSettings"
+        },
+        {
+          "$ref": "#/components/schemas/LabelSelectionQuestionSettings"
+        },
+        {
+          "$ref": "#/components/schemas/MultiLabelSelectionQuestionSettings"
+        },
+        {
+          "$ref": "#/components/schemas/RankingQuestionSettings"
+        },
+        {
+          "$ref": "#/components/schemas/SpanQuestionSettings"
+        }
+      ],
+      "title": "Settings",
+      "discriminator": {
+        "propertyName": "type",
+        "mapping": {
+          "label_selection": "#/components/schemas/LabelSelectionQuestionSettings",
+          "multi_label_selection": "#/components/schemas/MultiLabelSelectionQuestionSettings",
+          "ranking": "#/components/schemas/RankingQuestionSettings",
+          "rating": "#/components/schemas/RatingQuestionSettings",
+          "span": "#/components/schemas/SpanQuestionSettings",
+          "text": "#/components/schemas/TextQuestionSettings"
+        }
+      }
+    },
+    "dataset_id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Dataset Id"
+    },
+    "inserted_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Inserted At"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Updated At"
+    }
+  },
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "title",
+    "required",
+    "settings",
+    "dataset_id",
+    "inserted_at",
+    "updated_at"
+  ]
+}

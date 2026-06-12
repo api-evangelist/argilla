@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://argilla.io/schemas/field.json",
+  "title": "Field",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Id"
+    },
+    "name": {
+      "type": "string",
+      "title": "Name"
+    },
+    "title": {
+      "type": "string",
+      "title": "Title"
+    },
+    "required": {
+      "type": "boolean",
+      "title": "Required"
+    },
+    "settings": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/TextFieldSettings"
+        },
+        {
+          "$ref": "#/components/schemas/ImageFieldSettings"
+        },
+        {
+          "$ref": "#/components/schemas/ChatFieldSettings"
+        },
+        {
+          "$ref": "#/components/schemas/CustomFieldSettings"
+        }
+      ],
+      "title": "Settings",
+      "discriminator": {
+        "propertyName": "type",
+        "mapping": {
+          "chat": "#/components/schemas/ChatFieldSettings",
+          "custom": "#/components/schemas/CustomFieldSettings",
+          "image": "#/components/schemas/ImageFieldSettings",
+          "text": "#/components/schemas/TextFieldSettings"
+        }
+      }
+    },
+    "dataset_id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Dataset Id"
+    },
+    "inserted_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Inserted At"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Updated At"
+    }
+  },
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "title",
+    "required",
+    "settings",
+    "dataset_id",
+    "inserted_at",
+    "updated_at"
+  ]
+}

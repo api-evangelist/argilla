@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://argilla.io/schemas/webhook.json",
+  "title": "Webhook",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Id"
+    },
+    "url": {
+      "type": "string",
+      "title": "Url"
+    },
+    "secret": {
+      "type": "string",
+      "title": "Secret"
+    },
+    "events": {
+      "items": {
+        "$ref": "#/components/schemas/WebhookEvent"
+      },
+      "type": "array",
+      "title": "Events"
+    },
+    "enabled": {
+      "type": "boolean",
+      "title": "Enabled"
+    },
+    "description": {
+      "title": "Description",
+      "type": "string",
+      "nullable": true
+    },
+    "inserted_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Inserted At"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Updated At"
+    }
+  },
+  "type": "object",
+  "required": [
+    "id",
+    "url",
+    "secret",
+    "events",
+    "enabled",
+    "inserted_at",
+    "updated_at"
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://argilla.io/schemas/metadataproperty.json",
+  "title": "MetadataProperty",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Id"
+    },
+    "name": {
+      "type": "string",
+      "title": "Name"
+    },
+    "title": {
+      "type": "string",
+      "title": "Title"
+    },
+    "settings": {
+      "oneOf": [
+        {
+          "$ref": "#/components/schemas/TermsMetadataProperty"
+        },
+        {
+          "$ref": "#/components/schemas/IntegerMetadataProperty"
+        },
+        {
+          "$ref": "#/components/schemas/FloatMetadataProperty"
+        }
+      ],
+      "title": "Settings",
+      "discriminator": {
+        "propertyName": "type",
+        "mapping": {
+          "float": "#/components/schemas/FloatMetadataProperty",
+          "integer": "#/components/schemas/IntegerMetadataProperty",
+          "terms": "#/components/schemas/TermsMetadataProperty"
+        }
+      }
+    },
+    "visible_for_annotators": {
+      "type": "boolean",
+      "title": "Visible For Annotators"
+    },
+    "dataset_id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Dataset Id"
+    },
+    "inserted_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Inserted At"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Updated At"
+    }
+  },
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "title",
+    "settings",
+    "visible_for_annotators",
+    "dataset_id",
+    "inserted_at",
+    "updated_at"
+  ]
+}

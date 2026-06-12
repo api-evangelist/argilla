@@ -1,0 +1,122 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "argilla": "https://argilla.io/vocab/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "Dataset": "argilla:Dataset",
+    "Record": "argilla:Record",
+    "Field": "argilla:Field",
+    "Question": "argilla:Question",
+    "Response": "argilla:Response",
+    "Suggestion": "argilla:Suggestion",
+    "Workspace": "argilla:Workspace",
+    "User": "argilla:User",
+    "VectorSettings": "argilla:VectorSettings",
+    "MetadataProperty": "argilla:MetadataProperty",
+    "Webhook": "argilla:Webhook",
+
+    "id": "@id",
+    "type": "@type",
+
+    "name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "guidelines": {
+      "@id": "argilla:guidelines",
+      "@type": "xsd:string"
+    },
+    "status": {
+      "@id": "argilla:status",
+      "@type": "xsd:string"
+    },
+    "workspace_id": {
+      "@id": "argilla:workspace",
+      "@type": "@id"
+    },
+    "dataset_id": {
+      "@id": "argilla:dataset",
+      "@type": "@id"
+    },
+    "record_id": {
+      "@id": "argilla:record",
+      "@type": "@id"
+    },
+    "user_id": {
+      "@id": "argilla:annotatedBy",
+      "@type": "@id"
+    },
+    "fields": {
+      "@id": "argilla:fields",
+      "@container": "@set"
+    },
+    "questions": {
+      "@id": "argilla:questions",
+      "@container": "@set"
+    },
+    "responses": {
+      "@id": "argilla:responses",
+      "@container": "@set"
+    },
+    "suggestions": {
+      "@id": "argilla:suggestions",
+      "@container": "@set"
+    },
+    "metadata": {
+      "@id": "argilla:metadata"
+    },
+    "vectors": {
+      "@id": "argilla:vectors"
+    },
+    "external_id": {
+      "@id": "dcterms:identifier",
+      "@type": "xsd:string"
+    },
+    "values": {
+      "@id": "argilla:annotationValues"
+    },
+    "score": {
+      "@id": "argilla:confidenceScore",
+      "@type": "xsd:float"
+    },
+    "agent": {
+      "@id": "argilla:suggestionAgent",
+      "@type": "xsd:string"
+    },
+    "role": {
+      "@id": "argilla:userRole",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "events": {
+      "@id": "argilla:webhookEvents",
+      "@container": "@set"
+    },
+    "dimensions": {
+      "@id": "argilla:vectorDimensions",
+      "@type": "xsd:integer"
+    },
+    "allow_extra_metadata": {
+      "@id": "argilla:allowExtraMetadata",
+      "@type": "xsd:boolean"
+    },
+    "inserted_at": {
+      "@id": "dcterms:created",
+      "@type": "xsd:dateTime"
+    },
+    "updated_at": {
+      "@id": "dcterms:modified",
+      "@type": "xsd:dateTime"
+    }
+  }
+}

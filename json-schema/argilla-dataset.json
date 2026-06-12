@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://argilla.io/schemas/dataset.json",
+  "title": "Dataset",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Id"
+    },
+    "name": {
+      "type": "string",
+      "title": "Name"
+    },
+    "guidelines": {
+      "title": "Guidelines",
+      "type": "string",
+      "nullable": true
+    },
+    "allow_extra_metadata": {
+      "type": "boolean",
+      "title": "Allow Extra Metadata"
+    },
+    "status": {
+      "$ref": "#/components/schemas/DatasetStatus"
+    },
+    "distribution": {
+      "$ref": "#/components/schemas/DatasetOverlapDistribution"
+    },
+    "metadata": {
+      "title": "Metadata",
+      "type": "object",
+      "nullable": true
+    },
+    "workspace_id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Workspace Id"
+    },
+    "last_activity_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Last Activity At"
+    },
+    "inserted_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Inserted At"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Updated At"
+    }
+  },
+  "type": "object",
+  "required": [
+    "id",
+    "name",
+    "allow_extra_metadata",
+    "status",
+    "distribution",
+    "workspace_id",
+    "last_activity_at",
+    "inserted_at",
+    "updated_at"
+  ]
+}

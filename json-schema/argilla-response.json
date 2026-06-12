@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://argilla.io/schemas/response.json",
+  "title": "Response",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Id"
+    },
+    "values": {
+      "title": "Values",
+      "additionalProperties": {
+        "$ref": "#/components/schemas/ResponseValue"
+      },
+      "type": "object",
+      "nullable": true
+    },
+    "status": {
+      "$ref": "#/components/schemas/ResponseStatus"
+    },
+    "record_id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Record Id"
+    },
+    "user_id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "User Id"
+    },
+    "inserted_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Inserted At"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Updated At"
+    }
+  },
+  "type": "object",
+  "required": [
+    "id",
+    "status",
+    "record_id",
+    "user_id",
+    "inserted_at",
+    "updated_at"
+  ]
+}

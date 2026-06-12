@@ -1,0 +1,36 @@
+{
+  "summary": "Submit an annotation response to a record",
+  "description": "Example request for POST /api/v1/records/{id}/responses to submit a human annotation",
+  "request": {
+    "method": "POST",
+    "url": "/api/v1/records/{id}/responses",
+    "headers": {
+      "X-Argilla-Api-Key": "your-api-key",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "status": "submitted",
+      "values": {
+        "sentiment": {
+          "value": "positive"
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+      "status": "submitted",
+      "values": {
+        "sentiment": {
+          "value": "positive"
+        }
+      },
+      "record_id": "3fa85f64-5717-4562-b3fc-2c963f66afa7",
+      "user_id": "3fa85f64-5717-4562-b3fc-2c963f66afa8",
+      "inserted_at": "2026-06-12T00:00:00Z",
+      "updated_at": "2026-06-12T00:00:00Z"
+    }
+  }
+}

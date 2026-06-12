@@ -1,0 +1,57 @@
+{
+  "summary": "Bulk add records to an Argilla dataset",
+  "description": "Example request for POST /api/v1/datasets/{id}/records/bulk to add annotation records",
+  "request": {
+    "method": "POST",
+    "url": "/api/v1/datasets/{id}/records/bulk",
+    "headers": {
+      "X-Argilla-Api-Key": "your-api-key",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "items": [
+        {
+          "fields": {
+            "text": "This product is absolutely amazing! I love it."
+          },
+          "metadata": {
+            "source": "product-reviews",
+            "split": "train"
+          },
+          "external_id": "review-001"
+        },
+        {
+          "fields": {
+            "text": "Terrible experience, would not recommend."
+          },
+          "metadata": {
+            "source": "product-reviews",
+            "split": "train"
+          },
+          "external_id": "review-002"
+        }
+      ]
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "items": [
+        {
+          "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "status": "pending",
+          "fields": {
+            "text": "This product is absolutely amazing! I love it."
+          },
+          "metadata": {
+            "source": "product-reviews",
+            "split": "train"
+          },
+          "external_id": "review-001",
+          "inserted_at": "2026-06-12T00:00:00Z",
+          "updated_at": "2026-06-12T00:00:00Z"
+        }
+      ]
+    }
+  }
+}

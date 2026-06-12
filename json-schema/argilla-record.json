@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://argilla.io/schemas/record.json",
+  "title": "Record",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Id"
+    },
+    "status": {
+      "$ref": "#/components/schemas/RecordStatus"
+    },
+    "fields": {
+      "type": "object",
+      "title": "Fields"
+    },
+    "metadata": {
+      "title": "Metadata",
+      "type": "object",
+      "nullable": true
+    },
+    "external_id": {
+      "title": "External Id",
+      "type": "string",
+      "nullable": true
+    },
+    "responses": {
+      "title": "Responses",
+      "items": {
+        "$ref": "#/components/schemas/Response"
+      },
+      "type": "array",
+      "nullable": true
+    },
+    "suggestions": {
+      "title": "Suggestions",
+      "items": {
+        "$ref": "#/components/schemas/Suggestion"
+      },
+      "type": "array",
+      "nullable": true
+    },
+    "vectors": {
+      "title": "Vectors",
+      "additionalProperties": {
+        "items": {
+          "type": "number"
+        },
+        "type": "array"
+      },
+      "type": "object",
+      "nullable": true
+    },
+    "dataset_id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Dataset Id"
+    },
+    "inserted_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Inserted At"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Updated At"
+    }
+  },
+  "type": "object",
+  "required": [
+    "id",
+    "status",
+    "fields",
+    "dataset_id",
+    "inserted_at",
+    "updated_at"
+  ]
+}

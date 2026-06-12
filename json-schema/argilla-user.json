@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://argilla.io/schemas/user.json",
+  "title": "User",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "title": "Id"
+    },
+    "first_name": {
+      "type": "string",
+      "title": "First Name"
+    },
+    "last_name": {
+      "title": "Last Name",
+      "type": "string",
+      "nullable": true
+    },
+    "username": {
+      "type": "string",
+      "title": "Username"
+    },
+    "role": {
+      "$ref": "#/components/schemas/UserRole"
+    },
+    "api_key": {
+      "type": "string",
+      "title": "Api Key"
+    },
+    "inserted_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Inserted At"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "title": "Updated At"
+    }
+  },
+  "type": "object",
+  "required": [
+    "id",
+    "first_name",
+    "username",
+    "role",
+    "api_key",
+    "inserted_at",
+    "updated_at"
+  ]
+}

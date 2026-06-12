@@ -1,0 +1,175 @@
+name: Argilla Vocabulary
+description: Domain vocabulary for the Argilla data annotation and curation platform API
+url: https://argilla.io
+version: 2.8.0
+created: 2026-06-12
+modified: 2026-06-12
+
+terms:
+
+  - term: dataset
+    label: Dataset
+    definition: >
+      A named collection of records to be annotated, associated with a workspace.
+      Datasets define fields, questions, metadata properties, and vector settings
+      that structure the annotation task.
+    related:
+      - record
+      - workspace
+      - field
+      - question
+
+  - term: record
+    label: Record
+    definition: >
+      A single data item within a dataset that annotators review and label.
+      Records contain field values (the data to annotate), metadata, responses
+      (human annotations), suggestions (model predictions), and vector embeddings.
+    related:
+      - dataset
+      - response
+      - suggestion
+      - field
+
+  - term: field
+    label: Field
+    definition: >
+      A typed input column within a dataset that holds the data to be annotated.
+      Supported field types include text, image, chat, and custom fields.
+    types:
+      - text
+      - image
+      - chat
+      - custom
+    related:
+      - dataset
+      - record
+
+  - term: question
+    label: Question
+    definition: >
+      An annotation task presented to the annotator for each record. Questions
+      define what annotators should label and support types such as label
+      selection, multi-label selection, rating, ranking, span, and text.
+    types:
+      - label_selection
+      - multi_label_selection
+      - rating
+      - ranking
+      - span
+      - text
+    related:
+      - dataset
+      - response
+
+  - term: response
+    label: Response
+    definition: >
+      A human annotator's answer to one or more questions on a record. Responses
+      have a status of submitted, discarded, or draft, and contain values keyed
+      by question name.
+    statuses:
+      - submitted
+      - discarded
+      - draft
+    related:
+      - record
+      - question
+      - user
+
+  - term: suggestion
+    label: Suggestion
+    definition: >
+      An automated or model-generated pre-annotation for a record question.
+      Suggestions can include a score and agent identifier, and serve as
+      starting points for human annotators.
+    related:
+      - record
+      - question
+
+  - term: workspace
+    label: Workspace
+    definition: >
+      A logical grouping namespace that contains datasets and controls user
+      access. Users must be assigned to a workspace to view or annotate its
+      datasets.
+    related:
+      - dataset
+      - user
+
+  - term: user
+    label: User
+    definition: >
+      An account that can annotate records or administrate workspaces and
+      datasets. Users authenticate via API key and have roles of owner or
+      annotator.
+    roles:
+      - owner
+      - annotator
+    related:
+      - workspace
+      - response
+
+  - term: metadata_property
+    label: Metadata Property
+    definition: >
+      A typed descriptor attached to records for filtering and faceting.
+      Supports integer, float, and terms (categorical) types, each with
+      optional value ranges.
+    types:
+      - integer
+      - float
+      - terms
+    related:
+      - dataset
+      - record
+
+  - term: vector_settings
+    label: Vector Settings
+    definition: >
+      Configuration for storing dense embedding vectors on records within a
+      dataset. Defines the vector dimension and name, enabling similarity
+      search across records.
+    related:
+      - dataset
+      - record
+
+  - term: webhook
+    label: Webhook
+    definition: >
+      An HTTP callback registered to receive server-sent events when specific
+      dataset or record lifecycle events occur (e.g. record created, response
+      submitted).
+    events:
+      - dataset.created
+      - dataset.updated
+      - dataset.deleted
+      - record.created
+      - record.updated
+      - record.deleted
+      - response.created
+      - response.updated
+      - response.deleted
+    related:
+      - dataset
+      - response
+
+  - term: rlhf
+    label: RLHF
+    definition: >
+      Reinforcement Learning from Human Feedback — a training technique in
+      which human preference annotations collected through Argilla are used
+      to fine-tune or align large language models.
+    related:
+      - response
+      - suggestion
+      - dataset
+
+  - term: hub_dataset
+    label: Hub Dataset
+    definition: >
+      A Hugging Face Hub dataset reference used to import records into Argilla
+      or export annotated records back to the Hub for model training.
+    related:
+      - dataset
+      - record
