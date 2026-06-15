@@ -6,5 +6,17 @@
   "rss_checked": "2026-06-12",
   "rss_found": false,
   "note": "No RSS or Atom feed URL found on argilla.io/blog as of 2026-06-12. Blog is available at https://argilla.io/blog with 50+ posts covering data annotation, RLHF, LLM fine-tuning, and open-source ML tooling.",
-  "posts": []
+  "posts": [],
+  "repo": "argilla",
+  "feeds": [
+    {
+      "source": "https://twitter.com/argilla_io",
+      "feed_url": "https://twitter.com/argilla_io",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-06-14T20:42:17Z"
 }
