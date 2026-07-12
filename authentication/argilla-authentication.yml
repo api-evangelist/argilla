@@ -1,0 +1,21 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/argilla-rest-api-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: APIKeyHeader
+  type: apiKey
+  in: header
+  parameter: X-Argilla-Api-Key
+  sources:
+  - openapi/argilla-rest-api-openapi.yml
+- name: HTTPBearer
+  type: http
+  scheme: bearer
+  sources:
+  - openapi/argilla-rest-api-openapi.yml

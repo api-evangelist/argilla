@@ -55,6 +55,10 @@ apis:
       - FN: Argilla Support
         email: contact@argilla.io
 common:
+  - type: DomainSecurity
+    url: security/argilla-domain-security.yml
+  - type: Authentication
+    url: authentication/argilla-authentication.yml
   - type: Website
     url: https://argilla.io/
   - type: Documentation
