@@ -1,0 +1,183 @@
+openapi: 3.0.3
+info:
+  title: Argilla v1 Authentication info API
+  description: Argilla Server API v1
+  version: 2.8.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    email: contact@argilla.io
+    url: https://argilla.io
+servers:
+- url: https://argilla.io/api/v1
+  description: Argilla REST API v1
+tags:
+- name: info
+paths:
+  /version:
+    get:
+      tags:
+      - info
+      summary: Get Version
+      operationId: get_version_version_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Version'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+  /status:
+    get:
+      tags:
+      - info
+      summary: Get Status
+      operationId: get_status_status_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Status'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+components:
+  schemas:
+    Version:
+      properties:
+        version:
+          type: string
+          title: Version
+      type: object
+      required:
+      - version
+      title: Version
+    Status:
+      properties:
+        version:
+          type: string
+          title: Version
+        search_engine:
+          type: object
+          title: Search Engine
+        memory:
+          type: object
+          title: Memory
+      type: object
+      required:
+      - version
+      - search_engine
+      - memory
+      title: Status
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Argilla-Api-Key
+    HTTPBearer:
+      type: http
+      scheme: bearer

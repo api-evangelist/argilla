@@ -1,0 +1,353 @@
+openapi: 3.0.3
+info:
+  title: Argilla v1 Authentication API
+  description: Argilla Server API v1
+  version: 2.8.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    email: contact@argilla.io
+    url: https://argilla.io
+servers:
+- url: https://argilla.io/api/v1
+  description: Argilla REST API v1
+tags:
+- name: Authentication
+paths:
+  /token:
+    post:
+      tags:
+      - Authentication
+      summary: Create Token
+      operationId: create_token_token_post
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Body_create_token_token_post'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+  /oauth2/providers:
+    get:
+      tags:
+      - Authentication
+      summary: List Providers
+      operationId: list_providers_oauth2_providers_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Providers'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+  /oauth2/providers/{provider}/authentication:
+    get:
+      tags:
+      - Authentication
+      summary: Get Authentication
+      operationId: get_authentication_oauth2_providers__provider__authentication_get
+      parameters:
+      - name: provider
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Provider
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema: {}
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /oauth2/providers/{provider}/access-token:
+    get:
+      tags:
+      - Authentication
+      summary: Get Access Token
+      operationId: get_access_token_oauth2_providers__provider__access_token_get
+      parameters:
+      - name: provider
+        in: path
+        required: true
+        schema:
+          type: string
+          title: Provider
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Token'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+components:
+  schemas:
+    Provider:
+      properties:
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - name
+      title: Provider
+    Body_create_token_token_post:
+      properties:
+        username:
+          type: string
+          title: Username
+        password:
+          type: string
+          title: Password
+      type: object
+      required:
+      - username
+      - password
+      title: Body_create_token_token_post
+    Providers:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Provider'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Providers
+    Token:
+      properties:
+        access_token:
+          type: string
+          title: Access Token
+        token_type:
+          type: string
+          title: Token Type
+          default: bearer
+      type: object
+      required:
+      - access_token
+      title: Token
+      description: Token response model
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Argilla-Api-Key
+    HTTPBearer:
+      type: http
+      scheme: bearer

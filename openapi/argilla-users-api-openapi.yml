@@ -1,0 +1,706 @@
+openapi: 3.0.3
+info:
+  title: Argilla v1 Authentication users API
+  description: Argilla Server API v1
+  version: 2.8.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    email: contact@argilla.io
+    url: https://argilla.io
+servers:
+- url: https://argilla.io/api/v1
+  description: Argilla REST API v1
+tags:
+- name: users
+paths:
+  /me:
+    get:
+      tags:
+      - users
+      summary: Get Current User
+      operationId: get_current_user_me_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+  /users/{user_id}:
+    get:
+      tags:
+      - users
+      summary: Get User
+      operationId: get_user_users__user_id__get
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: User Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+    delete:
+      tags:
+      - users
+      summary: Delete User
+      operationId: delete_user_users__user_id__delete
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: User Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+    patch:
+      tags:
+      - users
+      summary: Update User
+      operationId: update_user_users__user_id__patch
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: User Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /users:
+    get:
+      tags:
+      - users
+      summary: List Users
+      operationId: list_users_users_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Users'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+    post:
+      tags:
+      - users
+      summary: Create User
+      operationId: create_user_users_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserCreate'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+  /users/{user_id}/workspaces:
+    get:
+      tags:
+      - users
+      summary: List User Workspaces
+      operationId: list_user_workspaces_users__user_id__workspaces_get
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: User Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Workspaces'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+components:
+  schemas:
+    User:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        first_name:
+          type: string
+          title: First Name
+        last_name:
+          title: Last Name
+          type: string
+          nullable: true
+        username:
+          type: string
+          title: Username
+        role:
+          $ref: '#/components/schemas/UserRole'
+        api_key:
+          type: string
+          title: Api Key
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - first_name
+      - username
+      - role
+      - api_key
+      - inserted_at
+      - updated_at
+      title: User
+    UserRole:
+      type: string
+      enum:
+      - owner
+      - admin
+      - annotator
+      title: UserRole
+    UserUpdate:
+      properties:
+        first_name:
+          title: First Name
+          type: string
+          minLength: 1
+          description: The first name for the user
+          nullable: true
+        last_name:
+          title: Last Name
+          type: string
+          minLength: 1
+          description: The last name for the user
+          nullable: true
+        username:
+          title: Username
+          type: string
+          minLength: 1
+          description: The username for the user
+          nullable: true
+        role:
+          $ref: '#/components/schemas/UserRole'
+          nullable: true
+        password:
+          title: Password
+          type: string
+          maxLength: 100
+          minLength: 8
+          description: The password for the user
+          nullable: true
+      type: object
+      title: UserUpdate
+    UserCreate:
+      properties:
+        id:
+          title: Id
+          type: string
+          format: uuid
+          nullable: true
+        first_name:
+          type: string
+          minLength: 1
+          title: First Name
+          description: The first name for the user
+        last_name:
+          title: Last Name
+          type: string
+          minLength: 1
+          description: The last name for the user
+          nullable: true
+        username:
+          type: string
+          minLength: 1
+          title: Username
+          description: The username for the user
+        role:
+          $ref: '#/components/schemas/UserRole'
+          nullable: true
+        password:
+          type: string
+          maxLength: 100
+          minLength: 8
+          title: Password
+          description: The password for the user
+      type: object
+      required:
+      - first_name
+      - username
+      - password
+      title: UserCreate
+    Users:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/User'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Users
+    Workspaces:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Workspace'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Workspaces
+    Workspace:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - name
+      - inserted_at
+      - updated_at
+      title: Workspace
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Argilla-Api-Key
+    HTTPBearer:
+      type: http
+      scheme: bearer

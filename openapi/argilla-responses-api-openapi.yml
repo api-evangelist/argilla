@@ -1,0 +1,550 @@
+openapi: 3.0.3
+info:
+  title: Argilla v1 Authentication responses API
+  description: Argilla Server API v1
+  version: 2.8.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    email: contact@argilla.io
+    url: https://argilla.io
+servers:
+- url: https://argilla.io/api/v1
+  description: Argilla REST API v1
+tags:
+- name: responses
+paths:
+  /me/responses/bulk:
+    post:
+      tags:
+      - responses
+      summary: Create Current User Responses Bulk
+      operationId: create_current_user_responses_bulk_me_responses_bulk_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResponsesBulkCreate'
+        required: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponsesBulk'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+  /responses/{response_id}:
+    put:
+      tags:
+      - responses
+      summary: Update Response
+      operationId: update_response_responses__response_id__put
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: response_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Response Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              oneOf:
+              - $ref: '#/components/schemas/SubmittedResponseUpdate'
+              - $ref: '#/components/schemas/DiscardedResponseUpdate'
+              - $ref: '#/components/schemas/DraftResponseUpdate'
+              discriminator:
+                propertyName: status
+                mapping:
+                  submitted: '#/components/schemas/SubmittedResponseUpdate'
+                  discarded: '#/components/schemas/DiscardedResponseUpdate'
+                  draft: '#/components/schemas/DraftResponseUpdate'
+              title: Response Update
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+    delete:
+      tags:
+      - responses
+      summary: Delete Response
+      operationId: delete_response_responses__response_id__delete
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: response_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Response Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+components:
+  schemas:
+    ResponsesBulk:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/ResponseBulk'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: ResponsesBulk
+    SpanQuestionResponseValueItem:
+      properties:
+        label:
+          type: string
+          title: Label
+        start:
+          type: integer
+          minimum: 0.0
+          title: Start
+        end:
+          type: integer
+          minimum: 1.0
+          title: End
+      type: object
+      required:
+      - label
+      - start
+      - end
+      title: SpanQuestionResponseValueItem
+    Response:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        values:
+          title: Values
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValue'
+          type: object
+          nullable: true
+        status:
+          $ref: '#/components/schemas/ResponseStatus'
+        record_id:
+          type: string
+          format: uuid
+          title: Record Id
+        user_id:
+          type: string
+          format: uuid
+          title: User Id
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - status
+      - record_id
+      - user_id
+      - inserted_at
+      - updated_at
+      title: Response
+    SubmittedResponseUpdate:
+      properties:
+        values:
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValueUpdate'
+          type: object
+          title: Values
+        status:
+          type: string
+          enum:
+          - submitted
+          const: submitted
+          title: Status
+      type: object
+      required:
+      - values
+      - status
+      title: SubmittedResponseUpdate
+    SubmittedResponseUpsert:
+      properties:
+        values:
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValueUpdate'
+          type: object
+          title: Values
+        status:
+          type: string
+          enum:
+          - submitted
+          const: submitted
+          title: Status
+        record_id:
+          type: string
+          format: uuid
+          title: Record Id
+      type: object
+      required:
+      - values
+      - status
+      - record_id
+      title: SubmittedResponseUpsert
+    DraftResponseUpsert:
+      properties:
+        values:
+          title: Values
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValueUpdate'
+          type: object
+          nullable: true
+        status:
+          type: string
+          enum:
+          - draft
+          const: draft
+          title: Status
+        record_id:
+          type: string
+          format: uuid
+          title: Record Id
+      type: object
+      required:
+      - status
+      - record_id
+      title: DraftResponseUpsert
+    ResponsesBulkCreate:
+      properties:
+        items:
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/SubmittedResponseUpsert'
+            - $ref: '#/components/schemas/DiscardedResponseUpsert'
+            - $ref: '#/components/schemas/DraftResponseUpsert'
+            discriminator:
+              propertyName: status
+              mapping:
+                discarded: '#/components/schemas/DiscardedResponseUpsert'
+                draft: '#/components/schemas/DraftResponseUpsert'
+                submitted: '#/components/schemas/SubmittedResponseUpsert'
+          type: array
+          maxItems: 100
+          minItems: 1
+          title: Items
+      type: object
+      required:
+      - items
+      title: ResponsesBulkCreate
+    ResponseBulk:
+      properties:
+        item:
+          $ref: '#/components/schemas/Response'
+          nullable: true
+        error:
+          $ref: '#/components/schemas/ResponseBulkError'
+          nullable: true
+      type: object
+      title: ResponseBulk
+    ResponseValueUpdate:
+      properties:
+        value:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/SpanQuestionResponseValueItem'
+            type: array
+            maxItems: 10000
+          - items:
+              $ref: '#/components/schemas/RankingQuestionResponseValueItem'
+            type: array
+          - items:
+              type: string
+            type: array
+          - type: integer
+          - type: string
+          title: Value
+      type: object
+      required:
+      - value
+      title: ResponseValueUpdate
+    RankingQuestionResponseValueItem:
+      properties:
+        value:
+          type: string
+          title: Value
+        rank:
+          title: Rank
+          type: integer
+          nullable: true
+      type: object
+      required:
+      - value
+      title: RankingQuestionResponseValueItem
+    ResponseValue:
+      properties:
+        value:
+          title: Value
+      type: object
+      required:
+      - value
+      title: ResponseValue
+    ResponseBulkError:
+      properties:
+        detail:
+          type: string
+          title: Detail
+      type: object
+      required:
+      - detail
+      title: ResponseBulkError
+    DiscardedResponseUpdate:
+      properties:
+        values:
+          title: Values
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValueUpdate'
+          type: object
+          nullable: true
+        status:
+          type: string
+          enum:
+          - discarded
+          const: discarded
+          title: Status
+      type: object
+      required:
+      - status
+      title: DiscardedResponseUpdate
+    DraftResponseUpdate:
+      properties:
+        values:
+          title: Values
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValueUpdate'
+          type: object
+          nullable: true
+        status:
+          type: string
+          enum:
+          - draft
+          const: draft
+          title: Status
+      type: object
+      required:
+      - status
+      title: DraftResponseUpdate
+    DiscardedResponseUpsert:
+      properties:
+        values:
+          title: Values
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValueUpdate'
+          type: object
+          nullable: true
+        status:
+          type: string
+          enum:
+          - discarded
+          const: discarded
+          title: Status
+        record_id:
+          type: string
+          format: uuid
+          title: Record Id
+      type: object
+      required:
+      - status
+      - record_id
+      title: DiscardedResponseUpsert
+    ResponseStatus:
+      type: string
+      enum:
+      - draft
+      - submitted
+      - discarded
+      title: ResponseStatus
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Argilla-Api-Key
+    HTTPBearer:
+      type: http
+      scheme: bearer

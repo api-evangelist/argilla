@@ -1,0 +1,518 @@
+openapi: 3.0.3
+info:
+  title: Argilla v1 Authentication webhooks API
+  description: Argilla Server API v1
+  version: 2.8.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    email: contact@argilla.io
+    url: https://argilla.io
+servers:
+- url: https://argilla.io/api/v1
+  description: Argilla REST API v1
+tags:
+- name: webhooks
+paths:
+  /webhooks:
+    get:
+      tags:
+      - webhooks
+      summary: List Webhooks
+      operationId: list_webhooks_webhooks_get
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhooks'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+    post:
+      tags:
+      - webhooks
+      summary: Create Webhook
+      operationId: create_webhook_webhooks_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookCreate'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+  /webhooks/{webhook_id}:
+    patch:
+      tags:
+      - webhooks
+      summary: Update Webhook
+      operationId: update_webhook_webhooks__webhook_id__patch
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: webhook_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Webhook Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WebhookUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+    delete:
+      tags:
+      - webhooks
+      summary: Delete Webhook
+      operationId: delete_webhook_webhooks__webhook_id__delete
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: webhook_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Webhook Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Webhook'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /webhooks/{webhook_id}/ping:
+    post:
+      tags:
+      - webhooks
+      summary: Ping Webhook
+      operationId: ping_webhook_webhooks__webhook_id__ping_post
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: webhook_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Webhook Id
+      responses:
+        '204':
+          description: Successful Response
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+components:
+  schemas:
+    Webhooks:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Webhook'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Webhooks
+    Webhook:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        url:
+          type: string
+          title: Url
+        secret:
+          type: string
+          title: Secret
+        events:
+          items:
+            $ref: '#/components/schemas/WebhookEvent'
+          type: array
+          title: Events
+        enabled:
+          type: boolean
+          title: Enabled
+        description:
+          title: Description
+          type: string
+          nullable: true
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - url
+      - secret
+      - events
+      - enabled
+      - inserted_at
+      - updated_at
+      title: Webhook
+    WebhookEvent:
+      type: string
+      enum:
+      - dataset.created
+      - dataset.updated
+      - dataset.deleted
+      - dataset.published
+      - record.created
+      - record.updated
+      - record.deleted
+      - record.completed
+      - response.created
+      - response.updated
+      - response.deleted
+      title: WebhookEvent
+    WebhookUpdate:
+      properties:
+        url:
+          title: Url
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+          nullable: true
+        events:
+          title: Events
+          items:
+            $ref: '#/components/schemas/WebhookEvent'
+          type: array
+          minItems: 1
+          nullable: true
+        enabled:
+          title: Enabled
+          type: boolean
+          nullable: true
+        description:
+          title: Description
+          type: string
+          maxLength: 1000
+          minLength: 1
+          nullable: true
+      type: object
+      title: WebhookUpdate
+    WebhookCreate:
+      properties:
+        url:
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+          title: Url
+        events:
+          items:
+            $ref: '#/components/schemas/WebhookEvent'
+          type: array
+          minItems: 1
+          title: Events
+        description:
+          title: Description
+          type: string
+          maxLength: 1000
+          minLength: 1
+          nullable: true
+      type: object
+      required:
+      - url
+      - events
+      title: WebhookCreate
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Argilla-Api-Key
+    HTTPBearer:
+      type: http
+      scheme: bearer

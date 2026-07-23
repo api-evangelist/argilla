@@ -1,0 +1,4428 @@
+openapi: 3.0.3
+info:
+  title: Argilla v1 Authentication datasets API
+  description: Argilla Server API v1
+  version: 2.8.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    email: contact@argilla.io
+    url: https://argilla.io
+servers:
+- url: https://argilla.io/api/v1
+  description: Argilla REST API v1
+tags:
+- name: datasets
+paths:
+  /me/datasets:
+    get:
+      tags:
+      - datasets
+      summary: List Current User Datasets
+      operationId: list_current_user_datasets_me_datasets_get
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: workspace_id
+        in: query
+        required: false
+        schema:
+          description: Filter by workspace_id
+          title: Workspace Id
+          type: string
+          format: uuid
+          nullable: true
+        description: Filter by workspace_id
+      - name: name
+        in: query
+        required: false
+        schema:
+          description: Filter by dataset name
+          title: Name
+          type: string
+          nullable: true
+        description: Filter by dataset name
+      - name: status
+        in: query
+        required: false
+        schema:
+          description: Filter by dataset status
+          title: Status
+          $ref: '#/components/schemas/DatasetStatus'
+          nullable: true
+        description: Filter by dataset status
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Datasets'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /datasets/{dataset_id}/fields:
+    get:
+      tags:
+      - datasets
+      summary: List Dataset Fields
+      operationId: list_dataset_fields_datasets__dataset_id__fields_get
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Fields'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+    post:
+      tags:
+      - datasets
+      summary: Create Dataset Field
+      operationId: create_dataset_field_datasets__dataset_id__fields_post
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FieldCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Field'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /datasets/{dataset_id}/vectors-settings:
+    get:
+      tags:
+      - datasets
+      summary: List Dataset Vector Settings
+      operationId: list_dataset_vector_settings_datasets__dataset_id__vectors_settings_get
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VectorsSettings'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+    post:
+      tags:
+      - datasets
+      summary: Create Dataset Vector Settings
+      operationId: create_dataset_vector_settings_datasets__dataset_id__vectors_settings_post
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VectorSettingsCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VectorSettings'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /me/datasets/{dataset_id}/metadata-properties:
+    get:
+      tags:
+      - datasets
+      summary: List Current User Dataset Metadata Properties
+      operationId: list_current_user_dataset_metadata_properties_me_datasets__dataset_id__metadata_properties_get
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataProperties'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /datasets/{dataset_id}:
+    get:
+      tags:
+      - datasets
+      summary: Get Dataset
+      operationId: get_dataset_datasets__dataset_id__get
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+    delete:
+      tags:
+      - datasets
+      summary: Delete Dataset
+      operationId: delete_dataset_datasets__dataset_id__delete
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+    patch:
+      tags:
+      - datasets
+      summary: Update Dataset
+      operationId: update_dataset_datasets__dataset_id__patch
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatasetUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /me/datasets/{dataset_id}/metrics:
+    get:
+      tags:
+      - datasets
+      summary: Get Current User Dataset Metrics
+      operationId: get_current_user_dataset_metrics_me_datasets__dataset_id__metrics_get
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetMetrics'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /datasets/{dataset_id}/progress:
+    get:
+      tags:
+      - datasets
+      summary: Get Dataset Progress
+      operationId: get_dataset_progress_datasets__dataset_id__progress_get
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatasetProgress'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /datasets/{dataset_id}/users/progress:
+    get:
+      tags:
+      - datasets
+      summary: Get Dataset Users Progress
+      operationId: get_dataset_users_progress_datasets__dataset_id__users_progress_get
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UsersProgress'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /datasets:
+    post:
+      tags:
+      - datasets
+      summary: Create Dataset
+      operationId: create_dataset_datasets_post
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DatasetCreate'
+        required: true
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+        '422':
+          description: Unprocessable Content
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+  /datasets/{dataset_id}/metadata-properties:
+    post:
+      tags:
+      - datasets
+      summary: Create Dataset Metadata Property
+      operationId: create_dataset_metadata_property_datasets__dataset_id__metadata_properties_post
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MetadataPropertyCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MetadataProperty'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /datasets/{dataset_id}/publish:
+    put:
+      tags:
+      - datasets
+      summary: Publish Dataset
+      operationId: publish_dataset_datasets__dataset_id__publish_put
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dataset'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /datasets/{dataset_id}/import:
+    post:
+      tags:
+      - datasets
+      summary: Import Dataset From Hub
+      operationId: import_dataset_from_hub_datasets__dataset_id__import_post
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HubDataset'
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /datasets/{dataset_id}/export:
+    post:
+      tags:
+      - datasets
+      summary: Export Dataset To Hub
+      operationId: export_dataset_to_hub_datasets__dataset_id__export_post
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HubDatasetExport'
+      responses:
+        '202':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Job'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /datasets/{dataset_id}/questions:
+    get:
+      tags:
+      - datasets
+      summary: List Dataset Questions
+      operationId: list_dataset_questions_datasets__dataset_id__questions_get
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Questions'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+    post:
+      tags:
+      - datasets
+      summary: Create Dataset Question
+      operationId: create_dataset_question_datasets__dataset_id__questions_post
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QuestionCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Question'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /datasets/{dataset_id}/records:
+    get:
+      tags:
+      - datasets
+      summary: List Dataset Records
+      operationId: list_dataset_records_datasets__dataset_id__records_get
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          default: 0
+          title: Offset
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000
+          minimum: 1
+          default: 50
+          title: Limit
+      - name: include
+        in: query
+        required: false
+        schema:
+          help: Relationships to include in the response
+          title: Include
+          type: array
+          items:
+            type: string
+          nullable: true
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Records'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+    delete:
+      tags:
+      - datasets
+      summary: Delete Dataset Records
+      operationId: delete_dataset_records_datasets__dataset_id__records_delete
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      - name: ids
+        in: query
+        required: true
+        schema:
+          type: string
+          description: A comma separated list with the IDs of the records to be removed
+          title: Ids
+        description: A comma separated list with the IDs of the records to be removed
+      responses:
+        '204':
+          description: Successful Response
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /me/datasets/{dataset_id}/records/search:
+    post:
+      tags:
+      - datasets
+      summary: Search Current User Dataset Records
+      operationId: search_current_user_dataset_records_me_datasets__dataset_id__records_search_post
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+          title: Offset
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000
+          minimum: 1
+          default: 50
+          title: Limit
+      - name: include
+        in: query
+        required: false
+        schema:
+          help: Relationships to include in the response
+          title: Include
+          type: array
+          items:
+            type: string
+          nullable: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRecordsQuery'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchRecordsResult'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /datasets/{dataset_id}/records/search:
+    post:
+      tags:
+      - datasets
+      summary: Search Dataset Records
+      operationId: search_dataset_records_datasets__dataset_id__records_search_post
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      - name: offset
+        in: query
+        required: false
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+          title: Offset
+      - name: limit
+        in: query
+        required: false
+        schema:
+          type: integer
+          maximum: 1000
+          minimum: 1
+          default: 50
+          title: Limit
+      - name: include
+        in: query
+        required: false
+        schema:
+          help: Relationships to include in the response
+          title: Include
+          type: array
+          items:
+            type: string
+          nullable: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SearchRecordsQuery'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchRecordsResult'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /datasets/{dataset_id}/records/search/suggestions/options:
+    get:
+      tags:
+      - datasets
+      summary: List Dataset Records Search Suggestions Options
+      operationId: list_dataset_records_search_suggestions_options_datasets__dataset_id__records_search_suggestions_options_get
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSuggestionsOptions'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+  /datasets/{dataset_id}/records/bulk:
+    post:
+      tags:
+      - datasets
+      summary: Create Dataset Records Bulk
+      operationId: create_dataset_records_bulk_datasets__dataset_id__records_bulk_post
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordsBulkCreate'
+      responses:
+        '201':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecordsBulk'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+    put:
+      tags:
+      - datasets
+      summary: Upsert Dataset Records Bulk
+      operationId: upsert_dataset_records_bulk_datasets__dataset_id__records_bulk_put
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: dataset_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Dataset Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecordsBulkUpsert'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecordsBulk'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+components:
+  schemas:
+    Response:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        values:
+          title: Values
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValue'
+          type: object
+          nullable: true
+        status:
+          $ref: '#/components/schemas/ResponseStatus'
+        record_id:
+          type: string
+          format: uuid
+          title: Record Id
+        user_id:
+          type: string
+          format: uuid
+          title: User Id
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - status
+      - record_id
+      - user_id
+      - inserted_at
+      - updated_at
+      title: Response
+    SearchRecordsQuery:
+      properties:
+        query:
+          $ref: '#/components/schemas/Query'
+          nullable: true
+        filters:
+          $ref: '#/components/schemas/Filters'
+          nullable: true
+        sort:
+          title: Sort
+          items:
+            $ref: '#/components/schemas/Order'
+          type: array
+          maxItems: 10
+          minItems: 1
+          nullable: true
+      type: object
+      title: SearchRecordsQuery
+    DatasetOverlapDistributionUpdate:
+      properties:
+        strategy:
+          type: string
+          enum:
+          - overlap
+          const: overlap
+          title: Strategy
+        min_submitted:
+          type: integer
+          minimum: 1.0
+          title: Min Submitted
+          description: Minimum number of submitted responses to consider a record as completed
+      type: object
+      required:
+      - strategy
+      - min_submitted
+      title: DatasetOverlapDistributionUpdate
+    ResponseValue:
+      properties:
+        value:
+          title: Value
+      type: object
+      required:
+      - value
+      title: ResponseValue
+    RecordsBulkCreate:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/RecordCreate'
+          type: array
+          maxItems: 500
+          minItems: 1
+          title: Items
+      type: object
+      required:
+      - items
+      title: RecordsBulkCreate
+    ChatFieldSettingsCreate:
+      properties:
+        type:
+          type: string
+          enum:
+          - chat
+          const: chat
+          title: Type
+        use_markdown:
+          type: boolean
+          title: Use Markdown
+          default: true
+      type: object
+      required:
+      - type
+      title: ChatFieldSettingsCreate
+    RatingQuestionSettingsOptionCreate:
+      properties:
+        value:
+          type: integer
+          maximum: 10.0
+          minimum: 0.0
+          title: Value
+      type: object
+      required:
+      - value
+      title: RatingQuestionSettingsOptionCreate
+    UserDiscardedResponseCreate:
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          title: User Id
+        values:
+          title: Values
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValueCreate'
+          type: object
+          nullable: true
+        status:
+          type: string
+          enum:
+          - discarded
+          const: discarded
+          title: Status
+      type: object
+      required:
+      - user_id
+      - status
+      title: UserDiscardedResponseCreate
+    ResponseMetrics:
+      properties:
+        total:
+          type: integer
+          title: Total
+        submitted:
+          type: integer
+          title: Submitted
+        discarded:
+          type: integer
+          title: Discarded
+        draft:
+          type: integer
+          title: Draft
+        pending:
+          type: integer
+          title: Pending
+      type: object
+      required:
+      - total
+      - submitted
+      - discarded
+      - draft
+      - pending
+      title: ResponseMetrics
+    Questions:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Question'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Questions
+    DatasetProgress:
+      properties:
+        total:
+          type: integer
+          title: Total
+        completed:
+          type: integer
+          title: Completed
+        pending:
+          type: integer
+          title: Pending
+        users:
+          items:
+            $ref: '#/components/schemas/UserProgress'
+          type: array
+          title: Users
+      type: object
+      required:
+      - total
+      - completed
+      - pending
+      title: DatasetProgress
+    DatasetUpdate:
+      properties:
+        name:
+          title: Name
+          type: string
+          maxLength: 200
+          minLength: 1
+          description: Dataset name
+          nullable: true
+        guidelines:
+          title: Guidelines
+          type: string
+          maxLength: 10000
+          minLength: 1
+          description: Dataset guidelines
+          nullable: true
+        allow_extra_metadata:
+          title: Allow Extra Metadata
+          type: boolean
+          nullable: true
+        distribution:
+          $ref: '#/components/schemas/DatasetOverlapDistributionUpdate'
+          nullable: true
+        metadata:
+          title: Metadata
+          type: object
+          nullable: true
+      type: object
+      title: DatasetUpdate
+    UsersProgress:
+      properties:
+        users:
+          items:
+            $ref: '#/components/schemas/UserProgress'
+          type: array
+          title: Users
+      type: object
+      required:
+      - users
+      title: UsersProgress
+    Filters:
+      properties:
+        and:
+          title: And
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/TermsFilter'
+            - $ref: '#/components/schemas/RangeFilter'
+            discriminator:
+              propertyName: type
+              mapping:
+                range: '#/components/schemas/RangeFilter'
+                terms: '#/components/schemas/TermsFilter'
+          type: array
+          maxItems: 50
+          minItems: 1
+          nullable: true
+      type: object
+      title: Filters
+    RecordUpsert:
+      properties:
+        fields:
+          title: Fields
+          additionalProperties:
+            anyOf:
+            - type: string
+            - items:
+                $ref: '#/components/schemas/ChatFieldValue'
+              type: array
+            - type: object
+            nullable: true
+          type: object
+          nullable: true
+        metadata:
+          title: Metadata
+          type: object
+          nullable: true
+        external_id:
+          title: External Id
+          type: string
+          nullable: true
+        responses:
+          title: Responses
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/UserSubmittedResponseCreate'
+            - $ref: '#/components/schemas/UserDraftResponseCreate'
+            - $ref: '#/components/schemas/UserDiscardedResponseCreate'
+            discriminator:
+              propertyName: status
+              mapping:
+                discarded: '#/components/schemas/UserDiscardedResponseCreate'
+                draft: '#/components/schemas/UserDraftResponseCreate'
+                submitted: '#/components/schemas/UserSubmittedResponseCreate'
+          type: array
+          nullable: true
+        suggestions:
+          title: Suggestions
+          items:
+            $ref: '#/components/schemas/SuggestionCreate'
+          type: array
+          nullable: true
+        vectors:
+          title: Vectors
+          additionalProperties:
+            items:
+              type: number
+            type: array
+          type: object
+          nullable: true
+        id:
+          title: Id
+          type: string
+          format: uuid
+          nullable: true
+      type: object
+      title: RecordUpsert
+    TermsFilter:
+      properties:
+        type:
+          type: string
+          enum:
+          - terms
+          const: terms
+          title: Type
+        scope:
+          oneOf:
+          - $ref: '#/components/schemas/RecordFilterScope'
+          - $ref: '#/components/schemas/ResponseFilterScope'
+          - $ref: '#/components/schemas/SuggestionFilterScope'
+          - $ref: '#/components/schemas/MetadataFilterScope'
+          title: Scope
+          discriminator:
+            propertyName: entity
+            mapping:
+              metadata: '#/components/schemas/MetadataFilterScope'
+              record: '#/components/schemas/RecordFilterScope'
+              response: '#/components/schemas/ResponseFilterScope'
+              suggestion: '#/components/schemas/SuggestionFilterScope'
+        values:
+          items:
+            type: string
+          type: array
+          maxItems: 250
+          minItems: 1
+          title: Values
+      type: object
+      required:
+      - type
+      - scope
+      - values
+      title: TermsFilter
+    OptionSettingsCreate:
+      properties:
+        value:
+          type: string
+          maxLength: 200
+          minLength: 1
+          title: Value
+        text:
+          type: string
+          maxLength: 500
+          minLength: 1
+          title: Text
+        description:
+          title: Description
+          type: string
+          maxLength: 1000
+          minLength: 1
+          nullable: true
+      type: object
+      required:
+      - value
+      - text
+      title: OptionSettingsCreate
+    RecordsBulkUpsert:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/RecordUpsert'
+          type: array
+          maxItems: 500
+          minItems: 1
+          title: Items
+      type: object
+      required:
+      - items
+      title: RecordsBulkUpsert
+    ChatFieldValue:
+      properties:
+        role:
+          type: string
+          maxLength: 20
+          minLength: 1
+          title: Role
+        content:
+          type: string
+          maxLength: 20000
+          minLength: 1
+          title: Content
+      type: object
+      required:
+      - role
+      - content
+      title: ChatFieldValue
+    RecordStatus:
+      type: string
+      enum:
+      - pending
+      - completed
+      title: RecordStatus
+    JobStatus:
+      type: string
+      enum:
+      - queued
+      - finished
+      - failed
+      - started
+      - deferred
+      - scheduled
+      - stopped
+      - canceled
+      title: JobStatus
+      description: The Status of Job within its lifecycle at any given time.
+    RangeFilter:
+      properties:
+        type:
+          type: string
+          enum:
+          - range
+          const: range
+          title: Type
+        scope:
+          oneOf:
+          - $ref: '#/components/schemas/RecordFilterScope'
+          - $ref: '#/components/schemas/ResponseFilterScope'
+          - $ref: '#/components/schemas/SuggestionFilterScope'
+          - $ref: '#/components/schemas/MetadataFilterScope'
+          title: Scope
+          discriminator:
+            propertyName: entity
+            mapping:
+              metadata: '#/components/schemas/MetadataFilterScope'
+              record: '#/components/schemas/RecordFilterScope'
+              response: '#/components/schemas/ResponseFilterScope'
+              suggestion: '#/components/schemas/SuggestionFilterScope'
+        ge:
+          title: Ge
+          anyOf:
+          - type: number
+          - type: string
+          nullable: true
+        le:
+          title: Le
+          anyOf:
+          - type: number
+          - type: string
+          nullable: true
+      type: object
+      required:
+      - type
+      - scope
+      title: RangeFilter
+    CustomFieldSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - custom
+          const: custom
+          title: Type
+        template:
+          type: string
+          title: Template
+        advanced_mode:
+          type: boolean
+          title: Advanced Mode
+      type: object
+      required:
+      - type
+      - template
+      - advanced_mode
+      title: CustomFieldSettings
+    Query:
+      properties:
+        text:
+          $ref: '#/components/schemas/TextQuery'
+          nullable: true
+        vector:
+          description: Query by vector similarity. Either 'record_id' or 'value' must be provided. Max number of records to return is limited to 1000.
+          $ref: '#/components/schemas/VectorQuery'
+          nullable: true
+      type: object
+      title: Query
+    QuestionCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 200
+          minLength: 1
+          title: Name
+          description: The name of the question
+        title:
+          type: string
+          maxLength: 500
+          minLength: 1
+          title: Title
+          description: The title of the question
+        description:
+          title: Description
+          type: string
+          maxLength: 1000
+          minLength: 1
+          description: The description of the question
+          nullable: true
+        required:
+          title: Required
+          type: boolean
+          nullable: true
+        settings:
+          oneOf:
+          - $ref: '#/components/schemas/TextQuestionSettingsCreate'
+          - $ref: '#/components/schemas/RatingQuestionSettingsCreate'
+          - $ref: '#/components/schemas/LabelSelectionQuestionSettingsCreate'
+          - $ref: '#/components/schemas/MultiLabelSelectionQuestionSettingsCreate'
+          - $ref: '#/components/schemas/RankingQuestionSettingsCreate'
+          - $ref: '#/components/schemas/SpanQuestionSettingsCreate'
+          title: Settings
+          discriminator:
+            propertyName: type
+            mapping:
+              label_selection: '#/components/schemas/LabelSelectionQuestionSettingsCreate'
+              multi_label_selection: '#/components/schemas/MultiLabelSelectionQuestionSettingsCreate'
+              ranking: '#/components/schemas/RankingQuestionSettingsCreate'
+              rating: '#/components/schemas/RatingQuestionSettingsCreate'
+              span: '#/components/schemas/SpanQuestionSettingsCreate'
+              text: '#/components/schemas/TextQuestionSettingsCreate'
+      type: object
+      required:
+      - name
+      - title
+      - settings
+      title: QuestionCreate
+    VectorSettings:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        title:
+          type: string
+          title: Title
+        dimensions:
+          type: integer
+          title: Dimensions
+        dataset_id:
+          type: string
+          format: uuid
+          title: Dataset Id
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - name
+      - title
+      - dimensions
+      - dataset_id
+      - inserted_at
+      - updated_at
+      title: VectorSettings
+    SuggestionType:
+      type: string
+      enum:
+      - model
+      - human
+      title: SuggestionType
+    DatasetMetrics:
+      properties:
+        responses:
+          $ref: '#/components/schemas/ResponseMetrics'
+      type: object
+      required:
+      - responses
+      title: DatasetMetrics
+    RatingQuestionSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - rating
+          const: rating
+          title: Type
+        options:
+          items:
+            $ref: '#/components/schemas/RatingQuestionSettingsOption'
+          type: array
+          title: Options
+      type: object
+      required:
+      - type
+      - options
+      title: RatingQuestionSettings
+    HubDatasetMapping:
+      properties:
+        fields:
+          items:
+            $ref: '#/components/schemas/HubDatasetMappingItem'
+          type: array
+          minItems: 1
+          title: Fields
+        metadata:
+          title: Metadata
+          default: []
+          items:
+            $ref: '#/components/schemas/HubDatasetMappingItem'
+          type: array
+          nullable: true
+        suggestions:
+          title: Suggestions
+          default: []
+          items:
+            $ref: '#/components/schemas/HubDatasetMappingItem'
+          type: array
+          nullable: true
+        external_id:
+          title: External Id
+          type: string
+          nullable: true
+      type: object
+      required:
+      - fields
+      title: HubDatasetMapping
+    TextQuestionSettingsCreate:
+      properties:
+        type:
+          type: string
+          enum:
+          - text
+          const: text
+          title: Type
+        use_markdown:
+          type: boolean
+          title: Use Markdown
+          default: false
+      type: object
+      required:
+      - type
+      title: TextQuestionSettingsCreate
+    HubDatasetMappingItem:
+      properties:
+        source:
+          type: string
+          title: Source
+          description: The name of the column in the Hub Dataset
+        target:
+          type: string
+          title: Target
+          description: The name of the target resource in the Argilla Dataset
+      type: object
+      required:
+      - source
+      - target
+      title: HubDatasetMappingItem
+    ImageFieldSettingsCreate:
+      properties:
+        type:
+          type: string
+          enum:
+          - image
+          const: image
+          title: Type
+      type: object
+      required:
+      - type
+      title: ImageFieldSettingsCreate
+    DatasetStatus:
+      type: string
+      enum:
+      - draft
+      - ready
+      title: DatasetStatus
+    OptionsOrder:
+      type: string
+      enum:
+      - natural
+      - suggestion
+      title: OptionsOrder
+    ResponseValueCreate:
+      properties:
+        value:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/SpanQuestionResponseValueItem'
+            type: array
+            maxItems: 10000
+          - items:
+              $ref: '#/components/schemas/RankingQuestionResponseValueItem'
+            type: array
+          - items:
+              type: string
+            type: array
+          - type: integer
+          - type: string
+          title: Value
+      type: object
+      required:
+      - value
+      title: ResponseValueCreate
+    MetadataProperty:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        title:
+          type: string
+          title: Title
+        settings:
+          oneOf:
+          - $ref: '#/components/schemas/TermsMetadataProperty'
+          - $ref: '#/components/schemas/IntegerMetadataProperty'
+          - $ref: '#/components/schemas/FloatMetadataProperty'
+          title: Settings
+          discriminator:
+            propertyName: type
+            mapping:
+              float: '#/components/schemas/FloatMetadataProperty'
+              integer: '#/components/schemas/IntegerMetadataProperty'
+              terms: '#/components/schemas/TermsMetadataProperty'
+        visible_for_annotators:
+          type: boolean
+          title: Visible For Annotators
+        dataset_id:
+          type: string
+          format: uuid
+          title: Dataset Id
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - name
+      - title
+      - settings
+      - visible_for_annotators
+      - dataset_id
+      - inserted_at
+      - updated_at
+      title: MetadataProperty
+    Order:
+      properties:
+        scope:
+          oneOf:
+          - $ref: '#/components/schemas/RecordFilterScope'
+          - $ref: '#/components/schemas/ResponseFilterScope'
+          - $ref: '#/components/schemas/SuggestionFilterScope'
+          - $ref: '#/components/schemas/MetadataFilterScope'
+          title: Scope
+          discriminator:
+            propertyName: entity
+            mapping:
+              metadata: '#/components/schemas/MetadataFilterScope'
+              record: '#/components/schemas/RecordFilterScope'
+              response: '#/components/schemas/ResponseFilterScope'
+              suggestion: '#/components/schemas/SuggestionFilterScope'
+        order:
+          $ref: '#/components/schemas/SortOrder'
+      type: object
+      required:
+      - scope
+      - order
+      title: Order
+    MetadataProperties:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/MetadataProperty'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: MetadataProperties
+    Datasets:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Dataset'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Datasets
+    SearchSuggestionOptions:
+      properties:
+        question:
+          $ref: '#/components/schemas/SearchSuggestionOptionsQuestion'
+        agents:
+          items:
+            type: string
+          type: array
+          title: Agents
+      type: object
+      required:
+      - question
+      - agents
+      title: SearchSuggestionOptions
+    ImageFieldSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - image
+          const: image
+          title: Type
+      type: object
+      required:
+      - type
+      title: ImageFieldSettings
+    IntegerMetadataPropertyCreate:
+      properties:
+        min:
+          title: Min
+          type: integer
+          nullable: true
+        max:
+          title: Max
+          type: integer
+          nullable: true
+        type:
+          type: string
+          enum:
+          - integer
+          const: integer
+          title: Type
+      type: object
+      required:
+      - type
+      title: IntegerMetadataPropertyCreate
+    RankingQuestionSettingsCreate:
+      properties:
+        type:
+          type: string
+          enum:
+          - ranking
+          const: ranking
+          title: Type
+        options:
+          items:
+            $ref: '#/components/schemas/OptionSettingsCreate'
+          type: array
+          maxItems: 50
+          minItems: 2
+          title: Options
+      type: object
+      required:
+      - type
+      - options
+      title: RankingQuestionSettingsCreate
+    SuggestionCreate:
+      properties:
+        question_id:
+          type: string
+          format: uuid
+          title: Question Id
+        type:
+          $ref: '#/components/schemas/SuggestionType'
+          nullable: true
+        value:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/SpanQuestionResponseValueItem'
+            type: array
+            maxItems: 10000
+          - items:
+              $ref: '#/components/schemas/RankingQuestionResponseValueItem'
+            type: array
+          - items:
+              type: string
+            type: array
+          - type: integer
+          - type: string
+          title: Value
+        agent:
+          title: Agent
+          description: Agent used to generate the suggestion
+          type: string
+          maxLength: 200
+          minLength: 1
+          pattern: ^[a-zA-Z0-9-_:\.\/\s]*[a-zA-Z0-9][a-zA-Z0-9-_:\.\/\s]*$
+          nullable: true
+        score:
+          title: Score
+          description: The score assigned to the suggestion
+          anyOf:
+          - type: number
+          - items:
+              type: number
+            type: array
+          nullable: true
+      type: object
+      required:
+      - question_id
+      - value
+      title: SuggestionCreate
+    Question:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        title:
+          type: string
+          title: Title
+        description:
+          title: Description
+          type: string
+          nullable: true
+        required:
+          type: boolean
+          title: Required
+        settings:
+          oneOf:
+          - $ref: '#/components/schemas/TextQuestionSettings'
+          - $ref: '#/components/schemas/RatingQuestionSettings'
+          - $ref: '#/components/schemas/LabelSelectionQuestionSettings'
+          - $ref: '#/components/schemas/MultiLabelSelectionQuestionSettings'
+          - $ref: '#/components/schemas/RankingQuestionSettings'
+          - $ref: '#/components/schemas/SpanQuestionSettings'
+          title: Settings
+          discriminator:
+            propertyName: type
+            mapping:
+              label_selection: '#/components/schemas/LabelSelectionQuestionSettings'
+              multi_label_selection: '#/components/schemas/MultiLabelSelectionQuestionSettings'
+              ranking: '#/components/schemas/RankingQuestionSettings'
+              rating: '#/components/schemas/RatingQuestionSettings'
+              span: '#/components/schemas/SpanQuestionSettings'
+              text: '#/components/schemas/TextQuestionSettings'
+        dataset_id:
+          type: string
+          format: uuid
+          title: Dataset Id
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - name
+      - title
+      - required
+      - settings
+      - dataset_id
+      - inserted_at
+      - updated_at
+      title: Question
+    Fields:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Field'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Fields
+    UserSubmittedResponseCreate:
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          title: User Id
+        values:
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValueCreate'
+          type: object
+          title: Values
+        status:
+          type: string
+          enum:
+          - submitted
+          const: submitted
+          title: Status
+      type: object
+      required:
+      - user_id
+      - values
+      - status
+      title: UserSubmittedResponseCreate
+    IntegerMetadataProperty:
+      properties:
+        type:
+          type: string
+          enum:
+          - integer
+          const: integer
+          title: Type
+        min:
+          title: Min
+          type: integer
+          nullable: true
+        max:
+          title: Max
+          type: integer
+          nullable: true
+      type: object
+      required:
+      - type
+      title: IntegerMetadataProperty
+    SpanQuestionSettingsCreate:
+      properties:
+        type:
+          type: string
+          enum:
+          - span
+          const: span
+          title: Type
+        field:
+          type: string
+          maxLength: 200
+          minLength: 1
+          title: Field
+          description: The name of the field
+        options:
+          items:
+            $ref: '#/components/schemas/OptionSettingsCreate'
+          type: array
+          maxItems: 500
+          minItems: 1
+          title: Options
+        visible_options:
+          title: Visible Options
+          type: integer
+          minimum: 3.0
+          nullable: true
+        allow_overlapping:
+          type: boolean
+          title: Allow Overlapping
+          default: false
+      type: object
+      required:
+      - type
+      - field
+      - options
+      title: SpanQuestionSettingsCreate
+    Dataset:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        guidelines:
+          title: Guidelines
+          type: string
+          nullable: true
+        allow_extra_metadata:
+          type: boolean
+          title: Allow Extra Metadata
+        status:
+          $ref: '#/components/schemas/DatasetStatus'
+        distribution:
+          $ref: '#/components/schemas/DatasetOverlapDistribution'
+        metadata:
+          title: Metadata
+          type: object
+          nullable: true
+        workspace_id:
+          type: string
+          format: uuid
+          title: Workspace Id
+        last_activity_at:
+          type: string
+          format: date-time
+          title: Last Activity At
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - name
+      - allow_extra_metadata
+      - status
+      - distribution
+      - workspace_id
+      - last_activity_at
+      - inserted_at
+      - updated_at
+      title: Dataset
+    RecordsBulk:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Record'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: RecordsBulk
+    VectorsSettings:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/VectorSettings'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: VectorsSettings
+    LabelSelectionQuestionSettingsCreate:
+      properties:
+        type:
+          type: string
+          enum:
+          - label_selection
+          const: label_selection
+          title: Type
+        options:
+          items:
+            $ref: '#/components/schemas/OptionSettingsCreate'
+          type: array
+          maxItems: 500
+          minItems: 2
+          title: Options
+        visible_options:
+          title: Visible Options
+          type: integer
+          minimum: 3.0
+          nullable: true
+      type: object
+      required:
+      - type
+      - options
+      title: LabelSelectionQuestionSettingsCreate
+    SimilarityOrder:
+      type: string
+      enum:
+      - most_similar
+      - least_similar
+      title: SimilarityOrder
+    TermsMetadataPropertyCreate:
+      properties:
+        type:
+          type: string
+          enum:
+          - terms
+          const: terms
+          title: Type
+        values:
+          title: Values
+          items: {}
+          type: array
+          maxItems: 250
+          minItems: 1
+          nullable: true
+      type: object
+      required:
+      - type
+      title: TermsMetadataPropertyCreate
+    SpanQuestionSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - span
+          const: span
+          title: Type
+        field:
+          type: string
+          title: Field
+        options:
+          items:
+            $ref: '#/components/schemas/OptionSettings'
+          type: array
+          title: Options
+        visible_options:
+          title: Visible Options
+          type: integer
+          nullable: true
+        allow_overlapping:
+          type: boolean
+          title: Allow Overlapping
+          description: Allow spans overlapping
+          default: false
+        allow_character_annotation:
+          type: boolean
+          title: Allow Character Annotation
+          description: Allow character-level annotation
+          default: true
+      type: object
+      required:
+      - type
+      - field
+      - options
+      title: SpanQuestionSettings
+    HubDataset:
+      properties:
+        name:
+          type: string
+          title: Name
+        subset:
+          type: string
+          title: Subset
+        split:
+          type: string
+          title: Split
+        mapping:
+          $ref: '#/components/schemas/HubDatasetMapping'
+      type: object
+      required:
+      - name
+      - subset
+      - split
+      - mapping
+      title: HubDataset
+    ResponseFilterScope:
+      properties:
+        entity:
+          type: string
+          enum:
+          - response
+          const: response
+          title: Entity
+        question:
+          title: Question
+          type: string
+          maxLength: 200
+          minLength: 1
+          description: The name of the question
+          nullable: true
+        property:
+          title: Property
+          type: string
+          enum:
+          - status
+          const: status
+          nullable: true
+      type: object
+      required:
+      - entity
+      title: ResponseFilterScope
+    RecordFilterScope:
+      properties:
+        entity:
+          type: string
+          enum:
+          - record
+          const: record
+          title: Entity
+        property:
+          type: string
+          enum:
+          - id
+          - external_id
+          - inserted_at
+          - updated_at
+          - status
+          title: Property
+      type: object
+      required:
+      - entity
+      - property
+      title: RecordFilterScope
+    SearchSuggestionOptionsQuestion:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+      type: object
+      required:
+      - id
+      - name
+      title: SearchSuggestionOptionsQuestion
+    ChatFieldSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - chat
+          const: chat
+          title: Type
+        use_markdown:
+          type: boolean
+          title: Use Markdown
+      type: object
+      required:
+      - type
+      - use_markdown
+      title: ChatFieldSettings
+    VectorQuery:
+      properties:
+        name:
+          type: string
+          title: Name
+        record_id:
+          title: Record Id
+          type: string
+          format: uuid
+          nullable: true
+        value:
+          title: Value
+          items:
+            type: number
+          type: array
+          nullable: true
+        order:
+          $ref: '#/components/schemas/SimilarityOrder'
+          default: most_similar
+      type: object
+      required:
+      - name
+      title: VectorQuery
+    Records:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Record'
+          type: array
+          title: Items
+        total:
+          title: Total
+          type: integer
+          nullable: true
+      type: object
+      required:
+      - items
+      title: Records
+    SpanQuestionResponseValueItem:
+      properties:
+        label:
+          type: string
+          title: Label
+        start:
+          type: integer
+          minimum: 0.0
+          title: Start
+        end:
+          type: integer
+          minimum: 1.0
+          title: End
+      type: object
+      required:
+      - label
+      - start
+      - end
+      title: SpanQuestionResponseValueItem
+    MetadataPropertyCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 200
+          minLength: 1
+          title: Name
+        title:
+          type: string
+          maxLength: 500
+          minLength: 1
+          title: Title
+          description: The title of the metadata property
+        settings:
+          oneOf:
+          - $ref: '#/components/schemas/TermsMetadataPropertyCreate'
+          - $ref: '#/components/schemas/IntegerMetadataPropertyCreate'
+          - $ref: '#/components/schemas/FloatMetadataPropertyCreate'
+          title: Settings
+          discriminator:
+            propertyName: type
+            mapping:
+              float: '#/components/schemas/FloatMetadataPropertyCreate'
+              integer: '#/components/schemas/IntegerMetadataPropertyCreate'
+              terms: '#/components/schemas/TermsMetadataPropertyCreate'
+        visible_for_annotators:
+          type: boolean
+          title: Visible For Annotators
+          default: true
+      type: object
+      required:
+      - name
+      - title
+      - settings
+      title: MetadataPropertyCreate
+    SearchRecord:
+      properties:
+        record:
+          $ref: '#/components/schemas/Record'
+        query_score:
+          title: Query Score
+          type: number
+          nullable: true
+      type: object
+      required:
+      - record
+      title: SearchRecord
+    FloatMetadataProperty:
+      properties:
+        type:
+          type: string
+          enum:
+          - float
+          const: float
+          title: Type
+        min:
+          title: Min
+          type: number
+          nullable: true
+        max:
+          title: Max
+          type: number
+          nullable: true
+      type: object
+      required:
+      - type
+      title: FloatMetadataProperty
+    TextQuery:
+      properties:
+        q:
+          type: string
+          title: Q
+        field:
+          title: Field
+          type: string
+          nullable: true
+      type: object
+      required:
+      - q
+      title: TextQuery
+    RankingQuestionResponseValueItem:
+      properties:
+        value:
+          type: string
+          title: Value
+        rank:
+          title: Rank
+          type: integer
+          nullable: true
+      type: object
+      required:
+      - value
+      title: RankingQuestionResponseValueItem
+    FieldCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 200
+          minLength: 1
+          title: Name
+          description: The name of the field
+        title:
+          type: string
+          maxLength: 500
+          minLength: 1
+          title: Title
+          description: The title of the field
+        required:
+          title: Required
+          type: boolean
+          nullable: true
+        settings:
+          oneOf:
+          - $ref: '#/components/schemas/TextFieldSettingsCreate'
+          - $ref: '#/components/schemas/ImageFieldSettingsCreate'
+          - $ref: '#/components/schemas/ChatFieldSettingsCreate'
+          - $ref: '#/components/schemas/CustomFieldSettingsCreate'
+          title: Settings
+          discriminator:
+            propertyName: type
+            mapping:
+              chat: '#/components/schemas/ChatFieldSettingsCreate'
+              custom: '#/components/schemas/CustomFieldSettingsCreate'
+              image: '#/components/schemas/ImageFieldSettingsCreate'
+              text: '#/components/schemas/TextFieldSettingsCreate'
+      type: object
+      required:
+      - name
+      - title
+      - settings
+      title: FieldCreate
+    DatasetOverlapDistribution:
+      properties:
+        strategy:
+          type: string
+          enum:
+          - overlap
+          const: overlap
+          title: Strategy
+        min_submitted:
+          type: integer
+          title: Min Submitted
+      type: object
+      required:
+      - strategy
+      - min_submitted
+      title: DatasetOverlapDistribution
+    MultiLabelSelectionQuestionSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - multi_label_selection
+          const: multi_label_selection
+          title: Type
+        options:
+          items:
+            $ref: '#/components/schemas/OptionSettings'
+          type: array
+          title: Options
+        visible_options:
+          title: Visible Options
+          type: integer
+          nullable: true
+        options_order:
+          $ref: '#/components/schemas/OptionsOrder'
+          default: natural
+      type: object
+      required:
+      - type
+      - options
+      title: MultiLabelSelectionQuestionSettings
+    VectorSettingsCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 200
+          minLength: 1
+          title: Name
+          description: The title of the vector settings
+        title:
+          type: string
+          maxLength: 500
+          minLength: 1
+          title: Title
+          description: The title of the vector settings
+        dimensions:
+          type: integer
+          exclusiveMinimum: 0.0
+          title: Dimensions
+      type: object
+      required:
+      - name
+      - title
+      - dimensions
+      title: VectorSettingsCreate
+    OptionSettings:
+      properties:
+        value:
+          type: string
+          title: Value
+        text:
+          type: string
+          title: Text
+        description:
+          title: Description
+          type: string
+          nullable: true
+      type: object
+      required:
+      - value
+      - text
+      title: OptionSettings
+    RatingQuestionSettingsOption:
+      properties:
+        value:
+          type: integer
+          title: Value
+      type: object
+      required:
+      - value
+      title: RatingQuestionSettingsOption
+    UserDraftResponseCreate:
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          title: User Id
+        values:
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValueCreate'
+          type: object
+          title: Values
+        status:
+          type: string
+          enum:
+          - draft
+          const: draft
+          title: Status
+      type: object
+      required:
+      - user_id
+      - values
+      - status
+      title: UserDraftResponseCreate
+    UserProgress:
+      properties:
+        username:
+          type: string
+          title: Username
+        completed:
+          $ref: '#/components/schemas/RecordResponseDistribution'
+          default:
+            submitted: 0
+            discarded: 0
+            draft: 0
+        pending:
+          $ref: '#/components/schemas/RecordResponseDistribution'
+          default:
+            submitted: 0
+            discarded: 0
+            draft: 0
+      type: object
+      required:
+      - username
+      title: UserProgress
+    ResponseStatus:
+      type: string
+      enum:
+      - draft
+      - submitted
+      - discarded
+      title: ResponseStatus
+    TermsMetadataProperty:
+      properties:
+        type:
+          type: string
+          enum:
+          - terms
+          const: terms
+          title: Type
+        values:
+          title: Values
+          items: {}
+          type: array
+          nullable: true
+      type: object
+      required:
+      - type
+      title: TermsMetadataProperty
+    Suggestion:
+      properties:
+        question_id:
+          type: string
+          format: uuid
+          title: Question Id
+        type:
+          $ref: '#/components/schemas/SuggestionType'
+          nullable: true
+        value:
+          title: Value
+        agent:
+          title: Agent
+          type: string
+          nullable: true
+        score:
+          title: Score
+          anyOf:
+          - type: number
+          - items:
+              type: number
+            type: array
+          nullable: true
+        id:
+          type: string
+          format: uuid
+          title: Id
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - question_id
+      - value
+      - id
+      - inserted_at
+      - updated_at
+      title: Suggestion
+    RankingQuestionSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - ranking
+          const: ranking
+          title: Type
+        options:
+          items:
+            $ref: '#/components/schemas/OptionSettings'
+          type: array
+          title: Options
+      type: object
+      required:
+      - type
+      - options
+      title: RankingQuestionSettings
+    Job:
+      properties:
+        id:
+          type: string
+          title: Id
+        status:
+          $ref: '#/components/schemas/JobStatus'
+      type: object
+      required:
+      - id
+      - status
+      title: Job
+    RatingQuestionSettingsCreate:
+      properties:
+        type:
+          type: string
+          enum:
+          - rating
+          const: rating
+          title: Type
+        options:
+          items:
+            $ref: '#/components/schemas/RatingQuestionSettingsOptionCreate'
+          type: array
+          maxItems: 11
+          minItems: 2
+          title: Options
+      type: object
+      required:
+      - type
+      - options
+      title: RatingQuestionSettingsCreate
+    SearchRecordsResult:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/SearchRecord'
+          type: array
+          title: Items
+        total:
+          type: integer
+          title: Total
+          default: 0
+      type: object
+      required:
+      - items
+      title: SearchRecordsResult
+    HubDatasetExport:
+      properties:
+        name:
+          type: string
+          minLength: 1
+          title: Name
+        subset:
+          title: Subset
+          default: default
+          type: string
+          minLength: 1
+          nullable: true
+        split:
+          title: Split
+          default: train
+          type: string
+          minLength: 1
+          nullable: true
+        private:
+          title: Private
+          default: false
+          type: boolean
+          nullable: true
+        token:
+          type: string
+          minLength: 1
+          title: Token
+      type: object
+      required:
+      - name
+      - token
+      title: HubDatasetExport
+    DatasetOverlapDistributionCreate:
+      properties:
+        strategy:
+          type: string
+          enum:
+          - overlap
+          const: overlap
+          title: Strategy
+        min_submitted:
+          type: integer
+          minimum: 1.0
+          title: Min Submitted
+          description: Minimum number of submitted responses to consider a record as completed
+      type: object
+      required:
+      - strategy
+      - min_submitted
+      title: DatasetOverlapDistributionCreate
+    SortOrder:
+      type: string
+      enum:
+      - asc
+      - desc
+      title: SortOrder
+    TextFieldSettingsCreate:
+      properties:
+        type:
+          type: string
+          enum:
+          - text
+          const: text
+          title: Type
+        use_markdown:
+          type: boolean
+          title: Use Markdown
+          default: false
+      type: object
+      required:
+      - type
+      title: TextFieldSettingsCreate
+    TextFieldSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - text
+          const: text
+          title: Type
+        use_markdown:
+          type: boolean
+          title: Use Markdown
+      type: object
+      required:
+      - type
+      - use_markdown
+      title: TextFieldSettings
+    RecordResponseDistribution:
+      properties:
+        submitted:
+          type: integer
+          title: Submitted
+          default: 0
+        discarded:
+          type: integer
+          title: Discarded
+          default: 0
+        draft:
+          type: integer
+          title: Draft
+          default: 0
+      type: object
+      title: RecordResponseDistribution
+    Field:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        title:
+          type: string
+          title: Title
+        required:
+          type: boolean
+          title: Required
+        settings:
+          oneOf:
+          - $ref: '#/components/schemas/TextFieldSettings'
+          - $ref: '#/components/schemas/ImageFieldSettings'
+          - $ref: '#/components/schemas/ChatFieldSettings'
+          - $ref: '#/components/schemas/CustomFieldSettings'
+          title: Settings
+          discriminator:
+            propertyName: type
+            mapping:
+              chat: '#/components/schemas/ChatFieldSettings'
+              custom: '#/components/schemas/CustomFieldSettings'
+              image: '#/components/schemas/ImageFieldSettings'
+              text: '#/components/schemas/TextFieldSettings'
+        dataset_id:
+          type: string
+          format: uuid
+          title: Dataset Id
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - name
+      - title
+      - required
+      - settings
+      - dataset_id
+      - inserted_at
+      - updated_at
+      title: Field
+    MetadataFilterScope:
+      properties:
+        entity:
+          type: string
+          enum:
+          - metadata
+          const: metadata
+          title: Entity
+        metadata_property:
+          type: string
+          maxLength: 200
+          minLength: 1
+          title: Metadata Property
+      type: object
+      required:
+      - entity
+      - metadata_property
+      title: MetadataFilterScope
+    LabelSelectionQuestionSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - label_selection
+          const: label_selection
+          title: Type
+        options:
+          items:
+            $ref: '#/components/schemas/OptionSettings'
+          type: array
+          title: Options
+        visible_options:
+          title: Visible Options
+          type: integer
+          nullable: true
+      type: object
+      required:
+      - type
+      - options
+      title: LabelSelectionQuestionSettings
+    SuggestionFilterScope:
+      properties:
+        entity:
+          type: string
+          enum:
+          - suggestion
+          const: suggestion
+          title: Entity
+        question:
+          type: string
+          maxLength: 200
+          minLength: 1
+          title: Question
+          description: The name of the question
+        property:
+          title: Property
+          default: value
+          type: string
+          enum:
+          - value
+          - score
+          - agent
+          - type
+          nullable: true
+      type: object
+      required:
+      - entity
+      - question
+      title: SuggestionFilterScope
+    SearchSuggestionsOptions:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/SearchSuggestionOptions'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: SearchSuggestionsOptions
+    Record:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        status:
+          $ref: '#/components/schemas/RecordStatus'
+        fields:
+          type: object
+          title: Fields
+        metadata:
+          title: Metadata
+          type: object
+          nullable: true
+        external_id:
+          title: External Id
+          type: string
+          nullable: true
+        responses:
+          title: Responses
+          items:
+            $ref: '#/components/schemas/Response'
+          type: array
+          nullable: true
+        suggestions:
+          title: Suggestions
+          items:
+            $ref: '#/components/schemas/Suggestion'
+          type: array
+          nullable: true
+        vectors:
+          title: Vectors
+          additionalProperties:
+            items:
+              type: number
+            type: array
+          type: object
+          nullable: true
+        dataset_id:
+          type: string
+          format: uuid
+          title: Dataset Id
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - status
+      - fields
+      - dataset_id
+      - inserted_at
+      - updated_at
+      title: Record
+    DatasetCreate:
+      properties:
+        name:
+          type: string
+          maxLength: 200
+          minLength: 1
+          title: Name
+          description: Dataset name
+        guidelines:
+          title: Guidelines
+          type: string
+          maxLength: 10000
+          minLength: 1
+          description: Dataset guidelines
+          nullable: true
+        allow_extra_metadata:
+          type: boolean
+          title: Allow Extra Metadata
+          default: true
+        distribution:
+          $ref: '#/components/schemas/DatasetOverlapDistributionCreate'
+          default:
+            strategy: overlap
+            min_submitted: 1
+        metadata:
+          title: Metadata
+          type: object
+          nullable: true
+        workspace_id:
+          type: string
+          format: uuid
+          title: Workspace Id
+      type: object
+      required:
+      - name
+      - workspace_id
+      title: DatasetCreate
+    CustomFieldSettingsCreate:
+      properties:
+        type:
+          type: string
+          enum:
+          - custom
+          const: custom
+          title: Type
+        template:
+          type: string
+          title: Template
+        advanced_mode:
+          type: boolean
+          title: Advanced Mode
+          default: false
+      type: object
+      required:
+      - type
+      - template
+      title: CustomFieldSettingsCreate
+    RecordCreate:
+      properties:
+        fields:
+          additionalProperties:
+            anyOf:
+            - type: string
+            - items:
+                $ref: '#/components/schemas/ChatFieldValue'
+              type: array
+            - type: object
+            nullable: true
+          type: object
+          title: Fields
+        metadata:
+          title: Metadata
+          type: object
+          nullable: true
+        external_id:
+          title: External Id
+          type: string
+          nullable: true
+        responses:
+          title: Responses
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/UserSubmittedResponseCreate'
+            - $ref: '#/components/schemas/UserDraftResponseCreate'
+            - $ref: '#/components/schemas/UserDiscardedResponseCreate'
+            discriminator:
+              propertyName: status
+              mapping:
+                discarded: '#/components/schemas/UserDiscardedResponseCreate'
+                draft: '#/components/schemas/UserDraftResponseCreate'
+                submitted: '#/components/schemas/UserSubmittedResponseCreate'
+          type: array
+          nullable: true
+        suggestions:
+          title: Suggestions
+          items:
+            $ref: '#/components/schemas/SuggestionCreate'
+          type: array
+          nullable: true
+        vectors:
+          title: Vectors
+          additionalProperties:
+            items:
+              type: number
+            type: array
+          type: object
+          nullable: true
+      type: object
+      required:
+      - fields
+      title: RecordCreate
+    FloatMetadataPropertyCreate:
+      properties:
+        min:
+          title: Min
+          type: number
+          nullable: true
+        max:
+          title: Max
+          type: number
+          nullable: true
+        type:
+          type: string
+          enum:
+          - float
+          const: float
+          title: Type
+      type: object
+      required:
+      - type
+      title: FloatMetadataPropertyCreate
+    MultiLabelSelectionQuestionSettingsCreate:
+      properties:
+        type:
+          type: string
+          enum:
+          - multi_label_selection
+          const: multi_label_selection
+          title: Type
+        options:
+          items:
+            $ref: '#/components/schemas/OptionSettingsCreate'
+          type: array
+          maxItems: 500
+          minItems: 2
+          title: Options
+        visible_options:
+          title: Visible Options
+          type: integer
+          minimum: 3.0
+          nullable: true
+        options_order:
+          $ref: '#/components/schemas/OptionsOrder'
+          default: natural
+      type: object
+      required:
+      - type
+      - options
+      title: MultiLabelSelectionQuestionSettingsCreate
+    TextQuestionSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - text
+          const: text
+          title: Type
+        use_markdown:
+          type: boolean
+          title: Use Markdown
+          default: false
+      type: object
+      required:
+      - type
+      title: TextQuestionSettings
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Argilla-Api-Key
+    HTTPBearer:
+      type: http
+      scheme: bearer

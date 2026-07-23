@@ -1,0 +1,152 @@
+openapi: 3.0.3
+info:
+  title: Argilla v1 Authentication suggestions API
+  description: Argilla Server API v1
+  version: 2.8.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    email: contact@argilla.io
+    url: https://argilla.io
+servers:
+- url: https://argilla.io/api/v1
+  description: Argilla REST API v1
+tags:
+- name: suggestions
+paths:
+  /suggestions/{suggestion_id}:
+    delete:
+      tags:
+      - suggestions
+      summary: Delete Suggestion
+      operationId: delete_suggestion_suggestions__suggestion_id__delete
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: suggestion_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Suggestion Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Suggestion'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+components:
+  schemas:
+    SuggestionType:
+      type: string
+      enum:
+      - model
+      - human
+      title: SuggestionType
+    Suggestion:
+      properties:
+        question_id:
+          type: string
+          format: uuid
+          title: Question Id
+        type:
+          $ref: '#/components/schemas/SuggestionType'
+          nullable: true
+        value:
+          title: Value
+        agent:
+          title: Agent
+          type: string
+          nullable: true
+        score:
+          title: Score
+          anyOf:
+          - type: number
+          - items:
+              type: number
+            type: array
+          nullable: true
+        id:
+          type: string
+          format: uuid
+          title: Id
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - question_id
+      - value
+      - id
+      - inserted_at
+      - updated_at
+      title: Suggestion
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Argilla-Api-Key
+    HTTPBearer:
+      type: http
+      scheme: bearer

@@ -1,0 +1,390 @@
+openapi: 3.0.3
+info:
+  title: Argilla v1 Authentication fields API
+  description: Argilla Server API v1
+  version: 2.8.0
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+  contact:
+    email: contact@argilla.io
+    url: https://argilla.io
+servers:
+- url: https://argilla.io/api/v1
+  description: Argilla REST API v1
+tags:
+- name: fields
+paths:
+  /fields/{field_id}:
+    patch:
+      tags:
+      - fields
+      summary: Update Field
+      operationId: update_field_fields__field_id__patch
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: field_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Field Id
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FieldUpdate'
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Field'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+    delete:
+      tags:
+      - fields
+      summary: Delete Field
+      operationId: delete_field_fields__field_id__delete
+      security:
+      - APIKeyHeader: []
+      - HTTPBearer: []
+      parameters:
+      - name: field_id
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+          title: Field Id
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Field'
+        '400':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::MissingDatasetRecordsError
+                  params:
+                    extra: error parameters
+          description: Bad Request
+        '404':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityNotFoundError
+                  params:
+                    extra: error parameters
+          description: Not Found
+        '403':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ForbiddenOperationError
+                  params:
+                    extra: error parameters
+          description: Forbidden
+        '409':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::EntityAlreadyExistsError
+                  params:
+                    extra: error parameters
+          description: Conflict
+        '422':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: argilla.api.errors::ValidationError
+                  params:
+                    extra: error parameters
+          description: Unprocessable Content
+        '500':
+          content:
+            application/json:
+              example:
+                detail:
+                  code: builtins.TypeError
+          description: Internal Server Error
+components:
+  schemas:
+    CustomFieldSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - custom
+          const: custom
+          title: Type
+        template:
+          type: string
+          title: Template
+        advanced_mode:
+          type: boolean
+          title: Advanced Mode
+      type: object
+      required:
+      - type
+      - template
+      - advanced_mode
+      title: CustomFieldSettings
+    FieldUpdate:
+      properties:
+        title:
+          title: Title
+          type: string
+          maxLength: 500
+          minLength: 1
+          description: The title of the field
+          nullable: true
+        settings:
+          title: Settings
+          oneOf:
+          - $ref: '#/components/schemas/TextFieldSettingsUpdate'
+          - $ref: '#/components/schemas/ImageFieldSettingsUpdate'
+          - $ref: '#/components/schemas/ChatFieldSettingsUpdate'
+          - $ref: '#/components/schemas/CustomFieldSettingsUpdate'
+          discriminator:
+            propertyName: type
+            mapping:
+              chat: '#/components/schemas/ChatFieldSettingsUpdate'
+              custom: '#/components/schemas/CustomFieldSettingsUpdate'
+              image: '#/components/schemas/ImageFieldSettingsUpdate'
+              text: '#/components/schemas/TextFieldSettingsUpdate'
+          nullable: true
+      type: object
+      title: FieldUpdate
+    ImageFieldSettingsUpdate:
+      properties:
+        type:
+          type: string
+          enum:
+          - image
+          const: image
+          title: Type
+      type: object
+      required:
+      - type
+      title: ImageFieldSettingsUpdate
+    Field:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        title:
+          type: string
+          title: Title
+        required:
+          type: boolean
+          title: Required
+        settings:
+          oneOf:
+          - $ref: '#/components/schemas/TextFieldSettings'
+          - $ref: '#/components/schemas/ImageFieldSettings'
+          - $ref: '#/components/schemas/ChatFieldSettings'
+          - $ref: '#/components/schemas/CustomFieldSettings'
+          title: Settings
+          discriminator:
+            propertyName: type
+            mapping:
+              chat: '#/components/schemas/ChatFieldSettings'
+              custom: '#/components/schemas/CustomFieldSettings'
+              image: '#/components/schemas/ImageFieldSettings'
+              text: '#/components/schemas/TextFieldSettings'
+        dataset_id:
+          type: string
+          format: uuid
+          title: Dataset Id
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - name
+      - title
+      - required
+      - settings
+      - dataset_id
+      - inserted_at
+      - updated_at
+      title: Field
+    CustomFieldSettingsUpdate:
+      properties:
+        type:
+          type: string
+          enum:
+          - custom
+          const: custom
+          title: Type
+        template:
+          type: string
+          title: Template
+        advanced_mode:
+          type: boolean
+          title: Advanced Mode
+      type: object
+      required:
+      - type
+      - template
+      - advanced_mode
+      title: CustomFieldSettingsUpdate
+    ChatFieldSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - chat
+          const: chat
+          title: Type
+        use_markdown:
+          type: boolean
+          title: Use Markdown
+      type: object
+      required:
+      - type
+      - use_markdown
+      title: ChatFieldSettings
+    ChatFieldSettingsUpdate:
+      properties:
+        type:
+          type: string
+          enum:
+          - chat
+          const: chat
+          title: Type
+        use_markdown:
+          type: boolean
+          title: Use Markdown
+      type: object
+      required:
+      - type
+      - use_markdown
+      title: ChatFieldSettingsUpdate
+    TextFieldSettingsUpdate:
+      properties:
+        type:
+          type: string
+          enum:
+          - text
+          const: text
+          title: Type
+        use_markdown:
+          type: boolean
+          title: Use Markdown
+      type: object
+      required:
+      - type
+      - use_markdown
+      title: TextFieldSettingsUpdate
+    ImageFieldSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - image
+          const: image
+          title: Type
+      type: object
+      required:
+      - type
+      title: ImageFieldSettings
+    TextFieldSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - text
+          const: text
+          title: Type
+        use_markdown:
+          type: boolean
+          title: Use Markdown
+      type: object
+      required:
+      - type
+      - use_markdown
+      title: TextFieldSettings
+  securitySchemes:
+    APIKeyHeader:
+      type: apiKey
+      in: header
+      name: X-Argilla-Api-Key
+    HTTPBearer:
+      type: http
+      scheme: bearer
