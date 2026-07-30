@@ -1,7 +1,20 @@
 aid: argilla
 name: Argilla
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/argilla.png
 url: https://raw.githubusercontent.com/api-evangelist/argilla/refs/heads/main/apis.yml
 created: 2026-06-12
 modified: 2026-06-12
@@ -29,31 +42,216 @@ tags:
   - fine-tuning
   - Hugging Face
 apis:
-  - name: Argilla REST API
-    description: >
-      FastAPI-based REST API for managing Argilla server resources including
-      users, workspaces, datasets, records, responses, suggestions, vectors,
-      and webhooks. Authentication uses API key credentials retrieved from user
-      settings.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.argilla.io/latest/
-    baseURL: https://argilla.io
-    tags:
-      - datasets
-      - records
-      - annotations
-      - RLHF
-      - webhooks
-    properties:
-      - type: Documentation
-        url: https://docs.argilla.io/latest/
-      - type: OpenAPI
-        url: https://argilla.io/api/docs
-      - type: OpenAPISpec
-        url: openapi/argilla-rest-api-openapi.yml
-    contact:
-      - FN: Argilla Support
-        email: contact@argilla.io
+- aid: argilla:argilla-authentication-api
+  name: Argilla Authentication API
+  description: The Authentication API from Argilla — 4 operation(s) for authentication.
+  humanURL: https://docs.argilla.io/latest/
+  baseURL: https://argilla.io
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/argilla-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://docs.argilla.io/latest/
+  - type: OpenAPISpec
+    url: openapi/argilla-rest-api-openapi.yml
+- aid: argilla:argilla-datasets-api
+  name: Argilla datasets API
+  description: The datasets API from Argilla — 19 operation(s) for datasets.
+  humanURL: https://docs.argilla.io/latest/
+  baseURL: https://argilla.io
+  tags:
+  - datasets
+  properties:
+  - type: OpenAPI
+    url: openapi/argilla-datasets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.argilla.io/latest/
+  - type: OpenAPISpec
+    url: openapi/argilla-rest-api-openapi.yml
+- aid: argilla:argilla-fields-api
+  name: Argilla fields API
+  description: The fields API from Argilla — 1 operation(s) for fields.
+  humanURL: https://docs.argilla.io/latest/
+  baseURL: https://argilla.io
+  tags:
+  - fields
+  properties:
+  - type: OpenAPI
+    url: openapi/argilla-fields-api-openapi.yml
+  - type: Documentation
+    url: https://docs.argilla.io/latest/
+  - type: OpenAPISpec
+    url: openapi/argilla-rest-api-openapi.yml
+- aid: argilla:argilla-info-api
+  name: Argilla info API
+  description: The info API from Argilla — 2 operation(s) for info.
+  humanURL: https://docs.argilla.io/latest/
+  baseURL: https://argilla.io
+  tags:
+  - info
+  properties:
+  - type: OpenAPI
+    url: openapi/argilla-info-api-openapi.yml
+  - type: Documentation
+    url: https://docs.argilla.io/latest/
+  - type: OpenAPISpec
+    url: openapi/argilla-rest-api-openapi.yml
+- aid: argilla:argilla-jobs-api
+  name: Argilla jobs API
+  description: The jobs API from Argilla — 1 operation(s) for jobs.
+  humanURL: https://docs.argilla.io/latest/
+  baseURL: https://argilla.io
+  tags:
+  - jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/argilla-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://docs.argilla.io/latest/
+  - type: OpenAPISpec
+    url: openapi/argilla-rest-api-openapi.yml
+- aid: argilla:argilla-metadata-properties-api
+  name: Argilla metadata properties API
+  description: The metadata properties API from Argilla — 2 operation(s) for metadata properties.
+  humanURL: https://docs.argilla.io/latest/
+  baseURL: https://argilla.io
+  tags:
+  - metadata properties
+  properties:
+  - type: OpenAPI
+    url: openapi/argilla-metadata-properties-api-openapi.yml
+  - type: Documentation
+    url: https://docs.argilla.io/latest/
+  - type: OpenAPISpec
+    url: openapi/argilla-rest-api-openapi.yml
+- aid: argilla:argilla-questions-api
+  name: Argilla questions API
+  description: The questions API from Argilla — 1 operation(s) for questions.
+  humanURL: https://docs.argilla.io/latest/
+  baseURL: https://argilla.io
+  tags:
+  - questions
+  properties:
+  - type: OpenAPI
+    url: openapi/argilla-questions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.argilla.io/latest/
+  - type: OpenAPISpec
+    url: openapi/argilla-rest-api-openapi.yml
+- aid: argilla:argilla-records-api
+  name: Argilla records API
+  description: The records API from Argilla — 3 operation(s) for records.
+  humanURL: https://docs.argilla.io/latest/
+  baseURL: https://argilla.io
+  tags:
+  - records
+  properties:
+  - type: OpenAPI
+    url: openapi/argilla-records-api-openapi.yml
+  - type: Documentation
+    url: https://docs.argilla.io/latest/
+  - type: OpenAPISpec
+    url: openapi/argilla-rest-api-openapi.yml
+- aid: argilla:argilla-responses-api
+  name: Argilla responses API
+  description: The responses API from Argilla — 2 operation(s) for responses.
+  humanURL: https://docs.argilla.io/latest/
+  baseURL: https://argilla.io
+  tags:
+  - responses
+  properties:
+  - type: OpenAPI
+    url: openapi/argilla-responses-api-openapi.yml
+  - type: Documentation
+    url: https://docs.argilla.io/latest/
+  - type: OpenAPISpec
+    url: openapi/argilla-rest-api-openapi.yml
+- aid: argilla:argilla-settings-api
+  name: Argilla settings API
+  description: The settings API from Argilla — 1 operation(s) for settings.
+  humanURL: https://docs.argilla.io/latest/
+  baseURL: https://argilla.io
+  tags:
+  - settings
+  properties:
+  - type: OpenAPI
+    url: openapi/argilla-settings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.argilla.io/latest/
+  - type: OpenAPISpec
+    url: openapi/argilla-rest-api-openapi.yml
+- aid: argilla:argilla-suggestions-api
+  name: Argilla suggestions API
+  description: The suggestions API from Argilla — 1 operation(s) for suggestions.
+  humanURL: https://docs.argilla.io/latest/
+  baseURL: https://argilla.io
+  tags:
+  - suggestions
+  properties:
+  - type: OpenAPI
+    url: openapi/argilla-suggestions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.argilla.io/latest/
+  - type: OpenAPISpec
+    url: openapi/argilla-rest-api-openapi.yml
+- aid: argilla:argilla-users-api
+  name: Argilla users API
+  description: The users API from Argilla — 4 operation(s) for users.
+  humanURL: https://docs.argilla.io/latest/
+  baseURL: https://argilla.io
+  tags:
+  - users
+  properties:
+  - type: OpenAPI
+    url: openapi/argilla-users-api-openapi.yml
+  - type: Documentation
+    url: https://docs.argilla.io/latest/
+  - type: OpenAPISpec
+    url: openapi/argilla-rest-api-openapi.yml
+- aid: argilla:argilla-vectors-settings-api
+  name: Argilla vectors-settings API
+  description: The vectors-settings API from Argilla — 1 operation(s) for vectors-settings.
+  humanURL: https://docs.argilla.io/latest/
+  baseURL: https://argilla.io
+  tags:
+  - vectors-settings
+  properties:
+  - type: OpenAPI
+    url: openapi/argilla-vectors-settings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.argilla.io/latest/
+  - type: OpenAPISpec
+    url: openapi/argilla-rest-api-openapi.yml
+- aid: argilla:argilla-webhooks-api
+  name: Argilla webhooks API
+  description: The webhooks API from Argilla — 3 operation(s) for webhooks.
+  humanURL: https://docs.argilla.io/latest/
+  baseURL: https://argilla.io
+  tags:
+  - webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/argilla-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.argilla.io/latest/
+  - type: OpenAPISpec
+    url: openapi/argilla-rest-api-openapi.yml
+- aid: argilla:argilla-workspaces-api
+  name: Argilla workspaces API
+  description: The workspaces API from Argilla — 5 operation(s) for workspaces.
+  humanURL: https://docs.argilla.io/latest/
+  baseURL: https://argilla.io
+  tags:
+  - workspaces
+  properties:
+  - type: OpenAPI
+    url: openapi/argilla-workspaces-api-openapi.yml
+  - type: Documentation
+    url: https://docs.argilla.io/latest/
+  - type: OpenAPISpec
+    url: openapi/argilla-rest-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/argilla-agentic-access.yml
