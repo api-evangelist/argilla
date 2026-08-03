@@ -1,0 +1,42 @@
+{
+  "provider": "argilla",
+  "sources": [
+    "argilla-authentication-api-openapi.yml",
+    "argilla-datasets-api-openapi.yml",
+    "argilla-fields-api-openapi.yml",
+    "argilla-info-api-openapi.yml",
+    "argilla-jobs-api-openapi.yml",
+    "argilla-metadata-properties-api-openapi.yml",
+    "argilla-questions-api-openapi.yml",
+    "argilla-records-api-openapi.yml",
+    "argilla-responses-api-openapi.yml",
+    "argilla-settings-api-openapi.yml",
+    "argilla-suggestions-api-openapi.yml",
+    "argilla-users-api-openapi.yml",
+    "argilla-vectors-settings-api-openapi.yml",
+    "argilla-webhooks-api-openapi.yml",
+    "argilla-workspaces-api-openapi.yml"
+  ],
+  "outputs": [
+    "argilla-authentication-api-openapi.yml",
+    "argilla-datasets-api-openapi.yml",
+    "argilla-fields-api-openapi.yml",
+    "argilla-info-api-openapi.yml",
+    "argilla-jobs-api-openapi.yml",
+    "argilla-metadata-properties-api-openapi.yml",
+    "argilla-questions-api-openapi.yml",
+    "argilla-records-api-openapi.yml",
+    "argilla-responses-api-openapi.yml",
+    "argilla-settings-api-openapi.yml",
+    "argilla-suggestions-api-openapi.yml",
+    "argilla-users-api-openapi.yml",
+    "argilla-vectors-settings-api-openapi.yml",
+    "argilla-webhooks-api-openapi.yml",
+    "argilla-workspaces-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
