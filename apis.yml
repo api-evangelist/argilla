@@ -55,7 +55,7 @@ apis:
   - type: Documentation
     url: https://docs.argilla.io/latest/
   - type: OpenAPISpec
-    url: openapi/argilla-rest-api-openapi.yml
+    url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-datasets-api
   name: Argilla datasets API
   description: The datasets API from Argilla — 19 operation(s) for datasets.
@@ -69,7 +69,7 @@ apis:
   - type: Documentation
     url: https://docs.argilla.io/latest/
   - type: OpenAPISpec
-    url: openapi/argilla-rest-api-openapi.yml
+    url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-fields-api
   name: Argilla fields API
   description: The fields API from Argilla — 1 operation(s) for fields.
@@ -83,7 +83,7 @@ apis:
   - type: Documentation
     url: https://docs.argilla.io/latest/
   - type: OpenAPISpec
-    url: openapi/argilla-rest-api-openapi.yml
+    url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-info-api
   name: Argilla info API
   description: The info API from Argilla — 2 operation(s) for info.
@@ -97,7 +97,7 @@ apis:
   - type: Documentation
     url: https://docs.argilla.io/latest/
   - type: OpenAPISpec
-    url: openapi/argilla-rest-api-openapi.yml
+    url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-jobs-api
   name: Argilla jobs API
   description: The jobs API from Argilla — 1 operation(s) for jobs.
@@ -111,7 +111,7 @@ apis:
   - type: Documentation
     url: https://docs.argilla.io/latest/
   - type: OpenAPISpec
-    url: openapi/argilla-rest-api-openapi.yml
+    url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-metadata-properties-api
   name: Argilla metadata properties API
   description: The metadata properties API from Argilla — 2 operation(s) for metadata properties.
@@ -125,7 +125,7 @@ apis:
   - type: Documentation
     url: https://docs.argilla.io/latest/
   - type: OpenAPISpec
-    url: openapi/argilla-rest-api-openapi.yml
+    url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-questions-api
   name: Argilla questions API
   description: The questions API from Argilla — 1 operation(s) for questions.
@@ -139,7 +139,7 @@ apis:
   - type: Documentation
     url: https://docs.argilla.io/latest/
   - type: OpenAPISpec
-    url: openapi/argilla-rest-api-openapi.yml
+    url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-records-api
   name: Argilla records API
   description: The records API from Argilla — 3 operation(s) for records.
@@ -153,7 +153,7 @@ apis:
   - type: Documentation
     url: https://docs.argilla.io/latest/
   - type: OpenAPISpec
-    url: openapi/argilla-rest-api-openapi.yml
+    url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-responses-api
   name: Argilla responses API
   description: The responses API from Argilla — 2 operation(s) for responses.
@@ -167,7 +167,7 @@ apis:
   - type: Documentation
     url: https://docs.argilla.io/latest/
   - type: OpenAPISpec
-    url: openapi/argilla-rest-api-openapi.yml
+    url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-settings-api
   name: Argilla settings API
   description: The settings API from Argilla — 1 operation(s) for settings.
@@ -181,7 +181,7 @@ apis:
   - type: Documentation
     url: https://docs.argilla.io/latest/
   - type: OpenAPISpec
-    url: openapi/argilla-rest-api-openapi.yml
+    url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-suggestions-api
   name: Argilla suggestions API
   description: The suggestions API from Argilla — 1 operation(s) for suggestions.
@@ -195,7 +195,7 @@ apis:
   - type: Documentation
     url: https://docs.argilla.io/latest/
   - type: OpenAPISpec
-    url: openapi/argilla-rest-api-openapi.yml
+    url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-users-api
   name: Argilla users API
   description: The users API from Argilla — 4 operation(s) for users.
@@ -209,7 +209,7 @@ apis:
   - type: Documentation
     url: https://docs.argilla.io/latest/
   - type: OpenAPISpec
-    url: openapi/argilla-rest-api-openapi.yml
+    url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-vectors-settings-api
   name: Argilla vectors-settings API
   description: The vectors-settings API from Argilla — 1 operation(s) for vectors-settings.
@@ -223,7 +223,7 @@ apis:
   - type: Documentation
     url: https://docs.argilla.io/latest/
   - type: OpenAPISpec
-    url: openapi/argilla-rest-api-openapi.yml
+    url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-webhooks-api
   name: Argilla webhooks API
   description: The webhooks API from Argilla — 3 operation(s) for webhooks.
@@ -237,7 +237,7 @@ apis:
   - type: Documentation
     url: https://docs.argilla.io/latest/
   - type: OpenAPISpec
-    url: openapi/argilla-rest-api-openapi.yml
+    url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-workspaces-api
   name: Argilla workspaces API
   description: The workspaces API from Argilla — 5 operation(s) for workspaces.
@@ -251,7 +251,7 @@ apis:
   - type: Documentation
     url: https://docs.argilla.io/latest/
   - type: OpenAPISpec
-    url: openapi/argilla-rest-api-openapi.yml
+    url: openapi/_original/argilla-rest-api-openapi.yml
 common:
   - type: AgenticAccess
     url: agentic-access/argilla-agentic-access.yml
