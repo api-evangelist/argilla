@@ -1,0 +1,94 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Argilla v1 Authentication metadata properties API",
+    "version": "2.8.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "metadata properties",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Metadata Property Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://argilla.io/api/v1/metadata-properties/:metadata_property_id/metrics",
+            "params": [
+              {
+                "name": "metadata_property_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Metadata Property Metrics"
+        },
+        {
+          "info": {
+            "name": "Update Metadata Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://argilla.io/api/v1/metadata-properties/:metadata_property_id",
+            "params": [
+              {
+                "name": "metadata_property_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Metadata Property"
+        },
+        {
+          "info": {
+            "name": "Delete Metadata Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://argilla.io/api/v1/metadata-properties/:metadata_property_id",
+            "params": [
+              {
+                "name": "metadata_property_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Metadata Property"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,747 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Argilla v1 Authentication datasets API",
+    "version": "2.8.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "datasets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Current User Datasets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://argilla.io/api/v1/me/datasets",
+            "params": [
+              {
+                "name": "workspace_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by workspace_id"
+              },
+              {
+                "name": "name",
+                "value": "",
+                "type": "query",
+                "description": "Filter by dataset name"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query",
+                "description": "Filter by dataset status"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Current User Datasets"
+        },
+        {
+          "info": {
+            "name": "List Dataset Fields",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/fields",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Dataset Fields"
+        },
+        {
+          "info": {
+            "name": "Create Dataset Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/fields",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Dataset Field"
+        },
+        {
+          "info": {
+            "name": "List Dataset Vector Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/vectors-settings",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Dataset Vector Settings"
+        },
+        {
+          "info": {
+            "name": "Create Dataset Vector Settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/vectors-settings",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Dataset Vector Settings"
+        },
+        {
+          "info": {
+            "name": "List Current User Dataset Metadata Properties",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://argilla.io/api/v1/me/datasets/:dataset_id/metadata-properties",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Current User Dataset Metadata Properties"
+        },
+        {
+          "info": {
+            "name": "Get Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Dataset"
+        },
+        {
+          "info": {
+            "name": "Update Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Dataset"
+        },
+        {
+          "info": {
+            "name": "Delete Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Dataset"
+        },
+        {
+          "info": {
+            "name": "Get Current User Dataset Metrics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://argilla.io/api/v1/me/datasets/:dataset_id/metrics",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Current User Dataset Metrics"
+        },
+        {
+          "info": {
+            "name": "Get Dataset Progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/progress",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Dataset Progress"
+        },
+        {
+          "info": {
+            "name": "Get Dataset Users Progress",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/users/progress",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Dataset Users Progress"
+        },
+        {
+          "info": {
+            "name": "Create Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://argilla.io/api/v1/datasets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Dataset"
+        },
+        {
+          "info": {
+            "name": "Create Dataset Metadata Property",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/metadata-properties",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Dataset Metadata Property"
+        },
+        {
+          "info": {
+            "name": "Publish Dataset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/publish",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Publish Dataset"
+        },
+        {
+          "info": {
+            "name": "Import Dataset From Hub",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/import",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Import Dataset From Hub"
+        },
+        {
+          "info": {
+            "name": "Export Dataset To Hub",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/export",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Export Dataset To Hub"
+        },
+        {
+          "info": {
+            "name": "List Dataset Questions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/questions",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Dataset Questions"
+        },
+        {
+          "info": {
+            "name": "Create Dataset Question",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/questions",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Dataset Question"
+        },
+        {
+          "info": {
+            "name": "List Dataset Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/records",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Dataset Records"
+        },
+        {
+          "info": {
+            "name": "Delete Dataset Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/records",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "A comma separated list with the IDs of the records to be removed"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Dataset Records"
+        },
+        {
+          "info": {
+            "name": "Search Current User Dataset Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://argilla.io/api/v1/me/datasets/:dataset_id/records/search",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search Current User Dataset Records"
+        },
+        {
+          "info": {
+            "name": "Search Dataset Records",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/records/search",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "offset",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "include",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Search Dataset Records"
+        },
+        {
+          "info": {
+            "name": "List Dataset Records Search Suggestions Options",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/records/search/suggestions/options",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "List Dataset Records Search Suggestions Options"
+        },
+        {
+          "info": {
+            "name": "Create Dataset Records Bulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/records/bulk",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Dataset Records Bulk"
+        },
+        {
+          "info": {
+            "name": "Upsert Dataset Records Bulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://argilla.io/api/v1/datasets/:dataset_id/records/bulk",
+            "params": [
+              {
+                "name": "dataset_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Upsert Dataset Records Bulk"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

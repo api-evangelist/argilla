@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Argilla v1 Authentication responses API",
+    "version": "2.8.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "responses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Current User Responses Bulk",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://argilla.io/api/v1/me/responses/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Current User Responses Bulk"
+        },
+        {
+          "info": {
+            "name": "Update Response",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://argilla.io/api/v1/responses/:response_id",
+            "params": [
+              {
+                "name": "response_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Response"
+        },
+        {
+          "info": {
+            "name": "Delete Response",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://argilla.io/api/v1/responses/:response_id",
+            "params": [
+              {
+                "name": "response_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Response"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

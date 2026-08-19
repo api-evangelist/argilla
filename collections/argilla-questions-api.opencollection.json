@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Argilla v1 Authentication questions API",
+    "version": "2.8.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "questions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update Question",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://argilla.io/api/v1/questions/:question_id",
+            "params": [
+              {
+                "name": "question_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Question"
+        },
+        {
+          "info": {
+            "name": "Delete Question",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://argilla.io/api/v1/questions/:question_id",
+            "params": [
+              {
+                "name": "question_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Question"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

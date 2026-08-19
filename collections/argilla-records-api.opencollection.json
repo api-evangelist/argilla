@@ -1,0 +1,204 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Argilla v1 Authentication records API",
+    "version": "2.8.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "records",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://argilla.io/api/v1/records/:record_id",
+            "params": [
+              {
+                "name": "record_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Record"
+        },
+        {
+          "info": {
+            "name": "Update Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://argilla.io/api/v1/records/:record_id",
+            "params": [
+              {
+                "name": "record_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Record"
+        },
+        {
+          "info": {
+            "name": "Delete Record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://argilla.io/api/v1/records/:record_id",
+            "params": [
+              {
+                "name": "record_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Record"
+        },
+        {
+          "info": {
+            "name": "Create Record Response",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://argilla.io/api/v1/records/:record_id/responses",
+            "params": [
+              {
+                "name": "record_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create Record Response"
+        },
+        {
+          "info": {
+            "name": "Get Record Suggestions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://argilla.io/api/v1/records/:record_id/suggestions",
+            "params": [
+              {
+                "name": "record_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get Record Suggestions"
+        },
+        {
+          "info": {
+            "name": "Create or update a suggestion",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://argilla.io/api/v1/records/:record_id/suggestions",
+            "params": [
+              {
+                "name": "record_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Create or update a suggestion"
+        },
+        {
+          "info": {
+            "name": "Delete suggestions for a record",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://argilla.io/api/v1/records/:record_id/suggestions",
+            "params": [
+              {
+                "name": "record_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "ids",
+                "value": "",
+                "type": "query",
+                "description": "A comma separated list with the IDs of the suggestions to be removed"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete suggestions for a record"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

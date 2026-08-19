@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Argilla v1 Authentication fields API",
+    "version": "2.8.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Update Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://argilla.io/api/v1/fields/:field_id",
+            "params": [
+              {
+                "name": "field_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Update Field"
+        },
+        {
+          "info": {
+            "name": "Delete Field",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://argilla.io/api/v1/fields/:field_id",
+            "params": [
+              {
+                "name": "field_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Field"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

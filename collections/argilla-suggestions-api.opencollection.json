@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Argilla v1 Authentication suggestions API",
+    "version": "2.8.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "suggestions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Delete Suggestion",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://argilla.io/api/v1/suggestions/:suggestion_id",
+            "params": [
+              {
+                "name": "suggestion_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Argilla-Api-Key",
+              "value": "{{X-Argilla-Api-Key}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Delete Suggestion"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

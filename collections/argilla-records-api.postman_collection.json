@@ -1,0 +1,3317 @@
+{
+  "item": [
+    {
+      "id": "9d21933e-b6ef-4fb1-92b6-e747354addb7",
+      "name": "records",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "578dcc59-4f1e-442e-b215-0bb575c0dd4f",
+          "name": "Get Record",
+          "request": {
+            "name": "Get Record",
+            "description": {},
+            "url": {
+              "path": [
+                "records",
+                ":record_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "record_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Argilla-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b72f4ba7-5793-4592-b81c-b9bfad2dffc7",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"04d569f8-8a20-cd1a-5066-135eabf7b0ce\",\n  \"status\": \"completed\",\n  \"fields\": {},\n  \"dataset_id\": \"8522ee27-a7b9-7fd2-446e-ee46f21aec2a\",\n  \"inserted_at\": \"1988-11-09T12:10:27.320Z\",\n  \"updated_at\": \"2009-03-26T21:32:11.658Z\",\n  \"metadata\": {},\n  \"external_id\": \"string\",\n  \"responses\": [\n    {\n      \"id\": \"0185bbfb-a2e1-6be4-08cb-87a00f6b07f2\",\n      \"status\": \"discarded\",\n      \"record_id\": \"285b8a5b-4761-f868-ab5e-72d12eaf1beb\",\n      \"user_id\": \"6e2d9c89-d4ab-e4f8-dac2-f9576084f760\",\n      \"inserted_at\": \"2022-04-08T18:44:28.555Z\",\n      \"updated_at\": \"1962-03-15T10:11:39.458Z\",\n      \"values\": {\n        \"key_0\": {\n          \"value\": {}\n        },\n        \"key_1\": {\n          \"value\": {}\n        }\n      }\n    },\n    {\n      \"id\": \"d14cc7b6-7eb7-b5da-a9af-4d4f2119e0d8\",\n      \"status\": \"draft\",\n      \"record_id\": \"ec9ffe97-4db9-a0a1-4086-ad881dca121d\",\n      \"user_id\": \"56425e1c-9c86-d3e6-95a8-da968b069ac4\",\n      \"inserted_at\": \"1964-06-16T02:34:19.533Z\",\n      \"updated_at\": \"1960-05-13T21:46:18.311Z\",\n      \"values\": {\n        \"key_0\": {\n          \"value\": {}\n        },\n        \"key_1\": {\n          \"value\": {}\n        },\n        \"key_2\": {\n          \"value\": {}\n        }\n      }\n    }\n  ],\n  \"suggestions\": [\n    {\n      \"question_id\": \"e3c9f6ac-5bf5-93ff-705c-3f0c12e09840\",\n      \"value\": {},\n      \"id\": \"9f2fb81a-6064-c008-9294-f7c4b0b6694c\",\n      \"inserted_at\": \"1962-04-01T21:57:22.459Z\",\n      \"updated_at\": \"2011-12-26T00:11:38.305Z\",\n      \"type\": \"human\",\n      \"agent\": \"string\",\n      \"score\": 5773.701776638915\n    },\n    {\n      \"question_id\": \"55233c5b-1355-2b6a-4d53-d185a3178365\",\n      \"value\": {},\n      \"id\": \"c2b6b9f3-8840-f271-eecf-27b253811452\",\n      \"inserted_at\": \"2015-02-08T00:19:58.176Z\",\n      \"updated_at\": \"1982-05-31T10:11:51.156Z\",\n      \"type\": \"model\",\n      \"agent\": \"string\",\n      \"score\": 5279.6003696742855\n    }\n  ],\n  \"vectors\": {\n    \"key_0\": [\n      7889.296414715331,\n      9764.8195041062\n    ],\n    \"key_1\": [\n      5684.183020453131,\n      4524.815513474361\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe708818-2a2a-4fdf-bd7f-f36f6a37dcfd",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::MissingDatasetRecordsError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0687b4c3-3264-49fa-ae02-00fea10f43fd",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::ForbiddenOperationError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8b77120-e352-4edf-8b02-d22fc6b50b67",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::EntityNotFoundError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "701a8daf-eb57-41bd-89c4-5ef1780837c1",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::EntityAlreadyExistsError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0bf5baa8-0213-48b1-ba85-552244d7c2f5",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::ValidationError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3272966c-c887-4bf7-840d-79fc5ad34ae6",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"builtins.TypeError\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "19a9e9bb-7ef4-4b51-951d-3d444c406cf4",
+          "name": "Update Record",
+          "request": {
+            "name": "Update Record",
+            "description": {},
+            "url": {
+              "path": [
+                "records",
+                ":record_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "record_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Argilla-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fields\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"metadata\": \"<object>\",\n  \"suggestions\": [\n    {\n      \"question_id\": \"<uuid>\",\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"agent\": \"<string>\",\n      \"score\": \"<number>\"\n    },\n    {\n      \"question_id\": \"<uuid>\",\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"agent\": \"<string>\",\n      \"score\": \"<number>\"\n    }\n  ],\n  \"vectors\": {\n    \"key_0\": [\n      \"<number>\",\n      \"<number>\"\n    ],\n    \"key_1\": [\n      \"<number>\",\n      \"<number>\"\n    ],\n    \"key_2\": [\n      \"<number>\",\n      \"<number>\"\n    ]\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ed4071c0-d44c-485a-b9ca-709507aafba3",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fields\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"metadata\": \"<object>\",\n  \"suggestions\": [\n    {\n      \"question_id\": \"<uuid>\",\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"agent\": \"<string>\",\n      \"score\": \"<number>\"\n    },\n    {\n      \"question_id\": \"<uuid>\",\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"agent\": \"<string>\",\n      \"score\": \"<number>\"\n    }\n  ],\n  \"vectors\": {\n    \"key_0\": [\n      \"<number>\",\n      \"<number>\"\n    ],\n    \"key_1\": [\n      \"<number>\",\n      \"<number>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"827b9932-38f3-b04f-d0f7-2e0fa4945db9\",\n  \"status\": \"completed\",\n  \"fields\": {},\n  \"dataset_id\": \"37d85a19-5d59-6b05-42e3-1fb2c43df18e\",\n  \"inserted_at\": \"1953-09-30T06:08:11.247Z\",\n  \"updated_at\": \"2001-06-28T20:02:57.633Z\",\n  \"metadata\": {},\n  \"external_id\": \"string\",\n  \"responses\": [\n    {\n      \"id\": \"59d4a92e-e9ab-3f53-cf03-145eabfa31b5\",\n      \"status\": \"submitted\",\n      \"record_id\": \"9c191481-ac13-991f-ba1c-e8974dce4942\",\n      \"user_id\": \"247b93ef-2aad-587c-e6e3-bcf43a4d7336\",\n      \"inserted_at\": \"1996-04-25T18:44:12.687Z\",\n      \"updated_at\": \"1992-12-19T20:59:02.919Z\",\n      \"values\": {\n        \"key_0\": {\n          \"value\": {}\n        },\n        \"key_1\": {\n          \"value\": {}\n        },\n        \"key_2\": {\n          \"value\": {}\n        }\n      }\n    },\n    {\n      \"id\": \"7e5b8fcd-935e-3588-f005-e1068016ecdb\",\n      \"status\": \"submitted\",\n      \"record_id\": \"e26ef78a-09e1-a2c9-2b96-1437a7d179de\",\n      \"user_id\": \"0cf3638e-503e-005f-594a-9949c28ea153\",\n      \"inserted_at\": \"1961-01-02T20:14:25.885Z\",\n      \"updated_at\": \"1989-07-05T20:49:21.673Z\",\n      \"values\": {\n        \"key_0\": {\n          \"value\": {}\n        },\n        \"key_1\": {\n          \"value\": {}\n        }\n      }\n    }\n  ],\n  \"suggestions\": [\n    {\n      \"question_id\": \"7fdb18ff-6134-81f4-964b-68839fd16ab3\",\n      \"value\": {},\n      \"id\": \"d7f31b22-4d9f-3dbc-953c-d8cb80031c27\",\n      \"inserted_at\": \"1966-04-20T22:20:57.131Z\",\n      \"updated_at\": \"1999-01-27T11:39:08.498Z\",\n      \"type\": \"<string>\",\n      \"agent\": \"string\",\n      \"score\": 5944.578231953344\n    },\n    {\n      \"question_id\": \"9ba8a958-b5ee-6941-2e0c-132485b7b480\",\n      \"value\": {},\n      \"id\": \"d8548632-33ac-24c8-aa03-293c4adb26bb\",\n      \"inserted_at\": \"1970-09-05T08:06:12.708Z\",\n      \"updated_at\": \"1960-08-02T18:22:42.652Z\",\n      \"type\": \"<string>\",\n      \"agent\": \"string\",\n      \"score\": 9590.125840885818\n    }\n  ],\n  \"vectors\": {\n    \"key_0\": [\n      4451.758966645017,\n      6859.8605118689675\n    ],\n    \"key_1\": [\n      1211.5007662319822,\n      8681.029500520874\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "22129246-10f3-48aa-a99b-40f7cd88516d",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fields\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"metadata\": \"<object>\",\n  \"suggestions\": [\n    {\n      \"question_id\": \"<uuid>\",\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"agent\": \"<string>\",\n      \"score\": \"<number>\"\n    },\n    {\n      \"question_id\": \"<uuid>\",\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"agent\": \"<string>\",\n      \"score\": \"<number>\"\n    }\n  ],\n  \"vectors\": {\n    \"key_0\": [\n      \"<number>\",\n      \"<number>\"\n    ],\n    \"key_1\": [\n      \"<number>\",\n      \"<number>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::MissingDatasetRecordsError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51728084-2773-40c0-82ce-a1c40b077819",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fields\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"metadata\": \"<object>\",\n  \"suggestions\": [\n    {\n      \"question_id\": \"<uuid>\",\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"agent\": \"<string>\",\n      \"score\": \"<number>\"\n    },\n    {\n      \"question_id\": \"<uuid>\",\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"agent\": \"<string>\",\n      \"score\": \"<number>\"\n    }\n  ],\n  \"vectors\": {\n    \"key_0\": [\n      \"<number>\",\n      \"<number>\"\n    ],\n    \"key_1\": [\n      \"<number>\",\n      \"<number>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::ForbiddenOperationError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fbb07759-085b-4b9d-bd76-612e9a6b867b",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fields\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"metadata\": \"<object>\",\n  \"suggestions\": [\n    {\n      \"question_id\": \"<uuid>\",\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"agent\": \"<string>\",\n      \"score\": \"<number>\"\n    },\n    {\n      \"question_id\": \"<uuid>\",\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"agent\": \"<string>\",\n      \"score\": \"<number>\"\n    }\n  ],\n  \"vectors\": {\n    \"key_0\": [\n      \"<number>\",\n      \"<number>\"\n    ],\n    \"key_1\": [\n      \"<number>\",\n      \"<number>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::EntityNotFoundError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f350d4b7-7822-4039-98e5-7c081a1f06c0",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fields\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"metadata\": \"<object>\",\n  \"suggestions\": [\n    {\n      \"question_id\": \"<uuid>\",\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"agent\": \"<string>\",\n      \"score\": \"<number>\"\n    },\n    {\n      \"question_id\": \"<uuid>\",\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"agent\": \"<string>\",\n      \"score\": \"<number>\"\n    }\n  ],\n  \"vectors\": {\n    \"key_0\": [\n      \"<number>\",\n      \"<number>\"\n    ],\n    \"key_1\": [\n      \"<number>\",\n      \"<number>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::EntityAlreadyExistsError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8999b988-e9c7-410f-90aa-158023582619",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fields\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"metadata\": \"<object>\",\n  \"suggestions\": [\n    {\n      \"question_id\": \"<uuid>\",\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"agent\": \"<string>\",\n      \"score\": \"<number>\"\n    },\n    {\n      \"question_id\": \"<uuid>\",\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"agent\": \"<string>\",\n      \"score\": \"<number>\"\n    }\n  ],\n  \"vectors\": {\n    \"key_0\": [\n      \"<number>\",\n      \"<number>\"\n    ],\n    \"key_1\": [\n      \"<number>\",\n      \"<number>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::ValidationError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "30d4a48d-fc4a-47e9-9829-feff84677301",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"fields\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"metadata\": \"<object>\",\n  \"suggestions\": [\n    {\n      \"question_id\": \"<uuid>\",\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"agent\": \"<string>\",\n      \"score\": \"<number>\"\n    },\n    {\n      \"question_id\": \"<uuid>\",\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ],\n      \"type\": \"<string>\",\n      \"agent\": \"<string>\",\n      \"score\": \"<number>\"\n    }\n  ],\n  \"vectors\": {\n    \"key_0\": [\n      \"<number>\",\n      \"<number>\"\n    ],\n    \"key_1\": [\n      \"<number>\",\n      \"<number>\"\n    ]\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"builtins.TypeError\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "68915810-9a7c-4448-a0a8-01d911f32584",
+          "name": "Delete Record",
+          "request": {
+            "name": "Delete Record",
+            "description": {},
+            "url": {
+              "path": [
+                "records",
+                ":record_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "record_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Argilla-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "756960a5-dbec-4e13-b4d9-9668640de137",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"827b9932-38f3-b04f-d0f7-2e0fa4945db9\",\n  \"status\": \"completed\",\n  \"fields\": {},\n  \"dataset_id\": \"37d85a19-5d59-6b05-42e3-1fb2c43df18e\",\n  \"inserted_at\": \"1953-09-30T06:08:11.247Z\",\n  \"updated_at\": \"2001-06-28T20:02:57.633Z\",\n  \"metadata\": {},\n  \"external_id\": \"string\",\n  \"responses\": [\n    {\n      \"id\": \"59d4a92e-e9ab-3f53-cf03-145eabfa31b5\",\n      \"status\": \"submitted\",\n      \"record_id\": \"9c191481-ac13-991f-ba1c-e8974dce4942\",\n      \"user_id\": \"247b93ef-2aad-587c-e6e3-bcf43a4d7336\",\n      \"inserted_at\": \"1996-04-25T18:44:12.687Z\",\n      \"updated_at\": \"1992-12-19T20:59:02.919Z\",\n      \"values\": {\n        \"key_0\": {\n          \"value\": {}\n        },\n        \"key_1\": {\n          \"value\": {}\n        },\n        \"key_2\": {\n          \"value\": {}\n        }\n      }\n    },\n    {\n      \"id\": \"7e5b8fcd-935e-3588-f005-e1068016ecdb\",\n      \"status\": \"submitted\",\n      \"record_id\": \"e26ef78a-09e1-a2c9-2b96-1437a7d179de\",\n      \"user_id\": \"0cf3638e-503e-005f-594a-9949c28ea153\",\n      \"inserted_at\": \"1961-01-02T20:14:25.885Z\",\n      \"updated_at\": \"1989-07-05T20:49:21.673Z\",\n      \"values\": {\n        \"key_0\": {\n          \"value\": {}\n        },\n        \"key_1\": {\n          \"value\": {}\n        }\n      }\n    }\n  ],\n  \"suggestions\": [\n    {\n      \"question_id\": \"7fdb18ff-6134-81f4-964b-68839fd16ab3\",\n      \"value\": {},\n      \"id\": \"d7f31b22-4d9f-3dbc-953c-d8cb80031c27\",\n      \"inserted_at\": \"1966-04-20T22:20:57.131Z\",\n      \"updated_at\": \"1999-01-27T11:39:08.498Z\",\n      \"type\": \"<string>\",\n      \"agent\": \"string\",\n      \"score\": 5944.578231953344\n    },\n    {\n      \"question_id\": \"9ba8a958-b5ee-6941-2e0c-132485b7b480\",\n      \"value\": {},\n      \"id\": \"d8548632-33ac-24c8-aa03-293c4adb26bb\",\n      \"inserted_at\": \"1970-09-05T08:06:12.708Z\",\n      \"updated_at\": \"1960-08-02T18:22:42.652Z\",\n      \"type\": \"<string>\",\n      \"agent\": \"string\",\n      \"score\": 9590.125840885818\n    }\n  ],\n  \"vectors\": {\n    \"key_0\": [\n      4451.758966645017,\n      6859.8605118689675\n    ],\n    \"key_1\": [\n      1211.5007662319822,\n      8681.029500520874\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3264b5fd-0b04-42b6-8044-606dbe7b9821",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::MissingDatasetRecordsError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3d5591c-63ea-48f4-bd0f-eca49ae86b85",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::ForbiddenOperationError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f384ccb5-b55c-425f-b440-77904c4877f3",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::EntityNotFoundError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52dedbc7-4c73-428e-808c-0accf675c517",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::EntityAlreadyExistsError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "497d06d7-862e-49a2-b168-4b89e72d2954",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::ValidationError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "735f3415-8568-4b36-919d-377eafd3a674",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"builtins.TypeError\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8a2a1a3d-a169-442c-a65f-cd3917be0588",
+          "name": "Create Record Response",
+          "request": {
+            "name": "Create Record Response",
+            "description": {},
+            "url": {
+              "path": [
+                "records",
+                ":record_id",
+                "responses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "record_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Argilla-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"<string>\",\n  \"values\": {\n    \"key_0\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2fe39b18-1f58-4584-bf1f-01663908f2ed",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"values\": {\n    \"key_0\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    },\n    \"key_1\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    },\n    \"key_2\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"cdfa259a-e9b3-e6a1-0290-b29ecd7b88f2\",\n  \"status\": \"<string>\",\n  \"record_id\": \"2d49ca30-4cb6-b9da-4118-bc691dad1f10\",\n  \"user_id\": \"8724bebe-6293-bb70-b328-9a7af2a795be\",\n  \"inserted_at\": \"2020-10-13T04:47:32.626Z\",\n  \"updated_at\": \"1968-03-07T04:33:41.152Z\",\n  \"values\": {\n    \"key_0\": {\n      \"value\": {}\n    },\n    \"key_1\": {\n      \"value\": {}\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2dbce4c-f00d-4810-8aeb-cc2d3ff3ae9e",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"values\": {\n    \"key_0\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    },\n    \"key_1\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    },\n    \"key_2\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::MissingDatasetRecordsError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce732f24-0dbe-4b71-9968-d402606be234",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"values\": {\n    \"key_0\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    },\n    \"key_1\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    },\n    \"key_2\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::ForbiddenOperationError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3e4a97b-ddce-46d3-be3a-c71864a1fbbe",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"values\": {\n    \"key_0\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    },\n    \"key_1\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    },\n    \"key_2\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::EntityNotFoundError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "abaadcc4-559d-40ac-91ff-3d73e482cc44",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"values\": {\n    \"key_0\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    },\n    \"key_1\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    },\n    \"key_2\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::EntityAlreadyExistsError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4b4f873-2c63-4dd6-9a6e-3fd075ee28d7",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"values\": {\n    \"key_0\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    },\n    \"key_1\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    },\n    \"key_2\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::ValidationError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "837b23c8-c93d-4b65-ab68-3eb6452f4c80",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"status\": \"<string>\",\n  \"values\": {\n    \"key_0\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    },\n    \"key_1\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    },\n    \"key_2\": {\n      \"value\": [\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        },\n        {\n          \"label\": \"<string>\",\n          \"start\": \"<integer>\",\n          \"end\": \"<integer>\"\n        }\n      ]\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"builtins.TypeError\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "79cf0eff-5270-4049-aff5-c395cdc939f5",
+          "name": "Get Record Suggestions",
+          "request": {
+            "name": "Get Record Suggestions",
+            "description": {},
+            "url": {
+              "path": [
+                "records",
+                ":record_id",
+                "suggestions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "record_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Argilla-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "083e1ff4-eb1a-427d-a870-03aac38c5905",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"items\": [\n    {\n      \"question_id\": \"59ebf634-bdc2-558a-c458-85ccb3320ce8\",\n      \"value\": {},\n      \"id\": \"82f3953d-015d-f392-fc4d-58324b4583f8\",\n      \"inserted_at\": \"1954-01-28T01:44:02.057Z\",\n      \"updated_at\": \"2024-12-20T05:14:49.979Z\",\n      \"type\": \"<string>\",\n      \"agent\": \"string\",\n      \"score\": 3524.503723324833\n    },\n    {\n      \"question_id\": \"1fddd255-7027-64db-9794-79b7fad352e7\",\n      \"value\": {},\n      \"id\": \"d296b879-669d-3a16-3015-d9bfe260ff39\",\n      \"inserted_at\": \"2025-11-06T16:48:12.079Z\",\n      \"updated_at\": \"1951-06-21T02:12:09.067Z\",\n      \"type\": \"<string>\",\n      \"agent\": \"string\",\n      \"score\": 9140.505701209724\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5b828957-b812-425e-af16-057d9ecb834c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::MissingDatasetRecordsError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fcab49a6-88dc-461e-9718-913c8e40967d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::ForbiddenOperationError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b319dfd-3b90-42c7-a9eb-806ec2b19f4a",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::EntityNotFoundError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd30a28f-323b-4f28-969f-243e2cef332b",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::EntityAlreadyExistsError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "618d5caf-aa83-4b24-a376-cd5f3834fc5a",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::ValidationError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a91aee6a-45e8-4c8d-85ed-f43c1987d76d",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"builtins.TypeError\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4635d96-16e0-4cf1-99f4-0487bc3ae89b",
+          "name": "Create or update a suggestion",
+          "request": {
+            "name": "Create or update a suggestion",
+            "description": {},
+            "url": {
+              "path": [
+                "records",
+                ":record_id",
+                "suggestions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "record_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Argilla-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"question_id\": \"<uuid>\",\n  \"value\": [\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    },\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"agent\": \"<string>\",\n  \"score\": \"<number>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3d11c0a6-b813-4ea1-bdbb-b7246d1cb38e",
+              "name": "Suggestion updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"question_id\": \"<uuid>\",\n  \"value\": [\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    },\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"agent\": \"<string>\",\n  \"score\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"question_id\": \"bf627e08-245b-980f-3d41-b468626d0a9f\",\n  \"value\": {},\n  \"id\": \"bc0da0d3-00d0-de9b-2787-bc861fdb42dd\",\n  \"inserted_at\": \"1952-12-18T10:36:16.146Z\",\n  \"updated_at\": \"2015-04-26T01:42:20.463Z\",\n  \"type\": \"<string>\",\n  \"agent\": \"string\",\n  \"score\": 8136.795330086026\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ef22fb5-559a-4621-a9db-7a98004961f6",
+              "name": "Suggestion created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"question_id\": \"<uuid>\",\n  \"value\": [\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    },\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"agent\": \"<string>\",\n  \"score\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"question_id\": \"bf627e08-245b-980f-3d41-b468626d0a9f\",\n  \"value\": {},\n  \"id\": \"bc0da0d3-00d0-de9b-2787-bc861fdb42dd\",\n  \"inserted_at\": \"1952-12-18T10:36:16.146Z\",\n  \"updated_at\": \"2015-04-26T01:42:20.463Z\",\n  \"type\": \"<string>\",\n  \"agent\": \"string\",\n  \"score\": 8136.795330086026\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "262febec-506c-46fb-ac12-bd12c37ce46c",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"question_id\": \"<uuid>\",\n  \"value\": [\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    },\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"agent\": \"<string>\",\n  \"score\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::MissingDatasetRecordsError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c1d7cc35-bd96-4840-85cb-a6c6a89a99bc",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"question_id\": \"<uuid>\",\n  \"value\": [\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    },\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"agent\": \"<string>\",\n  \"score\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::ForbiddenOperationError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "11606bb9-efb0-4c46-8752-7bcf0e87ddd8",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"question_id\": \"<uuid>\",\n  \"value\": [\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    },\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"agent\": \"<string>\",\n  \"score\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::EntityNotFoundError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0ec9f527-4dad-4b47-9cc3-17ccf4f9601d",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"question_id\": \"<uuid>\",\n  \"value\": [\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    },\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"agent\": \"<string>\",\n  \"score\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::EntityAlreadyExistsError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b381094f-edba-474f-9ca0-f4d90acd77a1",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"question_id\": \"<uuid>\",\n  \"value\": [\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    },\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"agent\": \"<string>\",\n  \"score\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::ValidationError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0209bdac-e035-48e1-ad44-46db263f20be",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"question_id\": \"<uuid>\",\n  \"value\": [\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    },\n    {\n      \"label\": \"<string>\",\n      \"start\": \"<integer>\",\n      \"end\": \"<integer>\"\n    }\n  ],\n  \"type\": \"<string>\",\n  \"agent\": \"<string>\",\n  \"score\": \"<number>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"builtins.TypeError\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d593dd30-14e4-4b15-8590-e8215a7a9030",
+          "name": "Delete suggestions for a record",
+          "request": {
+            "name": "Delete suggestions for a record",
+            "description": {},
+            "url": {
+              "path": [
+                "records",
+                ":record_id",
+                "suggestions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "ids",
+                  "value": "<string>",
+                  "description": "(Required) A comma separated list with the IDs of the suggestions to be removed"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "record_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Argilla-Api-Key"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d707dd96-a6cb-402a-99f6-c3517db3f31a",
+              "name": "Successful Response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1f05c397-24a0-46b8-bc00-1c3a986ab992",
+              "name": "Bad Request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::MissingDatasetRecordsError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9d8c8580-fffe-4668-ac27-e73699cd44ac",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::ForbiddenOperationError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "45024f61-abb5-4002-a843-bd5ff81f58a0",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::EntityNotFoundError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5829be55-9677-4001-b64a-4030961e1eeb",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::EntityAlreadyExistsError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6fc8adff-7de0-4c8a-8e9d-0d6bd54fb1cf",
+              "name": "Unprocessable Content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"argilla.api.errors::ValidationError\",\n    \"params\": {\n      \"extra\": \"error parameters\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "07a55540-9676-440f-b2cf-8f3e8c867906",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "records",
+                    ":record_id",
+                    "suggestions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "ids",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "record_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Argilla-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": {\n    \"code\": \"builtins.TypeError\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://argilla.io/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "03426ab1-895f-4b7a-a6b0-8568571e45eb",
+    "name": "Argilla v1 Authentication records API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Argilla Server API v1\n\nContact Support:\n Email: contact@argilla.io",
+      "type": "text/plain"
+    }
+  }
+}
