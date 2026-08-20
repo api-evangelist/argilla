@@ -31,6 +31,17 @@ description: >
   recently joined Hugging Face, deepening its integration with the broader open
   ML ecosystem.
 tags:
+  - Data Annotation
+  - LLM
+  - NLP
+  - RLHF
+  - Machine-Learning
+  - Datasets
+  - Open-Source
+  - Human Feedback
+  - Fine-Tuning
+  - Hugging Face
+tags_raw:
   - data annotation
   - LLM
   - NLP
@@ -62,6 +73,8 @@ apis:
   humanURL: https://docs.argilla.io/latest/
   baseURL: https://argilla.io
   tags:
+  - Datasets
+  tags_raw:
   - datasets
   properties:
   - type: OpenAPI
@@ -76,6 +89,8 @@ apis:
   humanURL: https://docs.argilla.io/latest/
   baseURL: https://argilla.io
   tags:
+  - Fields
+  tags_raw:
   - fields
   properties:
   - type: OpenAPI
@@ -90,6 +105,8 @@ apis:
   humanURL: https://docs.argilla.io/latest/
   baseURL: https://argilla.io
   tags:
+  - Info
+  tags_raw:
   - info
   properties:
   - type: OpenAPI
@@ -104,6 +121,8 @@ apis:
   humanURL: https://docs.argilla.io/latest/
   baseURL: https://argilla.io
   tags:
+  - Job
+  tags_raw:
   - jobs
   properties:
   - type: OpenAPI
@@ -132,6 +151,8 @@ apis:
   humanURL: https://docs.argilla.io/latest/
   baseURL: https://argilla.io
   tags:
+  - Questions
+  tags_raw:
   - questions
   properties:
   - type: OpenAPI
@@ -146,6 +167,8 @@ apis:
   humanURL: https://docs.argilla.io/latest/
   baseURL: https://argilla.io
   tags:
+  - Records
+  tags_raw:
   - records
   properties:
   - type: OpenAPI
@@ -160,6 +183,8 @@ apis:
   humanURL: https://docs.argilla.io/latest/
   baseURL: https://argilla.io
   tags:
+  - Responses
+  tags_raw:
   - responses
   properties:
   - type: OpenAPI
@@ -174,6 +199,8 @@ apis:
   humanURL: https://docs.argilla.io/latest/
   baseURL: https://argilla.io
   tags:
+  - Settings
+  tags_raw:
   - settings
   properties:
   - type: OpenAPI
@@ -188,6 +215,8 @@ apis:
   humanURL: https://docs.argilla.io/latest/
   baseURL: https://argilla.io
   tags:
+  - Suggestions
+  tags_raw:
   - suggestions
   properties:
   - type: OpenAPI
@@ -202,6 +231,8 @@ apis:
   humanURL: https://docs.argilla.io/latest/
   baseURL: https://argilla.io
   tags:
+  - User
+  tags_raw:
   - users
   properties:
   - type: OpenAPI
@@ -230,6 +261,8 @@ apis:
   humanURL: https://docs.argilla.io/latest/
   baseURL: https://argilla.io
   tags:
+  - Webhook
+  tags_raw:
   - webhooks
   properties:
   - type: OpenAPI
@@ -244,6 +277,8 @@ apis:
   humanURL: https://docs.argilla.io/latest/
   baseURL: https://argilla.io
   tags:
+  - Workspaces
+  tags_raw:
   - workspaces
   properties:
   - type: OpenAPI
