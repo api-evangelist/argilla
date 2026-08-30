@@ -43,14 +43,14 @@ description: >
   recently joined Hugging Face, deepening its integration with the broader open
   ML ecosystem.
 tags:
-  - Data Annotation
+  - data annotation
   - LLM
   - NLP
   - RLHF
-  - Machine-Learning
+  - machine learning
   - Datasets
-  - Open-Source
-  - Human Feedback
+  - open source
+  - human feedback
   - Fine-Tuning
   - Hugging Face
 tags_raw:
@@ -163,7 +163,7 @@ apis:
   humanURL: https://docs.argilla.io/latest/
   baseURL: https://argilla.io
   tags:
-  - Questions
+  - questions
   tags_raw:
   - questions
   properties:
@@ -227,7 +227,7 @@ apis:
   humanURL: https://docs.argilla.io/latest/
   baseURL: https://argilla.io
   tags:
-  - Suggestions
+  - suggestions
   tags_raw:
   - suggestions
   properties:
@@ -330,8 +330,6 @@ common:
     url: vocabulary/argilla-vocabulary.yml
   - type: JSONLDContext
     url: json-ld/argilla-context.jsonld
-  - type: Blog
-    url: blogs/blogs.json
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
