@@ -43,14 +43,14 @@ description: >
   recently joined Hugging Face, deepening its integration with the broader open
   ML ecosystem.
 tags:
-  - data annotation
+  - Data Annotation
   - LLM
   - NLP
   - RLHF
-  - machine learning
+  - Machine-Learning
   - Datasets
-  - open source
-  - human feedback
+  - Open-Source
+  - Human Feedback
   - Fine-Tuning
   - Hugging Face
 tags_raw:
@@ -163,7 +163,7 @@ apis:
   humanURL: https://docs.argilla.io/latest/
   baseURL: https://argilla.io
   tags:
-  - questions
+  - Questions
   tags_raw:
   - questions
   properties:
@@ -227,7 +227,7 @@ apis:
   humanURL: https://docs.argilla.io/latest/
   baseURL: https://argilla.io
   tags:
-  - suggestions
+  - Suggestions
   tags_raw:
   - suggestions
   properties:
