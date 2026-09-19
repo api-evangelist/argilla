@@ -290,7 +290,7 @@ apis:
   humanURL: https://docs.argilla.io/latest/
   baseURL: https://argilla.io
   tags:
-  - Workspaces
+  - Workspace
   tags_raw:
   - workspaces
   properties:
