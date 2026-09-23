@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Argilla v1 Authentication fields API
+  title: Argilla v1 Fields API
   description: Argilla Server API v1
   version: 2.8.0
   license:
@@ -13,12 +13,12 @@ servers:
 - url: https://argilla.io/api/v1
   description: Argilla REST API v1
 tags:
-- name: fields
+- name: Fields
 paths:
   /fields/{field_id}:
     patch:
       tags:
-      - fields
+      - Fields
       summary: Update Field
       operationId: update_field_fields__field_id__patch
       security:
@@ -99,7 +99,7 @@ paths:
           description: Internal Server Error
     delete:
       tags:
-      - fields
+      - Fields
       summary: Delete Field
       operationId: delete_field_fields__field_id__delete
       security:
@@ -174,6 +174,18 @@ paths:
           description: Internal Server Error
 components:
   schemas:
+    ImageFieldSettingsUpdate:
+      properties:
+        type:
+          type: string
+          enum:
+          - image
+          const: image
+          title: Type
+      type: object
+      required:
+      - type
+      title: ImageFieldSettingsUpdate
     CustomFieldSettings:
       properties:
         type:
@@ -198,11 +210,12 @@ components:
       properties:
         title:
           title: Title
-          type: string
+          type:
+          - string
+          - 'null'
           maxLength: 500
           minLength: 1
           description: The title of the field
-          nullable: true
         settings:
           title: Settings
           oneOf:
@@ -217,10 +230,9 @@ components:
               custom: '#/components/schemas/CustomFieldSettingsUpdate'
               image: '#/components/schemas/ImageFieldSettingsUpdate'
               text: '#/components/schemas/TextFieldSettingsUpdate'
-          nullable: true
       type: object
       title: FieldUpdate
-    ImageFieldSettingsUpdate:
+    ImageFieldSettings:
       properties:
         type:
           type: string
@@ -231,7 +243,23 @@ components:
       type: object
       required:
       - type
-      title: ImageFieldSettingsUpdate
+      title: ImageFieldSettings
+    TextFieldSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - text
+          const: text
+          title: Type
+        use_markdown:
+          type: boolean
+          title: Use Markdown
+      type: object
+      required:
+      - type
+      - use_markdown
+      title: TextFieldSettings
     Field:
       properties:
         id:
@@ -284,6 +312,22 @@ components:
       - inserted_at
       - updated_at
       title: Field
+    TextFieldSettingsUpdate:
+      properties:
+        type:
+          type: string
+          enum:
+          - text
+          const: text
+          title: Type
+        use_markdown:
+          type: boolean
+          title: Use Markdown
+      type: object
+      required:
+      - type
+      - use_markdown
+      title: TextFieldSettingsUpdate
     CustomFieldSettingsUpdate:
       properties:
         type:
@@ -336,50 +380,6 @@ components:
       - type
       - use_markdown
       title: ChatFieldSettingsUpdate
-    TextFieldSettingsUpdate:
-      properties:
-        type:
-          type: string
-          enum:
-          - text
-          const: text
-          title: Type
-        use_markdown:
-          type: boolean
-          title: Use Markdown
-      type: object
-      required:
-      - type
-      - use_markdown
-      title: TextFieldSettingsUpdate
-    ImageFieldSettings:
-      properties:
-        type:
-          type: string
-          enum:
-          - image
-          const: image
-          title: Type
-      type: object
-      required:
-      - type
-      title: ImageFieldSettings
-    TextFieldSettings:
-      properties:
-        type:
-          type: string
-          enum:
-          - text
-          const: text
-          title: Type
-        use_markdown:
-          type: boolean
-          title: Use Markdown
-      type: object
-      required:
-      - type
-      - use_markdown
-      title: TextFieldSettings
   securitySchemes:
     APIKeyHeader:
       type: apiKey

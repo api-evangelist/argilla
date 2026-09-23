@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Argilla v1 Authentication suggestions API
+  title: Argilla v1 Suggestions API
   description: Argilla Server API v1
   version: 2.8.0
   license:
@@ -13,12 +13,12 @@ servers:
 - url: https://argilla.io/api/v1
   description: Argilla REST API v1
 tags:
-- name: suggestions
+- name: Suggestions
 paths:
   /suggestions/{suggestion_id}:
     delete:
       tags:
-      - suggestions
+      - Suggestions
       summary: Delete Suggestion
       operationId: delete_suggestion_suggestions__suggestion_id__delete
       security:
@@ -93,12 +93,6 @@ paths:
           description: Internal Server Error
 components:
   schemas:
-    SuggestionType:
-      type: string
-      enum:
-      - model
-      - human
-      title: SuggestionType
     Suggestion:
       properties:
         question_id:
@@ -107,13 +101,13 @@ components:
           title: Question Id
         type:
           $ref: '#/components/schemas/SuggestionType'
-          nullable: true
         value:
           title: Value
         agent:
           title: Agent
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         score:
           title: Score
           anyOf:
@@ -121,7 +115,6 @@ components:
           - items:
               type: number
             type: array
-          nullable: true
         id:
           type: string
           format: uuid
@@ -142,6 +135,12 @@ components:
       - inserted_at
       - updated_at
       title: Suggestion
+    SuggestionType:
+      type: string
+      enum:
+      - model
+      - human
+      title: SuggestionType
   securitySchemes:
     APIKeyHeader:
       type: apiKey

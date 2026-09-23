@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Argilla v1 Authentication metadata properties API
+  title: Argilla v1 metadata properties API
   description: Argilla Server API v1
   version: 2.8.0
   license:
@@ -260,117 +260,6 @@ paths:
           description: Internal Server Error
 components:
   schemas:
-    MetadataPropertyUpdate:
-      properties:
-        title:
-          title: Title
-          type: string
-          maxLength: 500
-          minLength: 1
-          description: The title of the metadata property
-          nullable: true
-        visible_for_annotators:
-          title: Visible For Annotators
-          type: boolean
-          nullable: true
-      type: object
-      title: MetadataPropertyUpdate
-    TermsMetadataProperty:
-      properties:
-        type:
-          type: string
-          enum:
-          - terms
-          const: terms
-          title: Type
-        values:
-          title: Values
-          items: {}
-          type: array
-          nullable: true
-      type: object
-      required:
-      - type
-      title: TermsMetadataProperty
-    IntegerMetadataMetrics:
-      properties:
-        min:
-          title: Min
-          type: integer
-          nullable: true
-        max:
-          title: Max
-          type: integer
-          nullable: true
-        type:
-          type: string
-          enum:
-          - integer
-          const: integer
-          title: Type
-          default: integer
-      type: object
-      title: IntegerMetadataMetrics
-    FloatMetadataMetrics:
-      properties:
-        min:
-          title: Min
-          type: number
-          nullable: true
-        max:
-          title: Max
-          type: number
-          nullable: true
-        type:
-          type: string
-          enum:
-          - float
-          const: float
-          title: Type
-          default: float
-      type: object
-      title: FloatMetadataMetrics
-    TermsMetadataMetrics:
-      properties:
-        type:
-          type: string
-          enum:
-          - terms
-          const: terms
-          title: Type
-          default: terms
-        total:
-          type: integer
-          title: Total
-        values:
-          items:
-            $ref: '#/components/schemas/TermCount'
-          type: array
-          title: Values
-      type: object
-      required:
-      - total
-      title: TermsMetadataMetrics
-    FloatMetadataProperty:
-      properties:
-        type:
-          type: string
-          enum:
-          - float
-          const: float
-          title: Type
-        min:
-          title: Min
-          type: number
-          nullable: true
-        max:
-          title: Max
-          type: number
-          nullable: true
-      type: object
-      required:
-      - type
-      title: FloatMetadataProperty
     MetadataProperty:
       properties:
         id:
@@ -421,6 +310,105 @@ components:
       - inserted_at
       - updated_at
       title: MetadataProperty
+    IntegerMetadataProperty:
+      properties:
+        type:
+          type: string
+          enum:
+          - integer
+          const: integer
+          title: Type
+        min:
+          title: Min
+          type:
+          - integer
+          - 'null'
+        max:
+          title: Max
+          type:
+          - integer
+          - 'null'
+      type: object
+      required:
+      - type
+      title: IntegerMetadataProperty
+    MetadataPropertyUpdate:
+      properties:
+        title:
+          title: Title
+          type:
+          - string
+          - 'null'
+          maxLength: 500
+          minLength: 1
+          description: The title of the metadata property
+        visible_for_annotators:
+          title: Visible For Annotators
+          type:
+          - boolean
+          - 'null'
+      type: object
+      title: MetadataPropertyUpdate
+    FloatMetadataMetrics:
+      properties:
+        min:
+          title: Min
+          type:
+          - number
+          - 'null'
+        max:
+          title: Max
+          type:
+          - number
+          - 'null'
+        type:
+          type: string
+          enum:
+          - float
+          const: float
+          title: Type
+          default: float
+      type: object
+      title: FloatMetadataMetrics
+    TermsMetadataMetrics:
+      properties:
+        type:
+          type: string
+          enum:
+          - terms
+          const: terms
+          title: Type
+          default: terms
+        total:
+          type: integer
+          title: Total
+        values:
+          items:
+            $ref: '#/components/schemas/TermCount'
+          type: array
+          title: Values
+      type: object
+      required:
+      - total
+      title: TermsMetadataMetrics
+    TermsMetadataProperty:
+      properties:
+        type:
+          type: string
+          enum:
+          - terms
+          const: terms
+          title: Type
+        values:
+          title: Values
+          items: {}
+          type:
+          - array
+          - 'null'
+      type: object
+      required:
+      - type
+      title: TermsMetadataProperty
     TermCount:
       properties:
         term:
@@ -433,26 +421,49 @@ components:
       - term
       - count
       title: TermCount
-    IntegerMetadataProperty:
+    IntegerMetadataMetrics:
       properties:
+        min:
+          title: Min
+          type:
+          - integer
+          - 'null'
+        max:
+          title: Max
+          type:
+          - integer
+          - 'null'
         type:
           type: string
           enum:
           - integer
           const: integer
           title: Type
+          default: integer
+      type: object
+      title: IntegerMetadataMetrics
+    FloatMetadataProperty:
+      properties:
+        type:
+          type: string
+          enum:
+          - float
+          const: float
+          title: Type
         min:
           title: Min
-          type: integer
-          nullable: true
+          type:
+          - number
+          - 'null'
         max:
           title: Max
-          type: integer
-          nullable: true
+          type:
+          - number
+          - 'null'
       type: object
       required:
       - type
-      title: IntegerMetadataProperty
+      title: FloatMetadataProperty
   securitySchemes:
     APIKeyHeader:
       type: apiKey

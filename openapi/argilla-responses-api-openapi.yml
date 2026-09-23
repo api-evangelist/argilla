@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Argilla v1 Authentication responses API
+  title: Argilla v1 Responses API
   description: Argilla Server API v1
   version: 2.8.0
   license:
@@ -13,12 +13,12 @@ servers:
 - url: https://argilla.io/api/v1
   description: Argilla REST API v1
 tags:
-- name: responses
+- name: Responses
 paths:
   /me/responses/bulk:
     post:
       tags:
-      - responses
+      - Responses
       summary: Create Current User Responses Bulk
       operationId: create_current_user_responses_bulk_me_responses_bulk_post
       requestBody:
@@ -92,7 +92,7 @@ paths:
   /responses/{response_id}:
     put:
       tags:
-      - responses
+      - Responses
       summary: Update Response
       operationId: update_response_responses__response_id__put
       security:
@@ -183,7 +183,7 @@ paths:
           description: Internal Server Error
     delete:
       tags:
-      - responses
+      - Responses
       summary: Delete Response
       operationId: delete_response_responses__response_id__delete
       security:
@@ -258,36 +258,38 @@ paths:
           description: Internal Server Error
 components:
   schemas:
-    ResponsesBulk:
+    ResponseValue:
       properties:
-        items:
-          items:
-            $ref: '#/components/schemas/ResponseBulk'
-          type: array
-          title: Items
+        value:
+          title: Value
       type: object
       required:
-      - items
-      title: ResponsesBulk
-    SpanQuestionResponseValueItem:
+      - value
+      title: ResponseValue
+    DraftResponseUpsert:
       properties:
-        label:
+        values:
+          title: Values
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValueUpdate'
+          type:
+          - object
+          - 'null'
+        status:
           type: string
-          title: Label
-        start:
-          type: integer
-          minimum: 0.0
-          title: Start
-        end:
-          type: integer
-          minimum: 1.0
-          title: End
+          enum:
+          - draft
+          const: draft
+          title: Status
+        record_id:
+          type: string
+          format: uuid
+          title: Record Id
       type: object
       required:
-      - label
-      - start
-      - end
-      title: SpanQuestionResponseValueItem
+      - status
+      - record_id
+      title: DraftResponseUpsert
     Response:
       properties:
         id:
@@ -298,8 +300,9 @@ components:
           title: Values
           additionalProperties:
             $ref: '#/components/schemas/ResponseValue'
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
         status:
           $ref: '#/components/schemas/ResponseStatus'
         record_id:
@@ -345,6 +348,25 @@ components:
       - values
       - status
       title: SubmittedResponseUpdate
+    DiscardedResponseUpdate:
+      properties:
+        values:
+          title: Values
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValueUpdate'
+          type:
+          - object
+          - 'null'
+        status:
+          type: string
+          enum:
+          - discarded
+          const: discarded
+          title: Status
+      type: object
+      required:
+      - status
+      title: DiscardedResponseUpdate
     SubmittedResponseUpsert:
       properties:
         values:
@@ -368,19 +390,60 @@ components:
       - status
       - record_id
       title: SubmittedResponseUpsert
-    DraftResponseUpsert:
+    SpanQuestionResponseValueItem:
+      properties:
+        label:
+          type: string
+          title: Label
+        start:
+          type: integer
+          minimum: 0.0
+          title: Start
+        end:
+          type: integer
+          minimum: 1.0
+          title: End
+      type: object
+      required:
+      - label
+      - start
+      - end
+      title: SpanQuestionResponseValueItem
+    ResponseValueUpdate:
+      properties:
+        value:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/SpanQuestionResponseValueItem'
+            type: array
+            maxItems: 10000
+          - items:
+              $ref: '#/components/schemas/RankingQuestionResponseValueItem'
+            type: array
+          - items:
+              type: string
+            type: array
+          - type: integer
+          - type: string
+          title: Value
+      type: object
+      required:
+      - value
+      title: ResponseValueUpdate
+    DiscardedResponseUpsert:
       properties:
         values:
           title: Values
           additionalProperties:
             $ref: '#/components/schemas/ResponseValueUpdate'
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
         status:
           type: string
           enum:
-          - draft
-          const: draft
+          - discarded
+          const: discarded
           title: Status
         record_id:
           type: string
@@ -390,7 +453,7 @@ components:
       required:
       - status
       - record_id
-      title: DraftResponseUpsert
+      title: DiscardedResponseUpsert
     ResponsesBulkCreate:
       properties:
         items:
@@ -413,93 +476,30 @@ components:
       required:
       - items
       title: ResponsesBulkCreate
+    ResponseStatus:
+      type: string
+      enum:
+      - draft
+      - submitted
+      - discarded
+      title: ResponseStatus
     ResponseBulk:
       properties:
         item:
           $ref: '#/components/schemas/Response'
-          nullable: true
         error:
           $ref: '#/components/schemas/ResponseBulkError'
-          nullable: true
       type: object
       title: ResponseBulk
-    ResponseValueUpdate:
-      properties:
-        value:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/SpanQuestionResponseValueItem'
-            type: array
-            maxItems: 10000
-          - items:
-              $ref: '#/components/schemas/RankingQuestionResponseValueItem'
-            type: array
-          - items:
-              type: string
-            type: array
-          - type: integer
-          - type: string
-          title: Value
-      type: object
-      required:
-      - value
-      title: ResponseValueUpdate
-    RankingQuestionResponseValueItem:
-      properties:
-        value:
-          type: string
-          title: Value
-        rank:
-          title: Rank
-          type: integer
-          nullable: true
-      type: object
-      required:
-      - value
-      title: RankingQuestionResponseValueItem
-    ResponseValue:
-      properties:
-        value:
-          title: Value
-      type: object
-      required:
-      - value
-      title: ResponseValue
-    ResponseBulkError:
-      properties:
-        detail:
-          type: string
-          title: Detail
-      type: object
-      required:
-      - detail
-      title: ResponseBulkError
-    DiscardedResponseUpdate:
-      properties:
-        values:
-          title: Values
-          additionalProperties:
-            $ref: '#/components/schemas/ResponseValueUpdate'
-          type: object
-          nullable: true
-        status:
-          type: string
-          enum:
-          - discarded
-          const: discarded
-          title: Status
-      type: object
-      required:
-      - status
-      title: DiscardedResponseUpdate
     DraftResponseUpdate:
       properties:
         values:
           title: Values
           additionalProperties:
             $ref: '#/components/schemas/ResponseValueUpdate'
-          type: object
-          nullable: true
+          type:
+          - object
+          - 'null'
         status:
           type: string
           enum:
@@ -510,36 +510,40 @@ components:
       required:
       - status
       title: DraftResponseUpdate
-    DiscardedResponseUpsert:
+    ResponseBulkError:
       properties:
-        values:
-          title: Values
-          additionalProperties:
-            $ref: '#/components/schemas/ResponseValueUpdate'
-          type: object
-          nullable: true
-        status:
+        detail:
           type: string
-          enum:
-          - discarded
-          const: discarded
-          title: Status
-        record_id:
-          type: string
-          format: uuid
-          title: Record Id
+          title: Detail
       type: object
       required:
-      - status
-      - record_id
-      title: DiscardedResponseUpsert
-    ResponseStatus:
-      type: string
-      enum:
-      - draft
-      - submitted
-      - discarded
-      title: ResponseStatus
+      - detail
+      title: ResponseBulkError
+    ResponsesBulk:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/ResponseBulk'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: ResponsesBulk
+    RankingQuestionResponseValueItem:
+      properties:
+        value:
+          type: string
+          title: Value
+        rank:
+          title: Rank
+          type:
+          - integer
+          - 'null'
+      type: object
+      required:
+      - value
+      title: RankingQuestionResponseValueItem
   securitySchemes:
     APIKeyHeader:
       type: apiKey

@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Argilla v1 Authentication jobs API
+  title: Argilla v1 Jobs API
   description: Argilla Server API v1
   version: 2.8.0
   license:
@@ -13,12 +13,12 @@ servers:
 - url: https://argilla.io/api/v1
   description: Argilla REST API v1
 tags:
-- name: jobs
+- name: Jobs
 paths:
   /jobs/{job_id}:
     get:
       tags:
-      - jobs
+      - Jobs
       summary: Get Job
       operationId: get_job_jobs__job_id__get
       security:
@@ -92,18 +92,6 @@ paths:
           description: Internal Server Error
 components:
   schemas:
-    Job:
-      properties:
-        id:
-          type: string
-          title: Id
-        status:
-          $ref: '#/components/schemas/JobStatus'
-      type: object
-      required:
-      - id
-      - status
-      title: Job
     JobStatus:
       type: string
       enum:
@@ -117,6 +105,18 @@ components:
       - canceled
       title: JobStatus
       description: The Status of Job within its lifecycle at any given time.
+    Job:
+      properties:
+        id:
+          type: string
+          title: Id
+        status:
+          $ref: '#/components/schemas/JobStatus'
+      type: object
+      required:
+      - id
+      - status
+      title: Job
   securitySchemes:
     APIKeyHeader:
       type: apiKey

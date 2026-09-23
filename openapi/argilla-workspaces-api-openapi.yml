@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Argilla v1 Authentication workspaces API
+  title: Argilla v1 Workspaces API
   description: Argilla Server API v1
   version: 2.8.0
   license:
@@ -13,12 +13,12 @@ servers:
 - url: https://argilla.io/api/v1
   description: Argilla REST API v1
 tags:
-- name: workspaces
+- name: Workspaces
 paths:
   /workspaces/{workspace_id}:
     get:
       tags:
-      - workspaces
+      - Workspaces
       summary: Get Workspace
       operationId: get_workspace_workspaces__workspace_id__get
       security:
@@ -93,7 +93,7 @@ paths:
           description: Internal Server Error
     delete:
       tags:
-      - workspaces
+      - Workspaces
       summary: Delete Workspace
       operationId: delete_workspace_workspaces__workspace_id__delete
       security:
@@ -169,7 +169,7 @@ paths:
   /workspaces:
     post:
       tags:
-      - workspaces
+      - Workspaces
       summary: Create Workspace
       operationId: create_workspace_workspaces_post
       requestBody:
@@ -243,7 +243,7 @@ paths:
   /me/workspaces:
     get:
       tags:
-      - workspaces
+      - Workspaces
       summary: List Workspaces Me
       operationId: list_workspaces_me_me_workspaces_get
       responses:
@@ -311,7 +311,7 @@ paths:
   /workspaces/{workspace_id}/users:
     get:
       tags:
-      - workspaces
+      - Workspaces
       summary: List Workspace Users
       operationId: list_workspace_users_workspaces__workspace_id__users_get
       security:
@@ -386,7 +386,7 @@ paths:
           description: Internal Server Error
     post:
       tags:
-      - workspaces
+      - Workspaces
       summary: Create Workspace User
       operationId: create_workspace_user_workspaces__workspace_id__users_post
       security:
@@ -468,7 +468,7 @@ paths:
   /workspaces/{workspace_id}/users/{user_id}:
     delete:
       tags:
-      - workspaces
+      - Workspaces
       summary: Delete Workspace User
       operationId: delete_workspace_user_workspaces__workspace_id__users__user_id__delete
       security:
@@ -550,6 +550,13 @@ paths:
           description: Internal Server Error
 components:
   schemas:
+    UserRole:
+      type: string
+      enum:
+      - owner
+      - admin
+      - annotator
+      title: UserRole
     User:
       properties:
         id:
@@ -561,8 +568,9 @@ components:
           title: First Name
         last_name:
           title: Last Name
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         username:
           type: string
           title: Username
@@ -589,6 +597,30 @@ components:
       - inserted_at
       - updated_at
       title: User
+    Workspace:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - name
+      - inserted_at
+      - updated_at
+      title: Workspace
     WorkspaceUserCreate:
       properties:
         user_id:
@@ -599,13 +631,6 @@ components:
       required:
       - user_id
       title: WorkspaceUserCreate
-    UserRole:
-      type: string
-      enum:
-      - owner
-      - admin
-      - annotator
-      title: UserRole
     Users:
       properties:
         items:
@@ -632,9 +657,10 @@ components:
       properties:
         id:
           title: Id
-          type: string
+          type:
+          - string
+          - 'null'
           format: uuid
-          nullable: true
         name:
           type: string
           minLength: 1
@@ -643,30 +669,6 @@ components:
       required:
       - name
       title: WorkspaceCreate
-    Workspace:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        name:
-          type: string
-          title: Name
-        inserted_at:
-          type: string
-          format: date-time
-          title: Inserted At
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-      type: object
-      required:
-      - id
-      - name
-      - inserted_at
-      - updated_at
-      title: Workspace
   securitySchemes:
     APIKeyHeader:
       type: apiKey

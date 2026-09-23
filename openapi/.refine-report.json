@@ -1,21 +1,7 @@
 {
   "provider": "argilla",
   "sources": [
-    "argilla-authentication-api-openapi.yml",
-    "argilla-datasets-api-openapi.yml",
-    "argilla-fields-api-openapi.yml",
-    "argilla-info-api-openapi.yml",
-    "argilla-jobs-api-openapi.yml",
-    "argilla-metadata-properties-api-openapi.yml",
-    "argilla-questions-api-openapi.yml",
-    "argilla-records-api-openapi.yml",
-    "argilla-responses-api-openapi.yml",
-    "argilla-settings-api-openapi.yml",
-    "argilla-suggestions-api-openapi.yml",
-    "argilla-users-api-openapi.yml",
-    "argilla-vectors-settings-api-openapi.yml",
-    "argilla-webhooks-api-openapi.yml",
-    "argilla-workspaces-api-openapi.yml"
+    "_original/argilla-rest-api-openapi.yml"
   ],
   "outputs": [
     "argilla-authentication-api-openapi.yml",
@@ -37,6 +23,41 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "argilla-rest-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "argilla-rest-api-openapi.yml: declared missing tag: Authentication",
+    "argilla-rest-api-openapi.yml: declared missing tag: datasets",
+    "argilla-rest-api-openapi.yml: declared missing tag: fields",
+    "argilla-rest-api-openapi.yml: declared missing tag: info",
+    "argilla-rest-api-openapi.yml: declared missing tag: jobs",
+    "argilla-rest-api-openapi.yml: declared missing tag: metadata properties",
+    "argilla-rest-api-openapi.yml: declared missing tag: questions",
+    "argilla-rest-api-openapi.yml: declared missing tag: records",
+    "argilla-rest-api-openapi.yml: declared missing tag: responses",
+    "argilla-rest-api-openapi.yml: declared missing tag: settings",
+    "argilla-rest-api-openapi.yml: declared missing tag: suggestions",
+    "argilla-rest-api-openapi.yml: declared missing tag: users",
+    "argilla-rest-api-openapi.yml: declared missing tag: vectors-settings",
+    "argilla-rest-api-openapi.yml: declared missing tag: webhooks",
+    "argilla-rest-api-openapi.yml: declared missing tag: workspaces",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "argilla-authentication-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "argilla-datasets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "argilla-fields-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "argilla-info-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "argilla-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "argilla-metadata-properties-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "argilla-questions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "argilla-records-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "argilla-responses-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "argilla-settings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "argilla-suggestions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "argilla-users-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "argilla-vectors-settings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "argilla-webhooks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "argilla-workspaces-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
