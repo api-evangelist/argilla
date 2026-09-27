@@ -174,18 +174,38 @@ paths:
           description: Internal Server Error
 components:
   schemas:
-    ImageFieldSettingsUpdate:
+    ChatFieldSettingsUpdate:
       properties:
         type:
           type: string
           enum:
-          - image
-          const: image
+          - chat
+          const: chat
           title: Type
+        use_markdown:
+          type: boolean
+          title: Use Markdown
       type: object
       required:
       - type
-      title: ImageFieldSettingsUpdate
+      - use_markdown
+      title: ChatFieldSettingsUpdate
+    TextFieldSettingsUpdate:
+      properties:
+        type:
+          type: string
+          enum:
+          - text
+          const: text
+          title: Type
+        use_markdown:
+          type: boolean
+          title: Use Markdown
+      type: object
+      required:
+      - type
+      - use_markdown
+      title: TextFieldSettingsUpdate
     CustomFieldSettings:
       properties:
         type:
@@ -206,6 +226,34 @@ components:
       - template
       - advanced_mode
       title: CustomFieldSettings
+    TextFieldSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - text
+          const: text
+          title: Type
+        use_markdown:
+          type: boolean
+          title: Use Markdown
+      type: object
+      required:
+      - type
+      - use_markdown
+      title: TextFieldSettings
+    ImageFieldSettingsUpdate:
+      properties:
+        type:
+          type: string
+          enum:
+          - image
+          const: image
+          title: Type
+      type: object
+      required:
+      - type
+      title: ImageFieldSettingsUpdate
     FieldUpdate:
       properties:
         title:
@@ -232,25 +280,13 @@ components:
               text: '#/components/schemas/TextFieldSettingsUpdate'
       type: object
       title: FieldUpdate
-    ImageFieldSettings:
+    ChatFieldSettings:
       properties:
         type:
           type: string
           enum:
-          - image
-          const: image
-          title: Type
-      type: object
-      required:
-      - type
-      title: ImageFieldSettings
-    TextFieldSettings:
-      properties:
-        type:
-          type: string
-          enum:
-          - text
-          const: text
+          - chat
+          const: chat
           title: Type
         use_markdown:
           type: boolean
@@ -259,7 +295,7 @@ components:
       required:
       - type
       - use_markdown
-      title: TextFieldSettings
+      title: ChatFieldSettings
     Field:
       properties:
         id:
@@ -312,22 +348,18 @@ components:
       - inserted_at
       - updated_at
       title: Field
-    TextFieldSettingsUpdate:
+    ImageFieldSettings:
       properties:
         type:
           type: string
           enum:
-          - text
-          const: text
+          - image
+          const: image
           title: Type
-        use_markdown:
-          type: boolean
-          title: Use Markdown
       type: object
       required:
       - type
-      - use_markdown
-      title: TextFieldSettingsUpdate
+      title: ImageFieldSettings
     CustomFieldSettingsUpdate:
       properties:
         type:
@@ -348,38 +380,6 @@ components:
       - template
       - advanced_mode
       title: CustomFieldSettingsUpdate
-    ChatFieldSettings:
-      properties:
-        type:
-          type: string
-          enum:
-          - chat
-          const: chat
-          title: Type
-        use_markdown:
-          type: boolean
-          title: Use Markdown
-      type: object
-      required:
-      - type
-      - use_markdown
-      title: ChatFieldSettings
-    ChatFieldSettingsUpdate:
-      properties:
-        type:
-          type: string
-          enum:
-          - chat
-          const: chat
-          title: Type
-        use_markdown:
-          type: boolean
-          title: Use Markdown
-      type: object
-      required:
-      - type
-      - use_markdown
-      title: ChatFieldSettingsUpdate
   securitySchemes:
     APIKeyHeader:
       type: apiKey

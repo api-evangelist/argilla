@@ -550,6 +550,17 @@ paths:
           description: Internal Server Error
 components:
   schemas:
+    Workspaces:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Workspace'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Workspaces
     UserRole:
       type: string
       enum:
@@ -557,6 +568,22 @@ components:
       - admin
       - annotator
       title: UserRole
+    WorkspaceCreate:
+      properties:
+        id:
+          title: Id
+          type:
+          - string
+          - 'null'
+          format: uuid
+        name:
+          type: string
+          minLength: 1
+          title: Name
+      type: object
+      required:
+      - name
+      title: WorkspaceCreate
     User:
       properties:
         id:
@@ -621,16 +648,6 @@ components:
       - inserted_at
       - updated_at
       title: Workspace
-    WorkspaceUserCreate:
-      properties:
-        user_id:
-          type: string
-          format: uuid
-          title: User Id
-      type: object
-      required:
-      - user_id
-      title: WorkspaceUserCreate
     Users:
       properties:
         items:
@@ -642,33 +659,16 @@ components:
       required:
       - items
       title: Users
-    Workspaces:
+    WorkspaceUserCreate:
       properties:
-        items:
-          items:
-            $ref: '#/components/schemas/Workspace'
-          type: array
-          title: Items
-      type: object
-      required:
-      - items
-      title: Workspaces
-    WorkspaceCreate:
-      properties:
-        id:
-          title: Id
-          type:
-          - string
-          - 'null'
-          format: uuid
-        name:
+        user_id:
           type: string
-          minLength: 1
-          title: Name
+          format: uuid
+          title: User Id
       type: object
       required:
-      - name
-      title: WorkspaceCreate
+      - user_id
+      title: WorkspaceUserCreate
   securitySchemes:
     APIKeyHeader:
       type: apiKey

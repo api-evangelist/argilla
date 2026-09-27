@@ -48,9 +48,9 @@ tags:
   - LLM
   - NLP
   - RLHF
-  - Machine-Learning
+  - Machine Learning
   - Datasets
-  - Open-Source
+  - Open Source
   - Human Feedback
   - Fine-Tuning
   - Hugging Face
@@ -65,12 +65,13 @@ tags_raw:
   - human feedback
   - fine-tuning
   - Hugging Face
+  - Machine-Learning
+  - Open-Source
 apis:
 - aid: argilla:argilla-authentication-api
   name: Argilla Authentication API
   description: The Authentication API from Argilla — 4 operation(s) for authentication.
   humanURL: https://docs.argilla.io/latest/
-  baseURL: https://argilla.io
   tags:
   - Authentication
   properties:
@@ -81,10 +82,9 @@ apis:
   - type: OpenAPISpec
     url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-datasets-api
-  name: Argilla datasets API
+  name: Argilla Datasets API
   description: The datasets API from Argilla — 19 operation(s) for datasets.
   humanURL: https://docs.argilla.io/latest/
-  baseURL: https://argilla.io
   tags:
   - Datasets
   tags_raw:
@@ -97,10 +97,9 @@ apis:
   - type: OpenAPISpec
     url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-fields-api
-  name: Argilla fields API
+  name: Argilla Fields API
   description: The fields API from Argilla — 1 operation(s) for fields.
   humanURL: https://docs.argilla.io/latest/
-  baseURL: https://argilla.io
   tags:
   - Fields
   tags_raw:
@@ -113,10 +112,9 @@ apis:
   - type: OpenAPISpec
     url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-info-api
-  name: Argilla info API
+  name: Argilla Info API
   description: The info API from Argilla — 2 operation(s) for info.
   humanURL: https://docs.argilla.io/latest/
-  baseURL: https://argilla.io
   tags:
   - Info
   tags_raw:
@@ -129,10 +127,9 @@ apis:
   - type: OpenAPISpec
     url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-jobs-api
-  name: Argilla jobs API
+  name: Argilla Jobs API
   description: The jobs API from Argilla — 1 operation(s) for jobs.
   humanURL: https://docs.argilla.io/latest/
-  baseURL: https://argilla.io
   tags:
   - Job
   tags_raw:
@@ -148,7 +145,6 @@ apis:
   name: Argilla metadata properties API
   description: The metadata properties API from Argilla — 2 operation(s) for metadata properties.
   humanURL: https://docs.argilla.io/latest/
-  baseURL: https://argilla.io
   tags:
   - metadata properties
   properties:
@@ -159,10 +155,9 @@ apis:
   - type: OpenAPISpec
     url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-questions-api
-  name: Argilla questions API
+  name: Argilla Questions API
   description: The questions API from Argilla — 1 operation(s) for questions.
   humanURL: https://docs.argilla.io/latest/
-  baseURL: https://argilla.io
   tags:
   - Questions
   tags_raw:
@@ -175,10 +170,9 @@ apis:
   - type: OpenAPISpec
     url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-records-api
-  name: Argilla records API
+  name: Argilla Records API
   description: The records API from Argilla — 3 operation(s) for records.
   humanURL: https://docs.argilla.io/latest/
-  baseURL: https://argilla.io
   tags:
   - Records
   tags_raw:
@@ -191,10 +185,9 @@ apis:
   - type: OpenAPISpec
     url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-responses-api
-  name: Argilla responses API
+  name: Argilla Responses API
   description: The responses API from Argilla — 2 operation(s) for responses.
   humanURL: https://docs.argilla.io/latest/
-  baseURL: https://argilla.io
   tags:
   - Responses
   tags_raw:
@@ -207,10 +200,9 @@ apis:
   - type: OpenAPISpec
     url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-settings-api
-  name: Argilla settings API
+  name: Argilla Settings API
   description: The settings API from Argilla — 1 operation(s) for settings.
   humanURL: https://docs.argilla.io/latest/
-  baseURL: https://argilla.io
   tags:
   - Settings
   tags_raw:
@@ -223,10 +215,9 @@ apis:
   - type: OpenAPISpec
     url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-suggestions-api
-  name: Argilla suggestions API
+  name: Argilla Suggestions API
   description: The suggestions API from Argilla — 1 operation(s) for suggestions.
   humanURL: https://docs.argilla.io/latest/
-  baseURL: https://argilla.io
   tags:
   - Suggestions
   tags_raw:
@@ -239,10 +230,9 @@ apis:
   - type: OpenAPISpec
     url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-users-api
-  name: Argilla users API
+  name: Argilla Users API
   description: The users API from Argilla — 4 operation(s) for users.
   humanURL: https://docs.argilla.io/latest/
-  baseURL: https://argilla.io
   tags:
   - User
   tags_raw:
@@ -255,10 +245,9 @@ apis:
   - type: OpenAPISpec
     url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-vectors-settings-api
-  name: Argilla vectors-settings API
+  name: Argilla Vectors Settings API
   description: The vectors-settings API from Argilla — 1 operation(s) for vectors-settings.
   humanURL: https://docs.argilla.io/latest/
-  baseURL: https://argilla.io
   tags:
   - vectors-settings
   properties:
@@ -269,10 +258,9 @@ apis:
   - type: OpenAPISpec
     url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-webhooks-api
-  name: Argilla webhooks API
+  name: Argilla Webhooks API
   description: The webhooks API from Argilla — 3 operation(s) for webhooks.
   humanURL: https://docs.argilla.io/latest/
-  baseURL: https://argilla.io
   tags:
   - Webhook
   tags_raw:
@@ -285,10 +273,9 @@ apis:
   - type: OpenAPISpec
     url: openapi/_original/argilla-rest-api-openapi.yml
 - aid: argilla:argilla-workspaces-api
-  name: Argilla workspaces API
+  name: Argilla Workspaces API
   description: The workspaces API from Argilla — 5 operation(s) for workspaces.
   humanURL: https://docs.argilla.io/latest/
-  baseURL: https://argilla.io
   tags:
   - Workspace
   tags_raw:

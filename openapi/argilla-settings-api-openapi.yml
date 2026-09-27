@@ -95,16 +95,6 @@ components:
           default: false
       type: object
       title: ArgillaSettings
-    Settings:
-      properties:
-        argilla:
-          $ref: '#/components/schemas/ArgillaSettings'
-        huggingface:
-          $ref: '#/components/schemas/HuggingfaceSettings'
-      type: object
-      required:
-      - argilla
-      title: Settings
     HuggingfaceSettings:
       properties:
         space_id:
@@ -150,6 +140,16 @@ components:
       - space_author_name
       - space_persistent_storage_enabled
       title: HuggingfaceSettings
+    Settings:
+      properties:
+        argilla:
+          $ref: '#/components/schemas/ArgillaSettings'
+        huggingface:
+          $ref: '#/components/schemas/HuggingfaceSettings'
+      type: object
+      required:
+      - argilla
+      title: Settings
   securitySchemes:
     APIKeyHeader:
       type: apiKey

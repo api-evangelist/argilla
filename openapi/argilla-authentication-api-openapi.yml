@@ -296,15 +296,6 @@ paths:
           description: Internal Server Error
 components:
   schemas:
-    Provider:
-      properties:
-        name:
-          type: string
-          title: Name
-      type: object
-      required:
-      - name
-      title: Provider
     Token:
       properties:
         access_token:
@@ -319,6 +310,17 @@ components:
       - access_token
       title: Token
       description: Token response model
+    Providers:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Provider'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Providers
     Body_create_token_token_post:
       properties:
         username:
@@ -332,17 +334,15 @@ components:
       - username
       - password
       title: Body_create_token_token_post
-    Providers:
+    Provider:
       properties:
-        items:
-          items:
-            $ref: '#/components/schemas/Provider'
-          type: array
-          title: Items
+        name:
+          type: string
+          title: Name
       type: object
       required:
-      - items
-      title: Providers
+      - name
+      title: Provider
   securitySchemes:
     APIKeyHeader:
       type: apiKey

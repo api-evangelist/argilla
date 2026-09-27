@@ -260,6 +260,104 @@ paths:
           description: Internal Server Error
 components:
   schemas:
+    TermCount:
+      properties:
+        term:
+          title: Term
+        count:
+          type: integer
+          title: Count
+      type: object
+      required:
+      - term
+      - count
+      title: TermCount
+    IntegerMetadataProperty:
+      properties:
+        type:
+          type: string
+          enum:
+          - integer
+          const: integer
+          title: Type
+        min:
+          title: Min
+          type:
+          - integer
+          - 'null'
+        max:
+          title: Max
+          type:
+          - integer
+          - 'null'
+      type: object
+      required:
+      - type
+      title: IntegerMetadataProperty
+    IntegerMetadataMetrics:
+      properties:
+        min:
+          title: Min
+          type:
+          - integer
+          - 'null'
+        max:
+          title: Max
+          type:
+          - integer
+          - 'null'
+        type:
+          type: string
+          enum:
+          - integer
+          const: integer
+          title: Type
+          default: integer
+      type: object
+      title: IntegerMetadataMetrics
+    FloatMetadataProperty:
+      properties:
+        type:
+          type: string
+          enum:
+          - float
+          const: float
+          title: Type
+        min:
+          title: Min
+          type:
+          - number
+          - 'null'
+        max:
+          title: Max
+          type:
+          - number
+          - 'null'
+      type: object
+      required:
+      - type
+      title: FloatMetadataProperty
+    TermsMetadataMetrics:
+      properties:
+        type:
+          type: string
+          enum:
+          - terms
+          const: terms
+          title: Type
+          default: terms
+        total:
+          type: integer
+          title: Total
+        values:
+          items:
+            $ref: '#/components/schemas/TermCount'
+          type: array
+          title: Values
+      type: object
+      required:
+      - total
+      title: TermsMetadataMetrics
     MetadataProperty:
       properties:
         id:
@@ -310,28 +408,6 @@ components:
       - inserted_at
       - updated_at
       title: MetadataProperty
-    IntegerMetadataProperty:
-      properties:
-        type:
-          type: string
-          enum:
-          - integer
-          const: integer
-          title: Type
-        min:
-          title: Min
-          type:
-          - integer
-          - 'null'
-        max:
-          title: Max
-          type:
-          - integer
-          - 'null'
-      type: object
-      required:
-      - type
-      title: IntegerMetadataProperty
     MetadataPropertyUpdate:
       properties:
         title:
@@ -370,27 +446,6 @@ components:
           default: float
       type: object
       title: FloatMetadataMetrics
-    TermsMetadataMetrics:
-      properties:
-        type:
-          type: string
-          enum:
-          - terms
-          const: terms
-          title: Type
-          default: terms
-        total:
-          type: integer
-          title: Total
-        values:
-          items:
-            $ref: '#/components/schemas/TermCount'
-          type: array
-          title: Values
-      type: object
-      required:
-      - total
-      title: TermsMetadataMetrics
     TermsMetadataProperty:
       properties:
         type:
@@ -409,61 +464,6 @@ components:
       required:
       - type
       title: TermsMetadataProperty
-    TermCount:
-      properties:
-        term:
-          title: Term
-        count:
-          type: integer
-          title: Count
-      type: object
-      required:
-      - term
-      - count
-      title: TermCount
-    IntegerMetadataMetrics:
-      properties:
-        min:
-          title: Min
-          type:
-          - integer
-          - 'null'
-        max:
-          title: Max
-          type:
-          - integer
-          - 'null'
-        type:
-          type: string
-          enum:
-          - integer
-          const: integer
-          title: Type
-          default: integer
-      type: object
-      title: IntegerMetadataMetrics
-    FloatMetadataProperty:
-      properties:
-        type:
-          type: string
-          enum:
-          - float
-          const: float
-          title: Type
-        min:
-          title: Min
-          type:
-          - number
-          - 'null'
-        max:
-          title: Max
-          type:
-          - number
-          - 'null'
-      type: object
-      required:
-      - type
-      title: FloatMetadataProperty
   securitySchemes:
     APIKeyHeader:
       type: apiKey
