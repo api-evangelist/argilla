@@ -534,98 +534,6 @@ paths:
           description: Internal Server Error
 components:
   schemas:
-    Workspaces:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/Workspace'
-          type: array
-          title: Items
-      type: object
-      required:
-      - items
-      title: Workspaces
-    UserCreate:
-      properties:
-        id:
-          title: Id
-          type:
-          - string
-          - 'null'
-          format: uuid
-        first_name:
-          type: string
-          minLength: 1
-          title: First Name
-          description: The first name for the user
-        last_name:
-          title: Last Name
-          type:
-          - string
-          - 'null'
-          minLength: 1
-          description: The last name for the user
-        username:
-          type: string
-          minLength: 1
-          title: Username
-          description: The username for the user
-        role:
-          $ref: '#/components/schemas/UserRole'
-        password:
-          type: string
-          maxLength: 100
-          minLength: 8
-          title: Password
-          description: The password for the user
-      type: object
-      required:
-      - first_name
-      - username
-      - password
-      title: UserCreate
-    UserRole:
-      type: string
-      enum:
-      - owner
-      - admin
-      - annotator
-      title: UserRole
-    UserUpdate:
-      properties:
-        first_name:
-          title: First Name
-          type:
-          - string
-          - 'null'
-          minLength: 1
-          description: The first name for the user
-        last_name:
-          title: Last Name
-          type:
-          - string
-          - 'null'
-          minLength: 1
-          description: The last name for the user
-        username:
-          title: Username
-          type:
-          - string
-          - 'null'
-          minLength: 1
-          description: The username for the user
-        role:
-          $ref: '#/components/schemas/UserRole'
-        password:
-          title: Password
-          type:
-          - string
-          - 'null'
-          maxLength: 100
-          minLength: 8
-          description: The password for the user
-      type: object
-      title: UserUpdate
     User:
       properties:
         id:
@@ -666,17 +574,6 @@ components:
       - inserted_at
       - updated_at
       title: User
-    Users:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/User'
-          type: array
-          title: Items
-      type: object
-      required:
-      - items
-      title: Users
     Workspace:
       properties:
         id:
@@ -701,6 +598,109 @@ components:
       - inserted_at
       - updated_at
       title: Workspace
+    Workspaces:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Workspace'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Workspaces
+    UserUpdate:
+      properties:
+        first_name:
+          title: First Name
+          type:
+          - string
+          - 'null'
+          minLength: 1
+          description: The first name for the user
+        last_name:
+          title: Last Name
+          type:
+          - string
+          - 'null'
+          minLength: 1
+          description: The last name for the user
+        username:
+          title: Username
+          type:
+          - string
+          - 'null'
+          minLength: 1
+          description: The username for the user
+        role:
+          $ref: '#/components/schemas/UserRole'
+        password:
+          title: Password
+          type:
+          - string
+          - 'null'
+          maxLength: 100
+          minLength: 8
+          description: The password for the user
+      type: object
+      title: UserUpdate
+    UserRole:
+      type: string
+      enum:
+      - owner
+      - admin
+      - annotator
+      title: UserRole
+    Users:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/User'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Users
+    UserCreate:
+      properties:
+        id:
+          title: Id
+          type:
+          - string
+          - 'null'
+          format: uuid
+        first_name:
+          type: string
+          minLength: 1
+          title: First Name
+          description: The first name for the user
+        last_name:
+          title: Last Name
+          type:
+          - string
+          - 'null'
+          minLength: 1
+          description: The last name for the user
+        username:
+          type: string
+          minLength: 1
+          title: Username
+          description: The username for the user
+        role:
+          $ref: '#/components/schemas/UserRole'
+        password:
+          type: string
+          maxLength: 100
+          minLength: 8
+          title: Password
+          description: The password for the user
+      type: object
+      required:
+      - first_name
+      - username
+      - password
+      title: UserCreate
   securitySchemes:
     APIKeyHeader:
       type: apiKey

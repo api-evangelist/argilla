@@ -93,6 +93,12 @@ paths:
           description: Internal Server Error
 components:
   schemas:
+    SuggestionType:
+      type: string
+      enum:
+      - model
+      - human
+      title: SuggestionType
     Suggestion:
       properties:
         question_id:
@@ -135,12 +141,6 @@ components:
       - inserted_at
       - updated_at
       title: Suggestion
-    SuggestionType:
-      type: string
-      enum:
-      - model
-      - human
-      title: SuggestionType
   securitySchemes:
     APIKeyHeader:
       type: apiKey

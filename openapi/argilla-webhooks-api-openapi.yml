@@ -413,64 +413,6 @@ components:
       - url
       - events
       title: WebhookCreate
-    Webhooks:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/Webhook'
-          type: array
-          title: Items
-      type: object
-      required:
-      - items
-      title: Webhooks
-    WebhookEvent:
-      type: string
-      enum:
-      - dataset.created
-      - dataset.updated
-      - dataset.deleted
-      - dataset.published
-      - record.created
-      - record.updated
-      - record.deleted
-      - record.completed
-      - response.created
-      - response.updated
-      - response.deleted
-      title: WebhookEvent
-    WebhookUpdate:
-      properties:
-        url:
-          title: Url
-          type:
-          - string
-          - 'null'
-          maxLength: 2083
-          minLength: 1
-          format: uri
-        events:
-          title: Events
-          items:
-            $ref: '#/components/schemas/WebhookEvent'
-          type:
-          - array
-          - 'null'
-          minItems: 1
-        enabled:
-          title: Enabled
-          type:
-          - boolean
-          - 'null'
-        description:
-          title: Description
-          type:
-          - string
-          - 'null'
-          maxLength: 1000
-          minLength: 1
-      type: object
-      title: WebhookUpdate
     Webhook:
       properties:
         id:
@@ -514,6 +456,64 @@ components:
       - inserted_at
       - updated_at
       title: Webhook
+    Webhooks:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Webhook'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Webhooks
+    WebhookUpdate:
+      properties:
+        url:
+          title: Url
+          type:
+          - string
+          - 'null'
+          maxLength: 2083
+          minLength: 1
+          format: uri
+        events:
+          title: Events
+          items:
+            $ref: '#/components/schemas/WebhookEvent'
+          type:
+          - array
+          - 'null'
+          minItems: 1
+        enabled:
+          title: Enabled
+          type:
+          - boolean
+          - 'null'
+        description:
+          title: Description
+          type:
+          - string
+          - 'null'
+          maxLength: 1000
+          minLength: 1
+      type: object
+      title: WebhookUpdate
+    WebhookEvent:
+      type: string
+      enum:
+      - dataset.created
+      - dataset.updated
+      - dataset.deleted
+      - dataset.published
+      - record.created
+      - record.updated
+      - record.deleted
+      - record.completed
+      - response.created
+      - response.updated
+      - response.deleted
+      title: WebhookEvent
   securitySchemes:
     APIKeyHeader:
       type: apiKey

@@ -550,40 +550,6 @@ paths:
           description: Internal Server Error
 components:
   schemas:
-    Workspaces:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/Workspace'
-          type: array
-          title: Items
-      type: object
-      required:
-      - items
-      title: Workspaces
-    UserRole:
-      type: string
-      enum:
-      - owner
-      - admin
-      - annotator
-      title: UserRole
-    WorkspaceCreate:
-      properties:
-        id:
-          title: Id
-          type:
-          - string
-          - 'null'
-          format: uuid
-        name:
-          type: string
-          minLength: 1
-          title: Name
-      type: object
-      required:
-      - name
-      title: WorkspaceCreate
     User:
       properties:
         id:
@@ -648,6 +614,34 @@ components:
       - inserted_at
       - updated_at
       title: Workspace
+    Workspaces:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Workspace'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Workspaces
+    WorkspaceUserCreate:
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          title: User Id
+      type: object
+      required:
+      - user_id
+      title: WorkspaceUserCreate
+    UserRole:
+      type: string
+      enum:
+      - owner
+      - admin
+      - annotator
+      title: UserRole
     Users:
       properties:
         items:
@@ -659,16 +653,22 @@ components:
       required:
       - items
       title: Users
-    WorkspaceUserCreate:
+    WorkspaceCreate:
       properties:
-        user_id:
-          type: string
+        id:
+          title: Id
+          type:
+          - string
+          - 'null'
           format: uuid
-          title: User Id
+        name:
+          type: string
+          minLength: 1
+          title: Name
       type: object
       required:
-      - user_id
-      title: WorkspaceUserCreate
+      - name
+      title: WorkspaceCreate
   securitySchemes:
     APIKeyHeader:
       type: apiKey

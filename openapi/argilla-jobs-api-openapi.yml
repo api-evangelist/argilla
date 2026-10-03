@@ -92,18 +92,6 @@ paths:
           description: Internal Server Error
 components:
   schemas:
-    Job:
-      properties:
-        id:
-          type: string
-          title: Id
-        status:
-          $ref: '#/components/schemas/JobStatus'
-      type: object
-      required:
-      - id
-      - status
-      title: Job
     JobStatus:
       type: string
       enum:
@@ -117,6 +105,18 @@ components:
       - canceled
       title: JobStatus
       description: The Status of Job within its lifecycle at any given time.
+    Job:
+      properties:
+        id:
+          type: string
+          title: Id
+        status:
+          $ref: '#/components/schemas/JobStatus'
+      type: object
+      required:
+      - id
+      - status
+      title: Job
   securitySchemes:
     APIKeyHeader:
       type: apiKey
