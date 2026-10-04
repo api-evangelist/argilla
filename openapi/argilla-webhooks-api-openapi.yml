@@ -387,32 +387,17 @@ paths:
           description: Internal Server Error
 components:
   schemas:
-    WebhookCreate:
+    Webhooks:
       properties:
-        url:
-          type: string
-          maxLength: 2083
-          minLength: 1
-          format: uri
-          title: Url
-        events:
+        items:
           items:
-            $ref: '#/components/schemas/WebhookEvent'
+            $ref: '#/components/schemas/Webhook'
           type: array
-          minItems: 1
-          title: Events
-        description:
-          title: Description
-          type:
-          - string
-          - 'null'
-          maxLength: 1000
-          minLength: 1
+          title: Items
       type: object
       required:
-      - url
-      - events
-      title: WebhookCreate
+      - items
+      title: Webhooks
     Webhook:
       properties:
         id:
@@ -456,17 +441,21 @@ components:
       - inserted_at
       - updated_at
       title: Webhook
-    Webhooks:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/Webhook'
-          type: array
-          title: Items
-      type: object
-      required:
-      - items
-      title: Webhooks
+    WebhookEvent:
+      type: string
+      enum:
+      - dataset.created
+      - dataset.updated
+      - dataset.deleted
+      - dataset.published
+      - record.created
+      - record.updated
+      - record.deleted
+      - record.completed
+      - response.created
+      - response.updated
+      - response.deleted
+      title: WebhookEvent
     WebhookUpdate:
       properties:
         url:
@@ -499,21 +488,32 @@ components:
           minLength: 1
       type: object
       title: WebhookUpdate
-    WebhookEvent:
-      type: string
-      enum:
-      - dataset.created
-      - dataset.updated
-      - dataset.deleted
-      - dataset.published
-      - record.created
-      - record.updated
-      - record.deleted
-      - record.completed
-      - response.created
-      - response.updated
-      - response.deleted
-      title: WebhookEvent
+    WebhookCreate:
+      properties:
+        url:
+          type: string
+          maxLength: 2083
+          minLength: 1
+          format: uri
+          title: Url
+        events:
+          items:
+            $ref: '#/components/schemas/WebhookEvent'
+          type: array
+          minItems: 1
+          title: Events
+        description:
+          title: Description
+          type:
+          - string
+          - 'null'
+          maxLength: 1000
+          minLength: 1
+      type: object
+      required:
+      - url
+      - events
+      title: WebhookCreate
   securitySchemes:
     APIKeyHeader:
       type: apiKey

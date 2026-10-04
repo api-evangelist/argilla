@@ -550,6 +550,58 @@ paths:
           description: Internal Server Error
 components:
   schemas:
+    Workspaces:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Workspace'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Workspaces
+    Workspace:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - name
+      - inserted_at
+      - updated_at
+      title: Workspace
+    WorkspaceUserCreate:
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          title: User Id
+      type: object
+      required:
+      - user_id
+      title: WorkspaceUserCreate
+    UserRole:
+      type: string
+      enum:
+      - owner
+      - admin
+      - annotator
+      title: UserRole
     User:
       properties:
         id:
@@ -590,69 +642,6 @@ components:
       - inserted_at
       - updated_at
       title: User
-    Workspace:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        name:
-          type: string
-          title: Name
-        inserted_at:
-          type: string
-          format: date-time
-          title: Inserted At
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-      type: object
-      required:
-      - id
-      - name
-      - inserted_at
-      - updated_at
-      title: Workspace
-    Workspaces:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/Workspace'
-          type: array
-          title: Items
-      type: object
-      required:
-      - items
-      title: Workspaces
-    WorkspaceUserCreate:
-      properties:
-        user_id:
-          type: string
-          format: uuid
-          title: User Id
-      type: object
-      required:
-      - user_id
-      title: WorkspaceUserCreate
-    UserRole:
-      type: string
-      enum:
-      - owner
-      - admin
-      - annotator
-      title: UserRole
-    Users:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/User'
-          type: array
-          title: Items
-      type: object
-      required:
-      - items
-      title: Users
     WorkspaceCreate:
       properties:
         id:
@@ -669,6 +658,17 @@ components:
       required:
       - name
       title: WorkspaceCreate
+    Users:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/User'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Users
   securitySchemes:
     APIKeyHeader:
       type: apiKey

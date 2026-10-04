@@ -174,7 +174,57 @@ paths:
           description: Internal Server Error
 components:
   schemas:
-    RatingQuestionSettings:
+    SpanQuestionSettingsUpdate:
+      properties:
+        type:
+          type: string
+          enum:
+          - span
+          const: span
+          title: Type
+        options:
+          title: Options
+          items:
+            $ref: '#/components/schemas/OptionSettings'
+          type:
+          - array
+          - 'null'
+          maxItems: 500
+          minItems: 1
+        visible_options:
+          title: Visible Options
+          type:
+          - integer
+          - 'null'
+          minimum: 3.0
+        allow_overlapping:
+          title: Allow Overlapping
+          type:
+          - boolean
+          - 'null'
+      type: object
+      required:
+      - type
+      title: SpanQuestionSettingsUpdate
+    OptionSettings:
+      properties:
+        value:
+          type: string
+          title: Value
+        text:
+          type: string
+          title: Text
+        description:
+          title: Description
+          type:
+          - string
+          - 'null'
+      type: object
+      required:
+      - value
+      - text
+      title: OptionSettings
+    RatingQuestionSettingsUpdate:
       properties:
         type:
           type: string
@@ -182,16 +232,10 @@ components:
           - rating
           const: rating
           title: Type
-        options:
-          items:
-            $ref: '#/components/schemas/RatingQuestionSettingsOption'
-          type: array
-          title: Options
       type: object
       required:
       - type
-      - options
-      title: RatingQuestionSettings
+      title: RatingQuestionSettingsUpdate
     RatingQuestionSettingsOption:
       properties:
         value:
@@ -201,7 +245,7 @@ components:
       required:
       - value
       title: RatingQuestionSettingsOption
-    TextQuestionSettingsUpdate:
+    TextQuestionSettings:
       properties:
         type:
           type: string
@@ -210,14 +254,123 @@ components:
           const: text
           title: Type
         use_markdown:
+          type: boolean
           title: Use Markdown
-          type:
-          - boolean
-          - 'null'
+          default: false
       type: object
       required:
       - type
-      title: TextQuestionSettingsUpdate
+      title: TextQuestionSettings
+    OptionsOrder:
+      type: string
+      enum:
+      - natural
+      - suggestion
+      title: OptionsOrder
+    SpanQuestionSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - span
+          const: span
+          title: Type
+        field:
+          type: string
+          title: Field
+        options:
+          items:
+            $ref: '#/components/schemas/OptionSettings'
+          type: array
+          title: Options
+        visible_options:
+          title: Visible Options
+          type:
+          - integer
+          - 'null'
+        allow_overlapping:
+          type: boolean
+          title: Allow Overlapping
+          description: Allow spans overlapping
+          default: false
+        allow_character_annotation:
+          type: boolean
+          title: Allow Character Annotation
+          description: Allow character-level annotation
+          default: true
+      type: object
+      required:
+      - type
+      - field
+      - options
+      title: SpanQuestionSettings
+    MultiLabelSelectionQuestionSettingsUpdate:
+      properties:
+        type:
+          type: string
+          enum:
+          - multi_label_selection
+          const: multi_label_selection
+          title: Type
+        visible_options:
+          title: Visible Options
+          type:
+          - integer
+          - 'null'
+          minimum: 3.0
+        options:
+          title: Options
+          items:
+            $ref: '#/components/schemas/OptionSettings'
+          type:
+          - array
+          - 'null'
+          maxItems: 500
+          minItems: 2
+        options_order:
+          $ref: '#/components/schemas/OptionsOrder'
+      type: object
+      required:
+      - type
+      title: MultiLabelSelectionQuestionSettingsUpdate
+    RankingQuestionSettingsUpdate:
+      properties:
+        type:
+          type: string
+          enum:
+          - ranking
+          const: ranking
+          title: Type
+      type: object
+      required:
+      - type
+      title: RankingQuestionSettingsUpdate
+    MultiLabelSelectionQuestionSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - multi_label_selection
+          const: multi_label_selection
+          title: Type
+        options:
+          items:
+            $ref: '#/components/schemas/OptionSettings'
+          type: array
+          title: Options
+        visible_options:
+          title: Visible Options
+          type:
+          - integer
+          - 'null'
+        options_order:
+          $ref: '#/components/schemas/OptionsOrder'
+          default: natural
+      type: object
+      required:
+      - type
+      - options
+      title: MultiLabelSelectionQuestionSettings
     LabelSelectionSettingsUpdate:
       properties:
         type:
@@ -268,32 +421,97 @@ components:
       - type
       - options
       title: LabelSelectionQuestionSettings
-    MultiLabelSelectionQuestionSettings:
+    RatingQuestionSettings:
       properties:
         type:
           type: string
           enum:
-          - multi_label_selection
-          const: multi_label_selection
+          - rating
+          const: rating
+          title: Type
+        options:
+          items:
+            $ref: '#/components/schemas/RatingQuestionSettingsOption'
+          type: array
+          title: Options
+      type: object
+      required:
+      - type
+      - options
+      title: RatingQuestionSettings
+    TextQuestionSettingsUpdate:
+      properties:
+        type:
+          type: string
+          enum:
+          - text
+          const: text
+          title: Type
+        use_markdown:
+          title: Use Markdown
+          type:
+          - boolean
+          - 'null'
+      type: object
+      required:
+      - type
+      title: TextQuestionSettingsUpdate
+    QuestionUpdate:
+      properties:
+        title:
+          title: Title
+          type:
+          - string
+          - 'null'
+          maxLength: 500
+          minLength: 1
+          description: The title of the question
+        description:
+          title: Description
+          type:
+          - string
+          - 'null'
+          maxLength: 1000
+          minLength: 1
+          description: The description of the question
+        settings:
+          title: Settings
+          oneOf:
+          - $ref: '#/components/schemas/TextQuestionSettingsUpdate'
+          - $ref: '#/components/schemas/RatingQuestionSettingsUpdate'
+          - $ref: '#/components/schemas/LabelSelectionSettingsUpdate'
+          - $ref: '#/components/schemas/MultiLabelSelectionQuestionSettingsUpdate'
+          - $ref: '#/components/schemas/RankingQuestionSettingsUpdate'
+          - $ref: '#/components/schemas/SpanQuestionSettingsUpdate'
+          discriminator:
+            propertyName: type
+            mapping:
+              label_selection: '#/components/schemas/LabelSelectionSettingsUpdate'
+              multi_label_selection: '#/components/schemas/MultiLabelSelectionQuestionSettingsUpdate'
+              ranking: '#/components/schemas/RankingQuestionSettingsUpdate'
+              rating: '#/components/schemas/RatingQuestionSettingsUpdate'
+              span: '#/components/schemas/SpanQuestionSettingsUpdate'
+              text: '#/components/schemas/TextQuestionSettingsUpdate'
+      type: object
+      title: QuestionUpdate
+    RankingQuestionSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - ranking
+          const: ranking
           title: Type
         options:
           items:
             $ref: '#/components/schemas/OptionSettings'
           type: array
           title: Options
-        visible_options:
-          title: Visible Options
-          type:
-          - integer
-          - 'null'
-        options_order:
-          $ref: '#/components/schemas/OptionsOrder'
-          default: natural
       type: object
       required:
       - type
       - options
-      title: MultiLabelSelectionQuestionSettings
+      title: RankingQuestionSettings
     Question:
       properties:
         id:
@@ -355,224 +573,6 @@ components:
       - inserted_at
       - updated_at
       title: Question
-    QuestionUpdate:
-      properties:
-        title:
-          title: Title
-          type:
-          - string
-          - 'null'
-          maxLength: 500
-          minLength: 1
-          description: The title of the question
-        description:
-          title: Description
-          type:
-          - string
-          - 'null'
-          maxLength: 1000
-          minLength: 1
-          description: The description of the question
-        settings:
-          title: Settings
-          oneOf:
-          - $ref: '#/components/schemas/TextQuestionSettingsUpdate'
-          - $ref: '#/components/schemas/RatingQuestionSettingsUpdate'
-          - $ref: '#/components/schemas/LabelSelectionSettingsUpdate'
-          - $ref: '#/components/schemas/MultiLabelSelectionQuestionSettingsUpdate'
-          - $ref: '#/components/schemas/RankingQuestionSettingsUpdate'
-          - $ref: '#/components/schemas/SpanQuestionSettingsUpdate'
-          discriminator:
-            propertyName: type
-            mapping:
-              label_selection: '#/components/schemas/LabelSelectionSettingsUpdate'
-              multi_label_selection: '#/components/schemas/MultiLabelSelectionQuestionSettingsUpdate'
-              ranking: '#/components/schemas/RankingQuestionSettingsUpdate'
-              rating: '#/components/schemas/RatingQuestionSettingsUpdate'
-              span: '#/components/schemas/SpanQuestionSettingsUpdate'
-              text: '#/components/schemas/TextQuestionSettingsUpdate'
-      type: object
-      title: QuestionUpdate
-    SpanQuestionSettings:
-      properties:
-        type:
-          type: string
-          enum:
-          - span
-          const: span
-          title: Type
-        field:
-          type: string
-          title: Field
-        options:
-          items:
-            $ref: '#/components/schemas/OptionSettings'
-          type: array
-          title: Options
-        visible_options:
-          title: Visible Options
-          type:
-          - integer
-          - 'null'
-        allow_overlapping:
-          type: boolean
-          title: Allow Overlapping
-          description: Allow spans overlapping
-          default: false
-        allow_character_annotation:
-          type: boolean
-          title: Allow Character Annotation
-          description: Allow character-level annotation
-          default: true
-      type: object
-      required:
-      - type
-      - field
-      - options
-      title: SpanQuestionSettings
-    RankingQuestionSettingsUpdate:
-      properties:
-        type:
-          type: string
-          enum:
-          - ranking
-          const: ranking
-          title: Type
-      type: object
-      required:
-      - type
-      title: RankingQuestionSettingsUpdate
-    RatingQuestionSettingsUpdate:
-      properties:
-        type:
-          type: string
-          enum:
-          - rating
-          const: rating
-          title: Type
-      type: object
-      required:
-      - type
-      title: RatingQuestionSettingsUpdate
-    RankingQuestionSettings:
-      properties:
-        type:
-          type: string
-          enum:
-          - ranking
-          const: ranking
-          title: Type
-        options:
-          items:
-            $ref: '#/components/schemas/OptionSettings'
-          type: array
-          title: Options
-      type: object
-      required:
-      - type
-      - options
-      title: RankingQuestionSettings
-    SpanQuestionSettingsUpdate:
-      properties:
-        type:
-          type: string
-          enum:
-          - span
-          const: span
-          title: Type
-        options:
-          title: Options
-          items:
-            $ref: '#/components/schemas/OptionSettings'
-          type:
-          - array
-          - 'null'
-          maxItems: 500
-          minItems: 1
-        visible_options:
-          title: Visible Options
-          type:
-          - integer
-          - 'null'
-          minimum: 3.0
-        allow_overlapping:
-          title: Allow Overlapping
-          type:
-          - boolean
-          - 'null'
-      type: object
-      required:
-      - type
-      title: SpanQuestionSettingsUpdate
-    MultiLabelSelectionQuestionSettingsUpdate:
-      properties:
-        type:
-          type: string
-          enum:
-          - multi_label_selection
-          const: multi_label_selection
-          title: Type
-        visible_options:
-          title: Visible Options
-          type:
-          - integer
-          - 'null'
-          minimum: 3.0
-        options:
-          title: Options
-          items:
-            $ref: '#/components/schemas/OptionSettings'
-          type:
-          - array
-          - 'null'
-          maxItems: 500
-          minItems: 2
-        options_order:
-          $ref: '#/components/schemas/OptionsOrder'
-      type: object
-      required:
-      - type
-      title: MultiLabelSelectionQuestionSettingsUpdate
-    OptionSettings:
-      properties:
-        value:
-          type: string
-          title: Value
-        text:
-          type: string
-          title: Text
-        description:
-          title: Description
-          type:
-          - string
-          - 'null'
-      type: object
-      required:
-      - value
-      - text
-      title: OptionSettings
-    OptionsOrder:
-      type: string
-      enum:
-      - natural
-      - suggestion
-      title: OptionsOrder
-    TextQuestionSettings:
-      properties:
-        type:
-          type: string
-          enum:
-          - text
-          const: text
-          title: Type
-        use_markdown:
-          type: boolean
-          title: Use Markdown
-          default: false
-      type: object
-      required:
-      - type
-      title: TextQuestionSettings
   securitySchemes:
     APIKeyHeader:
       type: apiKey

@@ -573,35 +573,21 @@ paths:
           description: Internal Server Error
 components:
   schemas:
-    ResponseValue:
+    ResponseCreate:
       properties:
-        value:
-          title: Value
-      type: object
-      required:
-      - value
-      title: ResponseValue
-    RankingQuestionResponseValueItem:
-      properties:
-        value:
-          type: string
-          title: Value
-        rank:
-          title: Rank
+        values:
+          title: Values
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValueCreate'
           type:
-          - integer
+          - object
           - 'null'
+        status:
+          $ref: '#/components/schemas/ResponseStatus'
       type: object
       required:
-      - value
-      title: RankingQuestionResponseValueItem
-    ResponseStatus:
-      type: string
-      enum:
-      - draft
-      - submitted
-      - discarded
-      title: ResponseStatus
+      - status
+      title: ResponseCreate
     Suggestion:
       properties:
         question_id:
@@ -682,6 +668,31 @@ components:
       required:
       - value
       title: ResponseValueCreate
+    RecordStatus:
+      type: string
+      enum:
+      - pending
+      - completed
+      title: RecordStatus
+    ResponseValue:
+      properties:
+        value:
+          title: Value
+      type: object
+      required:
+      - value
+      title: ResponseValue
+    Suggestions:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Suggestion'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Suggestions
     RecordUpdate:
       properties:
         fields:
@@ -719,17 +730,6 @@ components:
           - 'null'
       type: object
       title: RecordUpdate
-    Suggestions:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/Suggestion'
-          type: array
-          title: Items
-      type: object
-      required:
-      - items
-      title: Suggestions
     SuggestionCreate:
       properties:
         question_id:
@@ -775,40 +775,6 @@ components:
       - question_id
       - value
       title: SuggestionCreate
-    ResponseCreate:
-      properties:
-        values:
-          title: Values
-          additionalProperties:
-            $ref: '#/components/schemas/ResponseValueCreate'
-          type:
-          - object
-          - 'null'
-        status:
-          $ref: '#/components/schemas/ResponseStatus'
-      type: object
-      required:
-      - status
-      title: ResponseCreate
-    SpanQuestionResponseValueItem:
-      properties:
-        label:
-          type: string
-          title: Label
-        start:
-          type: integer
-          minimum: 0.0
-          title: Start
-        end:
-          type: integer
-          minimum: 1.0
-          title: End
-      type: object
-      required:
-      - label
-      - start
-      - end
-      title: SpanQuestionResponseValueItem
     Response:
       properties:
         id:
@@ -849,18 +815,20 @@ components:
       - inserted_at
       - updated_at
       title: Response
-    SuggestionType:
-      type: string
-      enum:
-      - model
-      - human
-      title: SuggestionType
-    RecordStatus:
-      type: string
-      enum:
-      - pending
-      - completed
-      title: RecordStatus
+    RankingQuestionResponseValueItem:
+      properties:
+        value:
+          type: string
+          title: Value
+        rank:
+          title: Rank
+          type:
+          - integer
+          - 'null'
+      type: object
+      required:
+      - value
+      title: RankingQuestionResponseValueItem
     Record:
       properties:
         id:
@@ -926,6 +894,38 @@ components:
       - inserted_at
       - updated_at
       title: Record
+    SuggestionType:
+      type: string
+      enum:
+      - model
+      - human
+      title: SuggestionType
+    SpanQuestionResponseValueItem:
+      properties:
+        label:
+          type: string
+          title: Label
+        start:
+          type: integer
+          minimum: 0.0
+          title: Start
+        end:
+          type: integer
+          minimum: 1.0
+          title: End
+      type: object
+      required:
+      - label
+      - start
+      - end
+      title: SpanQuestionResponseValueItem
+    ResponseStatus:
+      type: string
+      enum:
+      - draft
+      - submitted
+      - discarded
+      title: ResponseStatus
   securitySchemes:
     APIKeyHeader:
       type: apiKey

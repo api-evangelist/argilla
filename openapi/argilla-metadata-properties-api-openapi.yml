@@ -282,44 +282,24 @@ components:
       required:
       - type
       title: FloatMetadataProperty
-    MetadataPropertyUpdate:
+    TermsMetadataProperty:
       properties:
-        title:
-          title: Title
-          type:
-          - string
-          - 'null'
-          maxLength: 500
-          minLength: 1
-          description: The title of the metadata property
-        visible_for_annotators:
-          title: Visible For Annotators
-          type:
-          - boolean
-          - 'null'
-      type: object
-      title: MetadataPropertyUpdate
-    FloatMetadataMetrics:
-      properties:
-        min:
-          title: Min
-          type:
-          - number
-          - 'null'
-        max:
-          title: Max
-          type:
-          - number
-          - 'null'
         type:
           type: string
           enum:
-          - float
-          const: float
+          - terms
+          const: terms
           title: Type
-          default: float
+        values:
+          title: Values
+          items: {}
+          type:
+          - array
+          - 'null'
       type: object
-      title: FloatMetadataMetrics
+      required:
+      - type
+      title: TermsMetadataProperty
     TermCount:
       properties:
         term:
@@ -354,6 +334,86 @@ components:
       required:
       - type
       title: IntegerMetadataProperty
+    IntegerMetadataMetrics:
+      properties:
+        min:
+          title: Min
+          type:
+          - integer
+          - 'null'
+        max:
+          title: Max
+          type:
+          - integer
+          - 'null'
+        type:
+          type: string
+          enum:
+          - integer
+          const: integer
+          title: Type
+          default: integer
+      type: object
+      title: IntegerMetadataMetrics
+    FloatMetadataMetrics:
+      properties:
+        min:
+          title: Min
+          type:
+          - number
+          - 'null'
+        max:
+          title: Max
+          type:
+          - number
+          - 'null'
+        type:
+          type: string
+          enum:
+          - float
+          const: float
+          title: Type
+          default: float
+      type: object
+      title: FloatMetadataMetrics
+    TermsMetadataMetrics:
+      properties:
+        type:
+          type: string
+          enum:
+          - terms
+          const: terms
+          title: Type
+          default: terms
+        total:
+          type: integer
+          title: Total
+        values:
+          items:
+            $ref: '#/components/schemas/TermCount'
+          type: array
+          title: Values
+      type: object
+      required:
+      - total
+      title: TermsMetadataMetrics
+    MetadataPropertyUpdate:
+      properties:
+        title:
+          title: Title
+          type:
+          - string
+          - 'null'
+          maxLength: 500
+          minLength: 1
+          description: The title of the metadata property
+        visible_for_annotators:
+          title: Visible For Annotators
+          type:
+          - boolean
+          - 'null'
+      type: object
+      title: MetadataPropertyUpdate
     MetadataProperty:
       properties:
         id:
@@ -404,66 +464,6 @@ components:
       - inserted_at
       - updated_at
       title: MetadataProperty
-    TermsMetadataMetrics:
-      properties:
-        type:
-          type: string
-          enum:
-          - terms
-          const: terms
-          title: Type
-          default: terms
-        total:
-          type: integer
-          title: Total
-        values:
-          items:
-            $ref: '#/components/schemas/TermCount'
-          type: array
-          title: Values
-      type: object
-      required:
-      - total
-      title: TermsMetadataMetrics
-    IntegerMetadataMetrics:
-      properties:
-        min:
-          title: Min
-          type:
-          - integer
-          - 'null'
-        max:
-          title: Max
-          type:
-          - integer
-          - 'null'
-        type:
-          type: string
-          enum:
-          - integer
-          const: integer
-          title: Type
-          default: integer
-      type: object
-      title: IntegerMetadataMetrics
-    TermsMetadataProperty:
-      properties:
-        type:
-          type: string
-          enum:
-          - terms
-          const: terms
-          title: Type
-        values:
-          title: Values
-          items: {}
-          type:
-          - array
-          - 'null'
-      type: object
-      required:
-      - type
-      title: TermsMetadataProperty
   securitySchemes:
     APIKeyHeader:
       type: apiKey

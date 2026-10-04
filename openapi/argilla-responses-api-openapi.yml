@@ -258,6 +258,60 @@ paths:
           description: Internal Server Error
 components:
   schemas:
+    ResponseBulk:
+      properties:
+        item:
+          $ref: '#/components/schemas/Response'
+        error:
+          $ref: '#/components/schemas/ResponseBulkError'
+      type: object
+      title: ResponseBulk
+    DiscardedResponseUpsert:
+      properties:
+        values:
+          title: Values
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValueUpdate'
+          type:
+          - object
+          - 'null'
+        status:
+          type: string
+          enum:
+          - discarded
+          const: discarded
+          title: Status
+        record_id:
+          type: string
+          format: uuid
+          title: Record Id
+      type: object
+      required:
+      - status
+      - record_id
+      title: DiscardedResponseUpsert
+    ResponsesBulkCreate:
+      properties:
+        items:
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/SubmittedResponseUpsert'
+            - $ref: '#/components/schemas/DiscardedResponseUpsert'
+            - $ref: '#/components/schemas/DraftResponseUpsert'
+            discriminator:
+              propertyName: status
+              mapping:
+                discarded: '#/components/schemas/DiscardedResponseUpsert'
+                draft: '#/components/schemas/DraftResponseUpsert'
+                submitted: '#/components/schemas/SubmittedResponseUpsert'
+          type: array
+          maxItems: 100
+          minItems: 1
+          title: Items
+      type: object
+      required:
+      - items
+      title: ResponsesBulkCreate
     ResponseValue:
       properties:
         value:
@@ -266,29 +320,25 @@ components:
       required:
       - value
       title: ResponseValue
-    ResponseBulkError:
+    DiscardedResponseUpdate:
       properties:
-        detail:
-          type: string
-          title: Detail
-      type: object
-      required:
-      - detail
-      title: ResponseBulkError
-    RankingQuestionResponseValueItem:
-      properties:
-        value:
-          type: string
-          title: Value
-        rank:
-          title: Rank
+        values:
+          title: Values
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValueUpdate'
           type:
-          - integer
+          - object
           - 'null'
+        status:
+          type: string
+          enum:
+          - discarded
+          const: discarded
+          title: Status
       type: object
       required:
-      - value
-      title: RankingQuestionResponseValueItem
+      - status
+      title: DiscardedResponseUpdate
     DraftResponseUpdate:
       properties:
         values:
@@ -308,13 +358,69 @@ components:
       required:
       - status
       title: DraftResponseUpdate
-    ResponseStatus:
-      type: string
-      enum:
-      - draft
-      - submitted
-      - discarded
-      title: ResponseStatus
+    Response:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        values:
+          title: Values
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValue'
+          type:
+          - object
+          - 'null'
+        status:
+          $ref: '#/components/schemas/ResponseStatus'
+        record_id:
+          type: string
+          format: uuid
+          title: Record Id
+        user_id:
+          type: string
+          format: uuid
+          title: User Id
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - status
+      - record_id
+      - user_id
+      - inserted_at
+      - updated_at
+      title: Response
+    RankingQuestionResponseValueItem:
+      properties:
+        value:
+          type: string
+          title: Value
+        rank:
+          title: Rank
+          type:
+          - integer
+          - 'null'
+      type: object
+      required:
+      - value
+      title: RankingQuestionResponseValueItem
+    ResponseBulkError:
+      properties:
+        detail:
+          type: string
+          title: Detail
+      type: object
+      required:
+      - detail
+      title: ResponseBulkError
     ResponsesBulk:
       properties:
         items:
@@ -326,6 +432,73 @@ components:
       required:
       - items
       title: ResponsesBulk
+    SubmittedResponseUpsert:
+      properties:
+        values:
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValueUpdate'
+          type: object
+          title: Values
+        status:
+          type: string
+          enum:
+          - submitted
+          const: submitted
+          title: Status
+        record_id:
+          type: string
+          format: uuid
+          title: Record Id
+      type: object
+      required:
+      - values
+      - status
+      - record_id
+      title: SubmittedResponseUpsert
+    SpanQuestionResponseValueItem:
+      properties:
+        label:
+          type: string
+          title: Label
+        start:
+          type: integer
+          minimum: 0.0
+          title: Start
+        end:
+          type: integer
+          minimum: 1.0
+          title: End
+      type: object
+      required:
+      - label
+      - start
+      - end
+      title: SpanQuestionResponseValueItem
+    SubmittedResponseUpdate:
+      properties:
+        values:
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValueUpdate'
+          type: object
+          title: Values
+        status:
+          type: string
+          enum:
+          - submitted
+          const: submitted
+          title: Status
+      type: object
+      required:
+      - values
+      - status
+      title: SubmittedResponseUpdate
+    ResponseStatus:
+      type: string
+      enum:
+      - draft
+      - submitted
+      - discarded
+      title: ResponseStatus
     ResponseValueUpdate:
       properties:
         value:
@@ -371,179 +544,6 @@ components:
       - status
       - record_id
       title: DraftResponseUpsert
-    SpanQuestionResponseValueItem:
-      properties:
-        label:
-          type: string
-          title: Label
-        start:
-          type: integer
-          minimum: 0.0
-          title: Start
-        end:
-          type: integer
-          minimum: 1.0
-          title: End
-      type: object
-      required:
-      - label
-      - start
-      - end
-      title: SpanQuestionResponseValueItem
-    ResponsesBulkCreate:
-      properties:
-        items:
-          items:
-            oneOf:
-            - $ref: '#/components/schemas/SubmittedResponseUpsert'
-            - $ref: '#/components/schemas/DiscardedResponseUpsert'
-            - $ref: '#/components/schemas/DraftResponseUpsert'
-            discriminator:
-              propertyName: status
-              mapping:
-                discarded: '#/components/schemas/DiscardedResponseUpsert'
-                draft: '#/components/schemas/DraftResponseUpsert'
-                submitted: '#/components/schemas/SubmittedResponseUpsert'
-          type: array
-          maxItems: 100
-          minItems: 1
-          title: Items
-      type: object
-      required:
-      - items
-      title: ResponsesBulkCreate
-    Response:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        values:
-          title: Values
-          additionalProperties:
-            $ref: '#/components/schemas/ResponseValue'
-          type:
-          - object
-          - 'null'
-        status:
-          $ref: '#/components/schemas/ResponseStatus'
-        record_id:
-          type: string
-          format: uuid
-          title: Record Id
-        user_id:
-          type: string
-          format: uuid
-          title: User Id
-        inserted_at:
-          type: string
-          format: date-time
-          title: Inserted At
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-      type: object
-      required:
-      - id
-      - status
-      - record_id
-      - user_id
-      - inserted_at
-      - updated_at
-      title: Response
-    DiscardedResponseUpsert:
-      properties:
-        values:
-          title: Values
-          additionalProperties:
-            $ref: '#/components/schemas/ResponseValueUpdate'
-          type:
-          - object
-          - 'null'
-        status:
-          type: string
-          enum:
-          - discarded
-          const: discarded
-          title: Status
-        record_id:
-          type: string
-          format: uuid
-          title: Record Id
-      type: object
-      required:
-      - status
-      - record_id
-      title: DiscardedResponseUpsert
-    ResponseBulk:
-      properties:
-        item:
-          $ref: '#/components/schemas/Response'
-        error:
-          $ref: '#/components/schemas/ResponseBulkError'
-      type: object
-      title: ResponseBulk
-    SubmittedResponseUpsert:
-      properties:
-        values:
-          additionalProperties:
-            $ref: '#/components/schemas/ResponseValueUpdate'
-          type: object
-          title: Values
-        status:
-          type: string
-          enum:
-          - submitted
-          const: submitted
-          title: Status
-        record_id:
-          type: string
-          format: uuid
-          title: Record Id
-      type: object
-      required:
-      - values
-      - status
-      - record_id
-      title: SubmittedResponseUpsert
-    DiscardedResponseUpdate:
-      properties:
-        values:
-          title: Values
-          additionalProperties:
-            $ref: '#/components/schemas/ResponseValueUpdate'
-          type:
-          - object
-          - 'null'
-        status:
-          type: string
-          enum:
-          - discarded
-          const: discarded
-          title: Status
-      type: object
-      required:
-      - status
-      title: DiscardedResponseUpdate
-    SubmittedResponseUpdate:
-      properties:
-        values:
-          additionalProperties:
-            $ref: '#/components/schemas/ResponseValueUpdate'
-          type: object
-          title: Values
-        status:
-          type: string
-          enum:
-          - submitted
-          const: submitted
-          title: Status
-      type: object
-      required:
-      - values
-      - status
-      title: SubmittedResponseUpdate
   securitySchemes:
     APIKeyHeader:
       type: apiKey
