@@ -288,6 +288,9 @@ apis:
   - type: OpenAPISpec
     url: openapi/_original/argilla-rest-api-openapi.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/argilla-capability-edges.yml
+    name: Argilla Business Capability Map
   - type: AgenticAccess
     url: agentic-access/argilla-agentic-access.yml
   - type: DomainSecurity

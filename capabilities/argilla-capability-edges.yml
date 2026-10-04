@@ -1,0 +1,35 @@
+slug: argilla
+provider: Argilla
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 2
+edges:
+- tag: Webhooks
+  spec_file: argilla-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.75
+  evidence: POST /webhooks create_webhook, PATCH /webhooks/{webhook_id} Update Webhook, POST /webhooks/{webhook_id}/ping
+    Ping Webhook; schemas "WebhookEvent", "WebhookCreate"
+  reason: Full lifecycle management of outbound webhook subscriptions including event types and delivery
+    ping, which the frame models explicitly as Webhook & Event Subscription Management.
+- tag: Users
+  spec_file: argilla-users-api-openapi.yml
+  capability_id: BC-620.20
+  capability_id_l1: BC-620
+  capability_name: Identity & Access Management
+  confidence: 0.7
+  evidence: POST /users create_user, PATCH /users/{user_id} Update User, GET /users/{user_id}/workspaces
+    List User Workspaces; schemas "UserRole", "UserCreate"
+  reason: Application user account lifecycle with roles and workspace membership — identity and access
+    administration for the platform, not HR employee records.
