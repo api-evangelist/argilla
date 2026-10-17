@@ -398,49 +398,6 @@ components:
       required:
       - items
       title: Webhooks
-    Webhook:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        url:
-          type: string
-          title: Url
-        secret:
-          type: string
-          title: Secret
-        events:
-          items:
-            $ref: '#/components/schemas/WebhookEvent'
-          type: array
-          title: Events
-        enabled:
-          type: boolean
-          title: Enabled
-        description:
-          title: Description
-          type:
-          - string
-          - 'null'
-        inserted_at:
-          type: string
-          format: date-time
-          title: Inserted At
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-      type: object
-      required:
-      - id
-      - url
-      - secret
-      - events
-      - enabled
-      - inserted_at
-      - updated_at
-      title: Webhook
     WebhookEvent:
       type: string
       enum:
@@ -514,6 +471,49 @@ components:
       - url
       - events
       title: WebhookCreate
+    Webhook:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        url:
+          type: string
+          title: Url
+        secret:
+          type: string
+          title: Secret
+        events:
+          items:
+            $ref: '#/components/schemas/WebhookEvent'
+          type: array
+          title: Events
+        enabled:
+          type: boolean
+          title: Enabled
+        description:
+          title: Description
+          type:
+          - string
+          - 'null'
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - url
+      - secret
+      - events
+      - enabled
+      - inserted_at
+      - updated_at
+      title: Webhook
   securitySchemes:
     APIKeyHeader:
       type: apiKey

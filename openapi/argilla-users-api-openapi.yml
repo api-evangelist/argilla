@@ -534,41 +534,13 @@ paths:
           description: Internal Server Error
 components:
   schemas:
-    Workspaces:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/Workspace'
-          type: array
-          title: Items
-      type: object
-      required:
-      - items
-      title: Workspaces
-    Workspace:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        name:
-          type: string
-          title: Name
-        inserted_at:
-          type: string
-          format: date-time
-          title: Inserted At
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-      type: object
-      required:
-      - id
-      - name
-      - inserted_at
-      - updated_at
-      title: Workspace
+    UserRole:
+      type: string
+      enum:
+      - owner
+      - admin
+      - annotator
+      title: UserRole
     UserUpdate:
       properties:
         first_name:
@@ -604,6 +576,17 @@ components:
           description: The password for the user
       type: object
       title: UserUpdate
+    Users:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/User'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Users
     UserCreate:
       properties:
         id:
@@ -683,24 +666,41 @@ components:
       - inserted_at
       - updated_at
       title: User
-    UserRole:
-      type: string
-      enum:
-      - owner
-      - admin
-      - annotator
-      title: UserRole
-    Users:
+    Workspaces:
       properties:
         items:
           items:
-            $ref: '#/components/schemas/User'
+            $ref: '#/components/schemas/Workspace'
           type: array
           title: Items
       type: object
       required:
       - items
-      title: Users
+      title: Workspaces
+    Workspace:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        name:
+          type: string
+          title: Name
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - name
+      - inserted_at
+      - updated_at
+      title: Workspace
   securitySchemes:
     APIKeyHeader:
       type: apiKey

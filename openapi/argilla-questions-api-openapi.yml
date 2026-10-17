@@ -206,45 +206,6 @@ components:
       required:
       - type
       title: SpanQuestionSettingsUpdate
-    OptionSettings:
-      properties:
-        value:
-          type: string
-          title: Value
-        text:
-          type: string
-          title: Text
-        description:
-          title: Description
-          type:
-          - string
-          - 'null'
-      type: object
-      required:
-      - value
-      - text
-      title: OptionSettings
-    RatingQuestionSettingsUpdate:
-      properties:
-        type:
-          type: string
-          enum:
-          - rating
-          const: rating
-          title: Type
-      type: object
-      required:
-      - type
-      title: RatingQuestionSettingsUpdate
-    RatingQuestionSettingsOption:
-      properties:
-        value:
-          type: integer
-          title: Value
-      type: object
-      required:
-      - value
-      title: RatingQuestionSettingsOption
     TextQuestionSettings:
       properties:
         type:
@@ -261,116 +222,18 @@ components:
       required:
       - type
       title: TextQuestionSettings
-    OptionsOrder:
-      type: string
-      enum:
-      - natural
-      - suggestion
-      title: OptionsOrder
-    SpanQuestionSettings:
+    RatingQuestionSettingsUpdate:
       properties:
         type:
           type: string
           enum:
-          - span
-          const: span
-          title: Type
-        field:
-          type: string
-          title: Field
-        options:
-          items:
-            $ref: '#/components/schemas/OptionSettings'
-          type: array
-          title: Options
-        visible_options:
-          title: Visible Options
-          type:
-          - integer
-          - 'null'
-        allow_overlapping:
-          type: boolean
-          title: Allow Overlapping
-          description: Allow spans overlapping
-          default: false
-        allow_character_annotation:
-          type: boolean
-          title: Allow Character Annotation
-          description: Allow character-level annotation
-          default: true
-      type: object
-      required:
-      - type
-      - field
-      - options
-      title: SpanQuestionSettings
-    MultiLabelSelectionQuestionSettingsUpdate:
-      properties:
-        type:
-          type: string
-          enum:
-          - multi_label_selection
-          const: multi_label_selection
-          title: Type
-        visible_options:
-          title: Visible Options
-          type:
-          - integer
-          - 'null'
-          minimum: 3.0
-        options:
-          title: Options
-          items:
-            $ref: '#/components/schemas/OptionSettings'
-          type:
-          - array
-          - 'null'
-          maxItems: 500
-          minItems: 2
-        options_order:
-          $ref: '#/components/schemas/OptionsOrder'
-      type: object
-      required:
-      - type
-      title: MultiLabelSelectionQuestionSettingsUpdate
-    RankingQuestionSettingsUpdate:
-      properties:
-        type:
-          type: string
-          enum:
-          - ranking
-          const: ranking
+          - rating
+          const: rating
           title: Type
       type: object
       required:
       - type
-      title: RankingQuestionSettingsUpdate
-    MultiLabelSelectionQuestionSettings:
-      properties:
-        type:
-          type: string
-          enum:
-          - multi_label_selection
-          const: multi_label_selection
-          title: Type
-        options:
-          items:
-            $ref: '#/components/schemas/OptionSettings'
-          type: array
-          title: Options
-        visible_options:
-          title: Visible Options
-          type:
-          - integer
-          - 'null'
-        options_order:
-          $ref: '#/components/schemas/OptionsOrder'
-          default: natural
-      type: object
-      required:
-      - type
-      - options
-      title: MultiLabelSelectionQuestionSettings
+      title: RatingQuestionSettingsUpdate
     LabelSelectionSettingsUpdate:
       properties:
         type:
@@ -398,29 +261,6 @@ components:
       required:
       - type
       title: LabelSelectionSettingsUpdate
-    LabelSelectionQuestionSettings:
-      properties:
-        type:
-          type: string
-          enum:
-          - label_selection
-          const: label_selection
-          title: Type
-        options:
-          items:
-            $ref: '#/components/schemas/OptionSettings'
-          type: array
-          title: Options
-        visible_options:
-          title: Visible Options
-          type:
-          - integer
-          - 'null'
-      type: object
-      required:
-      - type
-      - options
-      title: LabelSelectionQuestionSettings
     RatingQuestionSettings:
       properties:
         type:
@@ -439,79 +279,24 @@ components:
       - type
       - options
       title: RatingQuestionSettings
-    TextQuestionSettingsUpdate:
+    OptionSettings:
       properties:
-        type:
+        value:
           type: string
-          enum:
-          - text
-          const: text
-          title: Type
-        use_markdown:
-          title: Use Markdown
-          type:
-          - boolean
-          - 'null'
-      type: object
-      required:
-      - type
-      title: TextQuestionSettingsUpdate
-    QuestionUpdate:
-      properties:
-        title:
-          title: Title
-          type:
-          - string
-          - 'null'
-          maxLength: 500
-          minLength: 1
-          description: The title of the question
+          title: Value
+        text:
+          type: string
+          title: Text
         description:
           title: Description
           type:
           - string
           - 'null'
-          maxLength: 1000
-          minLength: 1
-          description: The description of the question
-        settings:
-          title: Settings
-          oneOf:
-          - $ref: '#/components/schemas/TextQuestionSettingsUpdate'
-          - $ref: '#/components/schemas/RatingQuestionSettingsUpdate'
-          - $ref: '#/components/schemas/LabelSelectionSettingsUpdate'
-          - $ref: '#/components/schemas/MultiLabelSelectionQuestionSettingsUpdate'
-          - $ref: '#/components/schemas/RankingQuestionSettingsUpdate'
-          - $ref: '#/components/schemas/SpanQuestionSettingsUpdate'
-          discriminator:
-            propertyName: type
-            mapping:
-              label_selection: '#/components/schemas/LabelSelectionSettingsUpdate'
-              multi_label_selection: '#/components/schemas/MultiLabelSelectionQuestionSettingsUpdate'
-              ranking: '#/components/schemas/RankingQuestionSettingsUpdate'
-              rating: '#/components/schemas/RatingQuestionSettingsUpdate'
-              span: '#/components/schemas/SpanQuestionSettingsUpdate'
-              text: '#/components/schemas/TextQuestionSettingsUpdate'
-      type: object
-      title: QuestionUpdate
-    RankingQuestionSettings:
-      properties:
-        type:
-          type: string
-          enum:
-          - ranking
-          const: ranking
-          title: Type
-        options:
-          items:
-            $ref: '#/components/schemas/OptionSettings'
-          type: array
-          title: Options
       type: object
       required:
-      - type
-      - options
-      title: RankingQuestionSettings
+      - value
+      - text
+      title: OptionSettings
     Question:
       properties:
         id:
@@ -573,6 +358,221 @@ components:
       - inserted_at
       - updated_at
       title: Question
+    RankingQuestionSettingsUpdate:
+      properties:
+        type:
+          type: string
+          enum:
+          - ranking
+          const: ranking
+          title: Type
+      type: object
+      required:
+      - type
+      title: RankingQuestionSettingsUpdate
+    RankingQuestionSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - ranking
+          const: ranking
+          title: Type
+        options:
+          items:
+            $ref: '#/components/schemas/OptionSettings'
+          type: array
+          title: Options
+      type: object
+      required:
+      - type
+      - options
+      title: RankingQuestionSettings
+    LabelSelectionQuestionSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - label_selection
+          const: label_selection
+          title: Type
+        options:
+          items:
+            $ref: '#/components/schemas/OptionSettings'
+          type: array
+          title: Options
+        visible_options:
+          title: Visible Options
+          type:
+          - integer
+          - 'null'
+      type: object
+      required:
+      - type
+      - options
+      title: LabelSelectionQuestionSettings
+    OptionsOrder:
+      type: string
+      enum:
+      - natural
+      - suggestion
+      title: OptionsOrder
+    RatingQuestionSettingsOption:
+      properties:
+        value:
+          type: integer
+          title: Value
+      type: object
+      required:
+      - value
+      title: RatingQuestionSettingsOption
+    TextQuestionSettingsUpdate:
+      properties:
+        type:
+          type: string
+          enum:
+          - text
+          const: text
+          title: Type
+        use_markdown:
+          title: Use Markdown
+          type:
+          - boolean
+          - 'null'
+      type: object
+      required:
+      - type
+      title: TextQuestionSettingsUpdate
+    QuestionUpdate:
+      properties:
+        title:
+          title: Title
+          type:
+          - string
+          - 'null'
+          maxLength: 500
+          minLength: 1
+          description: The title of the question
+        description:
+          title: Description
+          type:
+          - string
+          - 'null'
+          maxLength: 1000
+          minLength: 1
+          description: The description of the question
+        settings:
+          title: Settings
+          oneOf:
+          - $ref: '#/components/schemas/TextQuestionSettingsUpdate'
+          - $ref: '#/components/schemas/RatingQuestionSettingsUpdate'
+          - $ref: '#/components/schemas/LabelSelectionSettingsUpdate'
+          - $ref: '#/components/schemas/MultiLabelSelectionQuestionSettingsUpdate'
+          - $ref: '#/components/schemas/RankingQuestionSettingsUpdate'
+          - $ref: '#/components/schemas/SpanQuestionSettingsUpdate'
+          discriminator:
+            propertyName: type
+            mapping:
+              label_selection: '#/components/schemas/LabelSelectionSettingsUpdate'
+              multi_label_selection: '#/components/schemas/MultiLabelSelectionQuestionSettingsUpdate'
+              ranking: '#/components/schemas/RankingQuestionSettingsUpdate'
+              rating: '#/components/schemas/RatingQuestionSettingsUpdate'
+              span: '#/components/schemas/SpanQuestionSettingsUpdate'
+              text: '#/components/schemas/TextQuestionSettingsUpdate'
+      type: object
+      title: QuestionUpdate
+    MultiLabelSelectionQuestionSettingsUpdate:
+      properties:
+        type:
+          type: string
+          enum:
+          - multi_label_selection
+          const: multi_label_selection
+          title: Type
+        visible_options:
+          title: Visible Options
+          type:
+          - integer
+          - 'null'
+          minimum: 3.0
+        options:
+          title: Options
+          items:
+            $ref: '#/components/schemas/OptionSettings'
+          type:
+          - array
+          - 'null'
+          maxItems: 500
+          minItems: 2
+        options_order:
+          $ref: '#/components/schemas/OptionsOrder'
+      type: object
+      required:
+      - type
+      title: MultiLabelSelectionQuestionSettingsUpdate
+    SpanQuestionSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - span
+          const: span
+          title: Type
+        field:
+          type: string
+          title: Field
+        options:
+          items:
+            $ref: '#/components/schemas/OptionSettings'
+          type: array
+          title: Options
+        visible_options:
+          title: Visible Options
+          type:
+          - integer
+          - 'null'
+        allow_overlapping:
+          type: boolean
+          title: Allow Overlapping
+          description: Allow spans overlapping
+          default: false
+        allow_character_annotation:
+          type: boolean
+          title: Allow Character Annotation
+          description: Allow character-level annotation
+          default: true
+      type: object
+      required:
+      - type
+      - field
+      - options
+      title: SpanQuestionSettings
+    MultiLabelSelectionQuestionSettings:
+      properties:
+        type:
+          type: string
+          enum:
+          - multi_label_selection
+          const: multi_label_selection
+          title: Type
+        options:
+          items:
+            $ref: '#/components/schemas/OptionSettings'
+          type: array
+          title: Options
+        visible_options:
+          title: Visible Options
+          type:
+          - integer
+          - 'null'
+        options_order:
+          $ref: '#/components/schemas/OptionsOrder'
+          default: natural
+      type: object
+      required:
+      - type
+      - options
+      title: MultiLabelSelectionQuestionSettings
   securitySchemes:
     APIKeyHeader:
       type: apiKey

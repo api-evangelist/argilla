@@ -147,6 +147,15 @@ paths:
                   code: builtins.TypeError
 components:
   schemas:
+    Version:
+      properties:
+        version:
+          type: string
+          title: Version
+      type: object
+      required:
+      - version
+      title: Version
     Status:
       properties:
         version:
@@ -164,15 +173,6 @@ components:
       - search_engine
       - memory
       title: Status
-    Version:
-      properties:
-        version:
-          type: string
-          title: Version
-      type: object
-      required:
-      - version
-      title: Version
   securitySchemes:
     APIKeyHeader:
       type: apiKey

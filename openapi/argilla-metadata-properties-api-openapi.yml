@@ -260,28 +260,23 @@ paths:
           description: Internal Server Error
 components:
   schemas:
-    FloatMetadataProperty:
+    MetadataPropertyUpdate:
       properties:
-        type:
-          type: string
-          enum:
-          - float
-          const: float
-          title: Type
-        min:
-          title: Min
+        title:
+          title: Title
           type:
-          - number
+          - string
           - 'null'
-        max:
-          title: Max
+          maxLength: 500
+          minLength: 1
+          description: The title of the metadata property
+        visible_for_annotators:
+          title: Visible For Annotators
           type:
-          - number
+          - boolean
           - 'null'
       type: object
-      required:
-      - type
-      title: FloatMetadataProperty
+      title: MetadataPropertyUpdate
     TermsMetadataProperty:
       properties:
         type:
@@ -312,49 +307,28 @@ components:
       - term
       - count
       title: TermCount
-    IntegerMetadataProperty:
+    FloatMetadataProperty:
       properties:
         type:
           type: string
           enum:
-          - integer
-          const: integer
+          - float
+          const: float
           title: Type
         min:
           title: Min
           type:
-          - integer
+          - number
           - 'null'
         max:
           title: Max
           type:
-          - integer
+          - number
           - 'null'
       type: object
       required:
       - type
-      title: IntegerMetadataProperty
-    IntegerMetadataMetrics:
-      properties:
-        min:
-          title: Min
-          type:
-          - integer
-          - 'null'
-        max:
-          title: Max
-          type:
-          - integer
-          - 'null'
-        type:
-          type: string
-          enum:
-          - integer
-          const: integer
-          title: Type
-          default: integer
-      type: object
-      title: IntegerMetadataMetrics
+      title: FloatMetadataProperty
     FloatMetadataMetrics:
       properties:
         min:
@@ -376,6 +350,27 @@ components:
           default: float
       type: object
       title: FloatMetadataMetrics
+    IntegerMetadataMetrics:
+      properties:
+        min:
+          title: Min
+          type:
+          - integer
+          - 'null'
+        max:
+          title: Max
+          type:
+          - integer
+          - 'null'
+        type:
+          type: string
+          enum:
+          - integer
+          const: integer
+          title: Type
+          default: integer
+      type: object
+      title: IntegerMetadataMetrics
     TermsMetadataMetrics:
       properties:
         type:
@@ -397,23 +392,6 @@ components:
       required:
       - total
       title: TermsMetadataMetrics
-    MetadataPropertyUpdate:
-      properties:
-        title:
-          title: Title
-          type:
-          - string
-          - 'null'
-          maxLength: 500
-          minLength: 1
-          description: The title of the metadata property
-        visible_for_annotators:
-          title: Visible For Annotators
-          type:
-          - boolean
-          - 'null'
-      type: object
-      title: MetadataPropertyUpdate
     MetadataProperty:
       properties:
         id:
@@ -464,6 +442,28 @@ components:
       - inserted_at
       - updated_at
       title: MetadataProperty
+    IntegerMetadataProperty:
+      properties:
+        type:
+          type: string
+          enum:
+          - integer
+          const: integer
+          title: Type
+        min:
+          title: Min
+          type:
+          - integer
+          - 'null'
+        max:
+          title: Max
+          type:
+          - integer
+          - 'null'
+      type: object
+      required:
+      - type
+      title: IntegerMetadataProperty
   securitySchemes:
     APIKeyHeader:
       type: apiKey

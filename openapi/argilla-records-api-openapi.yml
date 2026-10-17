@@ -573,262 +573,6 @@ paths:
           description: Internal Server Error
 components:
   schemas:
-    ResponseCreate:
-      properties:
-        values:
-          title: Values
-          additionalProperties:
-            $ref: '#/components/schemas/ResponseValueCreate'
-          type:
-          - object
-          - 'null'
-        status:
-          $ref: '#/components/schemas/ResponseStatus'
-      type: object
-      required:
-      - status
-      title: ResponseCreate
-    Suggestion:
-      properties:
-        question_id:
-          type: string
-          format: uuid
-          title: Question Id
-        type:
-          $ref: '#/components/schemas/SuggestionType'
-        value:
-          title: Value
-        agent:
-          title: Agent
-          type:
-          - string
-          - 'null'
-        score:
-          title: Score
-          anyOf:
-          - type: number
-          - items:
-              type: number
-            type: array
-        id:
-          type: string
-          format: uuid
-          title: Id
-        inserted_at:
-          type: string
-          format: date-time
-          title: Inserted At
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-      type: object
-      required:
-      - question_id
-      - value
-      - id
-      - inserted_at
-      - updated_at
-      title: Suggestion
-    ChatFieldValue:
-      properties:
-        role:
-          type: string
-          maxLength: 20
-          minLength: 1
-          title: Role
-        content:
-          type: string
-          maxLength: 20000
-          minLength: 1
-          title: Content
-      type: object
-      required:
-      - role
-      - content
-      title: ChatFieldValue
-    ResponseValueCreate:
-      properties:
-        value:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/SpanQuestionResponseValueItem'
-            type: array
-            maxItems: 10000
-          - items:
-              $ref: '#/components/schemas/RankingQuestionResponseValueItem'
-            type: array
-          - items:
-              type: string
-            type: array
-          - type: integer
-          - type: string
-          title: Value
-      type: object
-      required:
-      - value
-      title: ResponseValueCreate
-    RecordStatus:
-      type: string
-      enum:
-      - pending
-      - completed
-      title: RecordStatus
-    ResponseValue:
-      properties:
-        value:
-          title: Value
-      type: object
-      required:
-      - value
-      title: ResponseValue
-    Suggestions:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/Suggestion'
-          type: array
-          title: Items
-      type: object
-      required:
-      - items
-      title: Suggestions
-    RecordUpdate:
-      properties:
-        fields:
-          title: Fields
-          additionalProperties:
-            anyOf:
-            - type: string
-            - items:
-                $ref: '#/components/schemas/ChatFieldValue'
-              type: array
-            - type: object
-          type:
-          - object
-          - 'null'
-        metadata:
-          title: Metadata
-          type:
-          - object
-          - 'null'
-        suggestions:
-          title: Suggestions
-          items:
-            $ref: '#/components/schemas/SuggestionCreate'
-          type:
-          - array
-          - 'null'
-        vectors:
-          title: Vectors
-          additionalProperties:
-            items:
-              type: number
-            type: array
-          type:
-          - object
-          - 'null'
-      type: object
-      title: RecordUpdate
-    SuggestionCreate:
-      properties:
-        question_id:
-          type: string
-          format: uuid
-          title: Question Id
-        type:
-          $ref: '#/components/schemas/SuggestionType'
-        value:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/SpanQuestionResponseValueItem'
-            type: array
-            maxItems: 10000
-          - items:
-              $ref: '#/components/schemas/RankingQuestionResponseValueItem'
-            type: array
-          - items:
-              type: string
-            type: array
-          - type: integer
-          - type: string
-          title: Value
-        agent:
-          title: Agent
-          description: Agent used to generate the suggestion
-          type:
-          - string
-          - 'null'
-          maxLength: 200
-          minLength: 1
-          pattern: ^[a-zA-Z0-9-_:\.\/\s]*[a-zA-Z0-9][a-zA-Z0-9-_:\.\/\s]*$
-        score:
-          title: Score
-          description: The score assigned to the suggestion
-          anyOf:
-          - type: number
-          - items:
-              type: number
-            type: array
-      type: object
-      required:
-      - question_id
-      - value
-      title: SuggestionCreate
-    Response:
-      properties:
-        id:
-          type: string
-          format: uuid
-          title: Id
-        values:
-          title: Values
-          additionalProperties:
-            $ref: '#/components/schemas/ResponseValue'
-          type:
-          - object
-          - 'null'
-        status:
-          $ref: '#/components/schemas/ResponseStatus'
-        record_id:
-          type: string
-          format: uuid
-          title: Record Id
-        user_id:
-          type: string
-          format: uuid
-          title: User Id
-        inserted_at:
-          type: string
-          format: date-time
-          title: Inserted At
-        updated_at:
-          type: string
-          format: date-time
-          title: Updated At
-      type: object
-      required:
-      - id
-      - status
-      - record_id
-      - user_id
-      - inserted_at
-      - updated_at
-      title: Response
-    RankingQuestionResponseValueItem:
-      properties:
-        value:
-          type: string
-          title: Value
-        rank:
-          title: Rank
-          type:
-          - integer
-          - 'null'
-      type: object
-      required:
-      - value
-      title: RankingQuestionResponseValueItem
     Record:
       properties:
         id:
@@ -894,12 +638,227 @@ components:
       - inserted_at
       - updated_at
       title: Record
-    SuggestionType:
+    RankingQuestionResponseValueItem:
+      properties:
+        value:
+          type: string
+          title: Value
+        rank:
+          title: Rank
+          type:
+          - integer
+          - 'null'
+      type: object
+      required:
+      - value
+      title: RankingQuestionResponseValueItem
+    SuggestionCreate:
+      properties:
+        question_id:
+          type: string
+          format: uuid
+          title: Question Id
+        type:
+          $ref: '#/components/schemas/SuggestionType'
+        value:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/SpanQuestionResponseValueItem'
+            type: array
+            maxItems: 10000
+          - items:
+              $ref: '#/components/schemas/RankingQuestionResponseValueItem'
+            type: array
+          - items:
+              type: string
+            type: array
+          - type: integer
+          - type: string
+          title: Value
+        agent:
+          title: Agent
+          description: Agent used to generate the suggestion
+          type:
+          - string
+          - 'null'
+          maxLength: 200
+          minLength: 1
+          pattern: ^[a-zA-Z0-9-_:\.\/\s]*[a-zA-Z0-9][a-zA-Z0-9-_:\.\/\s]*$
+        score:
+          title: Score
+          description: The score assigned to the suggestion
+          anyOf:
+          - type: number
+          - items:
+              type: number
+            type: array
+      type: object
+      required:
+      - question_id
+      - value
+      title: SuggestionCreate
+    ResponseValue:
+      properties:
+        value:
+          title: Value
+      type: object
+      required:
+      - value
+      title: ResponseValue
+    RecordUpdate:
+      properties:
+        fields:
+          title: Fields
+          additionalProperties:
+            anyOf:
+            - type: string
+            - items:
+                $ref: '#/components/schemas/ChatFieldValue'
+              type: array
+            - type: object
+          type:
+          - object
+          - 'null'
+        metadata:
+          title: Metadata
+          type:
+          - object
+          - 'null'
+        suggestions:
+          title: Suggestions
+          items:
+            $ref: '#/components/schemas/SuggestionCreate'
+          type:
+          - array
+          - 'null'
+        vectors:
+          title: Vectors
+          additionalProperties:
+            items:
+              type: number
+            type: array
+          type:
+          - object
+          - 'null'
+      type: object
+      title: RecordUpdate
+    ResponseStatus:
       type: string
       enum:
-      - model
-      - human
-      title: SuggestionType
+      - draft
+      - submitted
+      - discarded
+      title: ResponseStatus
+    Suggestions:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/Suggestion'
+          type: array
+          title: Items
+      type: object
+      required:
+      - items
+      title: Suggestions
+    Suggestion:
+      properties:
+        question_id:
+          type: string
+          format: uuid
+          title: Question Id
+        type:
+          $ref: '#/components/schemas/SuggestionType'
+        value:
+          title: Value
+        agent:
+          title: Agent
+          type:
+          - string
+          - 'null'
+        score:
+          title: Score
+          anyOf:
+          - type: number
+          - items:
+              type: number
+            type: array
+        id:
+          type: string
+          format: uuid
+          title: Id
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - question_id
+      - value
+      - id
+      - inserted_at
+      - updated_at
+      title: Suggestion
+    Response:
+      properties:
+        id:
+          type: string
+          format: uuid
+          title: Id
+        values:
+          title: Values
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValue'
+          type:
+          - object
+          - 'null'
+        status:
+          $ref: '#/components/schemas/ResponseStatus'
+        record_id:
+          type: string
+          format: uuid
+          title: Record Id
+        user_id:
+          type: string
+          format: uuid
+          title: User Id
+        inserted_at:
+          type: string
+          format: date-time
+          title: Inserted At
+        updated_at:
+          type: string
+          format: date-time
+          title: Updated At
+      type: object
+      required:
+      - id
+      - status
+      - record_id
+      - user_id
+      - inserted_at
+      - updated_at
+      title: Response
+    ChatFieldValue:
+      properties:
+        role:
+          type: string
+          maxLength: 20
+          minLength: 1
+          title: Role
+        content:
+          type: string
+          maxLength: 20000
+          minLength: 1
+          title: Content
+      type: object
+      required:
+      - role
+      - content
+      title: ChatFieldValue
     SpanQuestionResponseValueItem:
       properties:
         label:
@@ -919,13 +878,54 @@ components:
       - start
       - end
       title: SpanQuestionResponseValueItem
-    ResponseStatus:
+    SuggestionType:
       type: string
       enum:
-      - draft
-      - submitted
-      - discarded
-      title: ResponseStatus
+      - model
+      - human
+      title: SuggestionType
+    ResponseValueCreate:
+      properties:
+        value:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/SpanQuestionResponseValueItem'
+            type: array
+            maxItems: 10000
+          - items:
+              $ref: '#/components/schemas/RankingQuestionResponseValueItem'
+            type: array
+          - items:
+              type: string
+            type: array
+          - type: integer
+          - type: string
+          title: Value
+      type: object
+      required:
+      - value
+      title: ResponseValueCreate
+    RecordStatus:
+      type: string
+      enum:
+      - pending
+      - completed
+      title: RecordStatus
+    ResponseCreate:
+      properties:
+        values:
+          title: Values
+          additionalProperties:
+            $ref: '#/components/schemas/ResponseValueCreate'
+          type:
+          - object
+          - 'null'
+        status:
+          $ref: '#/components/schemas/ResponseStatus'
+      type: object
+      required:
+      - status
+      title: ResponseCreate
   securitySchemes:
     APIKeyHeader:
       type: apiKey
