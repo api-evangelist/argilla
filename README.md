@@ -1,4 +1,4 @@
-# Argilla (argilla)
+# Argilla
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,58 +64,188 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Argilla is an open-source data annotation and curation platform designed for AI engineers and domain experts building high-quality datasets for LLMs and NLP models. The platform provides a FastAPI-based REST API for managing workspaces, datasets, records, responses, suggestions, vectors, and webhooks — supporting RLHF, preference tuning, and active learning pipelines. Developers interact via a Python SDK or directly through the REST API using API key authentication. Argilla recently joined Hugging Face, deepening its integration with the broader open ML ecosystem, and is licensed under Apache-2.0.
+Argilla is an open-source data annotation and curation platform designed for AI engineers and domain experts building high-quality datasets for LLMs and NLP models. The platform provides a FastAPI-based REST API for managing workspaces, datasets, records, responses, suggestions, and vectors, enabling RLHF and preference tuning pipelines. Developers interact with Argilla through a Python SDK (pip install argilla) or directly via REST using API key authentication. Argilla supports deployment on Hugging Face Spaces, Docker, and self-hosted environments, and is licensed under Apache-2.0. The platform recently joined Hugging Face, deepening its integration with the broader open ML ecosystem.
 
-APIs.json: https://raw.githubusercontent.com/api-evangelist/argilla/refs/heads/main/apis.yml
+**Areas:** Data Annotation · LLM · Natural Language Processing · RLHF · Machine Learning · Datasets · Open Source · Human Feedback · Fine-Tuning · Hugging Face
 
-Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=argilla-api-evangelist&utm_content=repo
+## Argilla on APIs.io
 
-## Tags
+Everything profiled for Argilla is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/argilla/](https://apis.io/providers/argilla/)** — or go straight to one of the APIs or properties below.
 
-- data annotation
-- LLM
-- NLP
-- RLHF
-- machine learning
-- datasets
-- open source
-- human feedback
-- fine-tuning
-- Hugging Face
+### APIs (15)
 
-## APIs
+- [Argilla Authentication API](https://apis.io/apis/argilla/argilla-authentication-api/) — The Authentication API from Argilla — 4 operation(s) for authentication.
+- [Argilla Datasets API](https://apis.io/apis/argilla/argilla-datasets-api/) — The datasets API from Argilla — 19 operation(s) for datasets.
+- [Argilla Fields API](https://apis.io/apis/argilla/argilla-fields-api/) — The fields API from Argilla — 1 operation(s) for fields.
+- [Argilla Info API](https://apis.io/apis/argilla/argilla-info-api/) — The info API from Argilla — 2 operation(s) for info.
+- [Argilla Jobs API](https://apis.io/apis/argilla/argilla-jobs-api/) — The jobs API from Argilla — 1 operation(s) for jobs.
+- [Argilla metadata properties API](https://apis.io/apis/argilla/argilla-metadata-properties-api/) — The metadata properties API from Argilla — 2 operation(s) for metadata properties.
+- [Argilla Questions API](https://apis.io/apis/argilla/argilla-questions-api/) — The questions API from Argilla — 1 operation(s) for questions.
+- [Argilla Records API](https://apis.io/apis/argilla/argilla-records-api/) — The records API from Argilla — 3 operation(s) for records.
+- [Argilla Responses API](https://apis.io/apis/argilla/argilla-responses-api/) — The responses API from Argilla — 2 operation(s) for responses.
+- [Argilla Settings API](https://apis.io/apis/argilla/argilla-settings-api/) — The settings API from Argilla — 1 operation(s) for settings.
+- [Argilla Suggestions API](https://apis.io/apis/argilla/argilla-suggestions-api/) — The suggestions API from Argilla — 1 operation(s) for suggestions.
+- [Argilla Users API](https://apis.io/apis/argilla/argilla-users-api/) — The users API from Argilla — 4 operation(s) for users.
+- [Argilla Vectors Settings API](https://apis.io/apis/argilla/argilla-vectors-settings-api/) — The vectors-settings API from Argilla — 1 operation(s) for vectors-settings.
+- [Argilla Webhooks API](https://apis.io/apis/argilla/argilla-webhooks-api/) — The webhooks API from Argilla — 3 operation(s) for webhooks.
+- [Argilla Workspaces API](https://apis.io/apis/argilla/argilla-workspaces-api/) — The workspaces API from Argilla — 5 operation(s) for workspaces.
 
-| Name | Description |
-|------|-------------|
-| Argilla REST API | FastAPI-based REST API for managing users, workspaces, datasets, records, responses, suggestions, vectors, and webhooks with API key authentication. |
+### Published properties
 
-## Plans / Rate Limits / FinOps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-| Resource | Location |
-|----------|----------|
-| Plans & Pricing | [plans/argilla-plans-pricing.yml](plans/argilla-plans-pricing.yml) |
-| Rate Limits | [rate-limits/argilla-rate-limits.yml](rate-limits/argilla-rate-limits.yml) |
-| FinOps | [finops/argilla-finops.yml](finops/argilla-finops.yml) |
+#### Agentic access (1)
 
-Argilla is fully open-source (Apache-2.0) with no licensing cost for self-hosted deployments. Infrastructure costs (compute, database, search index) depend on the hosting environment. Hugging Face Spaces deployments incur compute charges billed by Hugging Face at their standard hardware tier rates.
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Timestamps
+- [Argilla Agentic Access](https://apis.io/agentic-access/argilla/argilla-agentic-access/)
 
-- **Created:** 2026-06-12
-- **Modified:** 2026-06-12
+#### JSON Schema (11)
 
-## Common Properties
+The data models the API reads and writes.
 
-| Type | URL |
-|------|-----|
-| Website | https://argilla.io/ |
-| Documentation | https://docs.argilla.io/latest/ |
-| GitHub Organization | https://github.com/argilla-io |
-| LinkedIn | https://www.linkedin.com/company/argilla-io/ |
-| X (Twitter) | https://twitter.com/argilla_io |
-| Blog | https://argilla.io/blog |
-| Pricing | https://argilla.io/pricing |
+- [Dataset](https://apis.io/schemas/argilla/argilla-dataset/)
+- [Field](https://apis.io/schemas/argilla/argilla-field/)
+- [MetadataProperty](https://apis.io/schemas/argilla/argilla-metadataproperty/)
+- [Question](https://apis.io/schemas/argilla/argilla-question/)
+- [Record](https://apis.io/schemas/argilla/argilla-record/)
+- [Response](https://apis.io/schemas/argilla/argilla-response/)
+- [Suggestion](https://apis.io/schemas/argilla/argilla-suggestion/)
+- [User](https://apis.io/schemas/argilla/argilla-user/)
+- [VectorSettings](https://apis.io/schemas/argilla/argilla-vectorsettings/)
+- [Webhook](https://apis.io/schemas/argilla/argilla-webhook/)
+- [Workspace](https://apis.io/schemas/argilla/argilla-workspace/)
 
-## Maintainers
+#### JSON-LD (1)
 
-- **Kin Lane** — kin@apievangelist.com
+Linked-data contexts for the provider's vocabulary.
+
+- [Argilla Context](https://apis.io/jsonld/argilla/argilla-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Argilla Vocabulary](https://apis.io/vocabularies/argilla/argilla-vocabulary/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Argilla Add Records Example](https://apis.io/examples/argilla/argilla-add-records-example/)
+- [Argilla Create Dataset Example](https://apis.io/examples/argilla/argilla-create-dataset-example/)
+- [Argilla Submit Response Example](https://apis.io/examples/argilla/argilla-submit-response-example/)
+
+#### Collections (15)
+
+Postman and Open Collection request collections.
+
+- [Argilla v1 Authentication API](https://apis.io/collections/argilla/open-argilla-authentication-api/)
+- [Argilla v1 Authentication datasets API](https://apis.io/collections/argilla/open-argilla-datasets-api/)
+- [Argilla v1 Authentication fields API](https://apis.io/collections/argilla/open-argilla-fields-api/)
+- [Argilla v1 Authentication info API](https://apis.io/collections/argilla/open-argilla-info-api/)
+- [Argilla v1 Authentication jobs API](https://apis.io/collections/argilla/open-argilla-jobs-api/)
+- [Argilla v1 Authentication metadata properties API](https://apis.io/collections/argilla/open-argilla-metadata-properties-api/)
+- [Argilla v1 Authentication questions API](https://apis.io/collections/argilla/open-argilla-questions-api/)
+- [Argilla v1 Authentication records API](https://apis.io/collections/argilla/open-argilla-records-api/)
+- [Argilla v1 Authentication responses API](https://apis.io/collections/argilla/open-argilla-responses-api/)
+- [Argilla v1 Authentication settings API](https://apis.io/collections/argilla/open-argilla-settings-api/)
+- [Argilla v1 Authentication suggestions API](https://apis.io/collections/argilla/open-argilla-suggestions-api/)
+- [Argilla v1 Authentication users API](https://apis.io/collections/argilla/open-argilla-users-api/)
+- [Argilla v1 Authentication vectors-settings API](https://apis.io/collections/argilla/open-argilla-vectors-settings-api/)
+- [Argilla v1 Authentication webhooks API](https://apis.io/collections/argilla/open-argilla-webhooks-api/)
+- [Argilla v1 Authentication workspaces API](https://apis.io/collections/argilla/open-argilla-workspaces-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Argilla — jsonschema rules](https://apis.io/rules/argilla/argilla-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Argilla Authentication](https://apis.io/security/argilla/argilla-authentication/)
+- [Argilla Domain Security](https://apis.io/security/argilla/argilla-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Argilla Plans Pricing](https://apis.io/plans/argilla/argilla-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Argilla Rate Limits](https://apis.io/rate-limits/argilla/argilla-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Argilla Finops](https://apis.io/finops/argilla/argilla-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://argilla.io/)
+- [Documentation](https://docs.argilla.io/latest/)
+- [Pricing](https://argilla.io/pricing)
+- [Blog](https://argilla.io/blog)
+- [GitHub](https://github.com/argilla-io)
+
+## API Evangelist rating
+
+**Kin Score 34.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 58.1 |
+| Contract governance | 23.5 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 5.3 |
+
+**Agent readiness 22.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/argilla/](https://apis.io/providers/argilla/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Argilla: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/argilla/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
